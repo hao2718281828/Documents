@@ -1,4 +1,6 @@
-- 👋 Hi, I’m @hao2718281828
+# Welcome to my homepage!
+
+- 👋 Hi, I’m @hao2718281828.
 - 🌱 I’m currently learning Mathematics. Specifically, I'm learning Functional Analysis, Stochastic Process and Differential Geometry.
 
 <!---
