@@ -1,47 +1,113 @@
 {
-    "window.zoomLevel": 2,
-    "editor.renderWhitespace": "all",
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "editor.fontFamily": "Dejavu Sans Mono, Consolas, 'Courier New', monospace",
-    "window.autoDetectHighContrast": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.centerLayout": false,
-    "zenMode.fullScreen": false,
-    "zenMode.hideTabs": false,
-    "workbench.editor.showIcons": false,
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    "window.enableMenuBarMnemonics": false,
-    "search.location": "panel",
-    "breadcrumbs.enabled": false,
-    "workbench.activityBar.visible": false,
-    "editor.minimap.enabled": false,
-    "workbench.iconTheme": null,
-    "extensions.ignoreRecommendations": true,
-    "editor.renderControlCharacters": true,
-    "terminal.integrated.scrollback": 5000,
-    "workbench.colorTheme": "ConTeXt",
- // "[context.pdf]": { "files.encoding": "cp1252"},
-    "terminal.integrated.fontSize": 10,
-    "terminal.integrated.rendererType": "canvas",
-    "editor.bracketPairColorization.enabled": false,
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
-    "workbench.colorCustomizations": {
-        "terminal.ansiBlack":         "#000000",
-        "terminal.ansiWhite":         "#FFFFFF",
-        "terminal.ansiRed":           "#7F0000",
-        "terminal.ansiGreen":         "#007F00",
-        "terminal.ansiBlue":          "#00007F",
-        "terminal.ansiMagenta":       "#7F007F",
-        "terminal.ansiCyan":          "#007F7F",
-        "terminal.ansiYellow":        "#7F7F00",
-        "terminal.ansiBrightBlack":   "#000000",
-        "terminal.ansiBrightWhite":   "#FFFFFF",
-        "terminal.ansiBrightRed":     "#7F0000",
-        "terminal.ansiBrightGreen":   "#007F00",
-        "terminal.ansiBrightBlue":    "#00007F",
-        "terminal.ansiBrightMagenta": "#7F007F",
-        "terminal.ansiBrightCyan":    "#007F7F",
-        "terminal.ansiBrightYellow":  "#7F7F00"
-    }
+    //%*****************************配置编译语言*********************************%//
+    "latex-workshop.showContextMenu": true,//启用上下文LaTeX菜单
+    "latex-workshop.latex.autoBuild.run": "never",//手动编译
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.intellisense.package.enabled": true,  //根据加载的包，自动完成命令或包
+    "latex-workshop.latex.recipes": [{
+              "name": "xelatex",
+              "tools": [
+                  "xelatex"
+              ]
+          },
+          {
+              "name": "xelatex ->bibtex -> xelatex*2",
+              "tools": [
+                  "xelatex",
+                  "bibtex",
+                  "xelatex",
+                  "xelatex"
+              ]
+          },
+          {
+            "name": "xelatex ->biber -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+              "name": "pdflatex",
+              "tools": [
+                  "pdflatex"
+              ]
+          }
+      ],
+      "latex-workshop.latex.tools": [{
+              "name": "xelatex",
+              "command": "xelatex",
+              "args": [
+                  "-shell-escape",
+                  "-synctex=1",
+                  "-interaction=nonstopmode",
+                  "-file-line-error",
+                  "%DOC%"   
+              ]
+          },
+          {
+              "name": "pdflatex",
+              "command": "pdflatex",
+              "args": [
+                  "-shell-escape",
+                  "-synctex=1",
+                  "-interaction=nonstopmode",
+                  "-file-line-error",
+                  "%DOC%"
+              ]
+          },          
+          {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+          },
+          {
+              "name": "biber",
+              "command": "biber",
+              "args": [
+                  "%DOCFILE%"
+              ]
+          }
+      ],
+      // 清除辅助文件
+      "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    //%*****************************配置正反搜索*********************************%//
+      "latex-workshop.view.pdf.viewer": "external",
+      "latex-workshop.view.pdf.ref.viewer":"external",
+      "latex-workshop.view.pdf.external.viewer.command": "C:/Program Files/SumatraPDF/SumatraPDF.exe",
+      "latex-workshop.view.pdf.external.viewer.args": [
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "%PDF%",
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "C:/Program Files/SumatraPDF/SumatraPDF.exe"
 }
