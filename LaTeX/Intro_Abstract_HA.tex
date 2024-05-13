@@ -1,0 +1,179 @@
+\documentclass{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%reference
+
+\usepackage[english]{babel}
+\usepackage[backend=biber,style=alphabetic-verb,sorting=none]{biblatex}
+
+\addbibresource{reference.bib} %Import the bibliography file
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\usetheme{default}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%commands
+
+\def\T{\mathbb{T}}
+\def\Z{\mathbb{Z}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+\renewcommand{\hat}\widehat
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \title{Bourgain's transference theorem: HT implies UMD}
+
+\title{Introduction to Abstract Harmonic Analysis}
+
+\author{Report the name of the dish}
+% \author{Hao Fan}
+
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Notation}
+
+\begin{itemize}
+  \item The \emph{Direct Product of Abelian Groups} of $\{G_i\}_{i\in I}$ is defined as the set Cartesian product  $\prod G_i$ with componment-wise operation.
+  \item The \emph{Direct Sum of Abelian Groups} of $\{G_i\}_{i\in I}$ is defined as the following subgroup of $\prod G_i$:
+        \[\bigoplus G_i:=\Bigl\{x\in\prod G_i \left|\right. \sharp\{i\in I: x_i\ne0\}<\infty\Bigr\}.\]
+\end{itemize} 
+
+\begin{example}
+    The torus/unit sphere $\mathbb{T}$ is a compact topological group and we consider $G=\prod \mathbb{T}$, also a compact topological group.
+\end{example}
+
+\begin{example}
+    The integer $\mathbb{Z}$ is a LCH group and we consider $\Gamma=\bigoplus\mathbb{Z}$, also a LCH group.
+\end{example}
+\end{frame}
+
+\begin{frame}%Haar measure
+\frametitle{Haar Measure}
+
+\begin{definition}
+A \emph{Haar measure} on a LCH topological group $G$ is a non-zero Radon measure $\mu$ on $G$ that satisfies the following properties:
+\begin{itemize}
+  \item $\mu(A) > 0$ for every non-empty open set $A$,
+  \item $\mu(K) < \infty$ for every compact set $K$,
+  \item $\mu(gE) = \mu(E)$ for all Borel sets $E$ and $g \in G$.
+\end{itemize}
+\end{definition}
+
+\begin{Theorem}[Haar, 1933]
+Let $G$ be a LCH group. Then there exists a Haar measure on $G$, which is unique up to a constant.
+\cite*[Chapter~2]{folland2016course}
+\end{Theorem}
+
+\begin{example}
+  We check $\R$, $\Z$, and $\T$.
+\end{example}
+
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Transference Trick}
+% \begin{theorem}
+%   Suppose there are Banach spaces and linear maps satisfying the following commutative diagrams. Then isomophisms 
+% \end{theorem}
+% \end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Fourier Analysis On LCH Group}
+We start from the simple case, on the group $\Z$:
+\begin{definition}[Fourier Transform]
+  Let $f\in\ell_1(\Z)$. The \emph{classical Fourier fransform} of this function is the function on $\T$ defined by the formula
+    \[\hat{f}(e^{i\theta}):=\int_{\Z}f(n)e^{in\theta}d\sharp(n)=\sum_{n\in\Z}f(n)e^{in\theta}.\]
+\end{definition}
+
+\begin{theorem}
+  View $\ell_1=\ell_1(\mathbb Z)$, equipped with involution $a^\ast:=\overline{a}$ and convolution, as a $\ast$-Banach algebra.
+  Then $\sigma(\ell_1):=\operatorname{Hom}_{\mathsf{Alg}}(\ell_1,\C)$ can be identified with $\T$ in such a way that the Gelfand transform
+  on $\ell_1$ becomes
+    \[\hat{f}(e^{i\theta})=\sum_{n\in\Z} f_n e^{in\theta}.\]
+\end{theorem}
+
+In general, $L_1(G)$ with convolution is a Banach $\ast$-algebra, and hence one can define its spectrum $\sigma (L_1(G))$.\cite*[Chapter~4.1]{folland2016course}
+  \begin{definition}[Dual Group]
+    For a LCH group $G$, the dual group is
+      \[\hat{G}:=\operatorname{Hom}_{\mathsf{TopGrp}}(G,\T)=\sigma(L_1(G)).\]
+  \end{definition}
+    
+    \begin{example}
+      For usual groups: $\hat{\R}=\R$, $\hat{\Z}=\T$ and $\hat{\T}=\Z$. As you should verify by $\operatorname{Hom}_{\mathsf{TopGrp}}(G,\C)$.
+    \end{example}
+
+    \begin{block}{Exercise}
+      What is the dual group of $G:=\T^{\Z_{\geq0}}$?
+    \end{block}
+
+    \newpage
+
+    Now we can define Fourier transform.
+
+  \begin{definition}
+    Associate to $\xi\in\hat{G}$ the functional  
+    \[f\mapsto \bar{\xi}(f)=\xi^{-1}(f)=\int_G \overline{\langle x,\xi\rangle}f(x) dx.\]
+      The Fourier transform on G is defined as the Gelfand trnsform $L_1(G)\to C(\hat{G})$,
+      \[\mathcal{F}(f)(\xi)=\hat{f}(\xi):=\xi^{-1}(f)=\int_G \overline{\langle x,\xi\rangle}f(x)dx.\]
+    \end{definition}
+    
+    \begin{example}
+      For usual groups: $\hat{\R}=\R$, $\hat{\Z}=\T$ and $\hat{\T}=\Z$. Convince yourself again since you should have studied Fourier transform on them.
+    \end{example}
+    
+
+  \begin{theorem}[Pontrjagin Duality]
+    The map $\Phi\colon G\to \hat{\hat{G}},x\mapsto \Phi(x)$ where $\langle\xi,\Phi(x)\rangle=\langle x,\xi\rangle\forall \xi\in\hat{G}$, is an isomophism of topological groups.
+  \end{theorem}
+
+  \begin{theorem}
+    If $G$ is compact and $|G|=1$, $\hat{G}$ is an orthonormal basis for $L_2(G)$.\cite*[Corollary~4.27]{folland2016course}
+  \end{theorem}
+This theorem ensures define multipliers from $\ell_\infty(\hat{G})$.
+  \begin{example}
+    For the compact group $\T$, $\hat{\T}=\Z=\{e_k\}_{k\in\Z}$, the Fourier basis is surely an orthonormal basis for $L_2(\T)$.
+  \end{example}
+\end{frame}
+
+\begin{frame}
+If you have an algebra, you should care its ideals.
+  \begin{definition}
+    Let $A$ be a commutative Banach algebra with spectrum $\sigma(A)$.
+% \[\begin{tikzcd}
+%   \{closed ideals in A\} \arrow[rr, "\nu", shift left=2] &  & closed subsets of \sigma(A) \arrow[ll, "\iota", shift left=2] \\
+%   J \arrow[rr, maps to]                                  &  & {}                                                            \\
+%   {}                                                     &  & N \arrow[ll, maps to]                                        
+%   \end{tikzcd}\]
+  \end{definition}
+  
+  \begin{theorem}
+    The maximal ideals in the ring $C[0,1]$ are exhausted by $\ker\hat{p}, p\in [0,1]$.
+  \end{theorem}
+
+  \begin{theorem}[Wiener's Theorem]
+    If ${J}$ is a closed ideal in $L_1(G)$ and $\nu ({J})=\varnothing$, then ${J}=L_1(G)$.
+  \end{theorem}
+This is analogue of Hilbert's weak Nullstellenstaz.
+  \begin{theorem}[Hilbert's weak Nullstellenstaz]
+    Let $k$ be an algebraically closed field, $J\subseteq k[x_1,x_2,\ldots,x_n]$ an ideal. Then $\nu(J)=\varnothing$ iff $J=k[x_1,x_2,\ldots,x_n]$, i.e. $1\in J$.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+        \frametitle{References}
+        \printbibliography
+\end{frame}
+\end{document}
