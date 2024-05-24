@@ -1,0 +1,1842 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{geometry}
+ \geometry{left=3.0cm, right=3.0cm, top=3.0cm, bottom=3.0cm}
+% a4paper,scale=0.68
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{amssymb}
+%\usepackage{showkeys}
+
+
+%\usepackage[colorlinks, linkcolor=blue, citecolor=blue]{hyperref}
+
+\usepackage[colorlinks=true,urlcolor=blue, citecolor=blue,linkcolor=blue,linktocpage,pdfpagelabels,bookmarksnumbered,bookmarksopen]{hyperref}
+
+%\usepackage[hyperpageref]{backref}
+
+\numberwithin{equation}{section}
+%[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=green]
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{problem}[theorem]{Problem}
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\newcommand{\M}{\mathcal{M}}
+
+\begin{document}
+\title[Noncommutative Burkholder/Rosenthal inequalities]{Noncommutative Burkholder/Rosenthal inequalities with maximal diagonals}
+%with  maximal diagonal
+\author[Jiao]{Yong Jiao  }
+\address{School of Mathematics and Statistics, Central South University, HNP-LAMA, Changsha 410075, China}
+\email{jiaoyong@csu.edu.cn}
+
+\author[Zanin]{Dmitriy  Zanin}
+\address{School of Mathematics and Statistics, University of NSW, Sydney,  2052, Australia}
+\email{d.zanin@unsw.edu.au}
+
+\author[Zhou]{Dejian Zhou$^*$}
+\address{School of Mathematics and Statistics, HNP-LAMA, Central South University, Changsha 410075, China}
+\email{zhoudejian@csu.edu.cn}
+
+\subjclass[2010]{Primary: 46L53; Secondary: 60G42}
+
+\keywords{noncommutative martingales, Burkholder inequalities, noncommutative independence,  symmetric spaces}
+
+\thanks{Yong Jiao is supported by the NSFC (No.12125109, No.11961131003); Dmitriy Zanin is supported by the Australian Research Council; Dejian Zhou is   partially supported by NSFC (No. 12001541),  Natural Science Foundation Hunan (No. 2021JJ40714), Changsha Municipal Natural Science Foundation (No. kq2014118).}
+
+\thanks{$*$ Corresponding author.}
+\begin{abstract}
+	In this paper,  we prove noncommutative Burkholder and Rosenthal inequalities with maximal diagonals.
+Our results extend Burkholder's result into noncommutative setting and solve the open problem raised by Randrianantoanina and Wu. The proofs depend on several new and elaborate estimates associated with the Cuculescu projections.
+\end{abstract}
+
+\maketitle
+
+\input{final.tex}
+
+\section{Introduction}
+
+% In the last two decades, the noncommutative martingale theory has gotten a rapid development. Actually, since the  establishment of the noncommutative Burkholder-Gundy inequality  by Pisier and Xu \cite{Pi1997}, lots of classical  martingale inequalities have been extended to the noncommutative setting. For instance, Junge \cite{Ju2002} proved the noncommutative Doob maximal inequality. Shortly after, Randrianantoanina \cite{Rand2002} showed the weak type $(1,1)$ inequality for martingale transform.
+% Parcet and Randrianantoanina  \cite{Rand2006} established the Gundy decomposition for noncommutative martingales. Several authors extended martingale inequalities into symmetric spaces and $\Phi$-moment setting, see for example \cite{Bek2012}, \cite{Bekjan2017}, \cite{Di20152}, \cite{Di20151}, \cite{DDPS2011}, \cite{Ji2012}, \cite{Zhou2017JFA} and so on.
+% We also refer the reader to \cite{Hong-Mei},  \cite{JOW2018},  \cite{JOW2019aop}, \cite{JRWZ2019}, \cite{Per2009} and \cite{Rand2007}  for further results on noncommutative martingales.
+
+
+% In the present paper, we mainly consider noncommutative Burkholder/Rosenthal  inequalities with maximal diagonals.
+% In the classical setting,  the remarkable Rosenthal inequality (\cite[Theorem 3]{Ros1970}) asserts that
+% \begin{equation}\label{ro-1}
+% 	\left\|\sum_{k=0}^n f_k\right\|_{L_p}\approx_p \left(\sum_{k=0}^n\|f_k\|_{L_p}^p\right)^{1/p}
+% 	+\left(\sum_{k=0}^n\|f_k\|_{L_2}^2\right)^{1/2},\quad 2\leq p<\infty,
+% \end{equation}
+% for each sequence $(f_k)_{k=0}^n\subset L_p(0,1)$ of independent mean zero random variables. Burkholder \cite{Bu1973} generalised this inequality to the context of martingales as follows. Let $(\mathcal{F}_k)_{k\geq0}$ be a filtration on a probability space $(\Omega, \mu)$, and let $(\mathbb{E}_k)_{k\geq0}$ be the conditional expectations  with respect to $(\mathcal{F}_k)_{k\geq0}$. The martingale differences of $f\in L_1$ are given by (with $d_0(f)=\mathbb{E}_0(f)$)
+% $$ d_kf=\mathbb{E}_k(f)-\mathbb{E}_{k-1}(f),\quad k\geq1.$$
+% Burkholder then estbalished the equivalence
+% \begin{equation}\label{Bur}
+% 	\|f\|_{L_p}\approx_p \left(\sum_{k\geq0}\|d_kf\|_{L_p}^p\right)^{1/p}
+% 	+\|s(f)\|_{L_p},\quad 2\leq p<\infty,\quad f\in L_p(\Omega).
+% \end{equation}
+% Here, $s(f)^2=\sum_{k\geq0}\mathbb{E}_{k-1}(|d_kf|^2)$.
+
+% The noncommutative counterpart of \eqref{Bur} was proposed by Junge and Xu \cite[Theorem 5.1]{Ju2003}. Let $(\mathcal M,\tau)$ be a noncommutative probability space and let $(\mathcal E_n)_{n\geq0}$ denote the conditional expectation associated to a given weak-$\ast$ dense filtration $(\mathcal M_n)_{n\geq0}$. Junge and Xu's result reads as follows:
+% \begin{equation}\label{JX Ro}
+% 	\|x\|_{L_p(\mathcal{M})}\approx_p \Big(\sum_{k\geq0}\|d_kx\|_{L_p(\mathcal{M})}^p\Big)^{1/p}
+% 	+\|s_c(x)\|_{L_p(\mathcal{M})}+\|s_r(x)\|_{L_p(\mathcal{M})},\quad 2\leq p<\infty,
+% \end{equation}
+% for every $x\in L_{p}(\mathcal{M}).$ Here $d_kx=\mathcal{E}_{k}(x)-\mathcal{E}_{k-1}(x)$ ($k\geq1$), $d_0x=\mathcal{E}_0(x)$ and
+% $$
+% s_c(x)=\Big(\sum_{k\geq1}\mathcal{E}_{k-1}(|d_kx|^2)|^2\Big)^{1/2}, \quad s_r(x)=\Big(\sum_{k\geq1}\mathcal{E}_{k-1}(|d_kx^*|^2)|^2\Big)^{1/2}.$$
+
+% Jiao  proved a version of \eqref{JX Ro} for noncommutative Lorentz spaces $L_{p,q}(\mathcal{M})$ with $2<p<\infty$ and $1\leq q<\infty$. Later,  Dirksen \cite{Di20152},  and Randrianantoanina and Wu \cite{RW2015} extended \eqref{JX Ro} into general symmetric space setting. The best available result for the noncommutative Burkholder inequalities in symmetric spaces was obtained in the very recent paper by Randrianantoanina, Wu and Xu \cite[Theorem 4.1(ii)]{RWX2019}. Suppose that $E$ is a symmetric Banach function space with the Fatou property. If $E\in\mathrm{Int}(L_2,L_q)$ for some $2< q<\infty$, then
+% \begin{equation}\label{RWX}
+% 	\|x\|_{E(\mathcal{M})}\approx_E \Big\|\sum_{k\geq0}d_kx\otimes e_k\Big\|_{E(\mathcal{M}\bar{\otimes} \ell_{\infty})}
+% 	+\|s_c(x)\|_{E(\mathcal{M})}+\|s_r(x)\|_{E(\mathcal{M})},
+% \end{equation}
+% where $(e_k)_{k\geq0}$ are the standard unital vectors in $\ell_{\infty}$. We point out that \eqref{RWX} was proved by Cadilhac and Ricard in \cite{CR2019} by a different method. We also refer the reader \cite{Rand2005} and \cite{JRWZ2019} for the noncommutative Burkholder inequalities with $1\leq p<2$.
+
+% Applying interpolation, for $2<p<\infty$, Junge and Xu \cite[Theorem 4.7]{Ju2008} successfully replaced the diagonal term $(\sum_{k\geq0}\|d_kx\|_{L_p(\mathcal{M})}^p)^{1/p}$ in \eqref{JX Ro} by the maximal function term $\|(d_kx)_{k\geq0}\|_{L_p(\mathcal{M},\ell_{\infty})}$, which is in perfect analogy with the classical Burkholder/Rosenthal inequalities. Indeed, for $x\in L_p(\mathcal{M}),$ $2<p<\infty,$ they proved that
+% \begin{equation}\label{JX ro M}
+% 	\|x\|_{L_p(\mathcal{M})}\approx_p \|(d_kx)_{k\geq0}\|_{L_p(\mathcal{M}, \ell_{\infty})}
+% 	+\|s_c(x)\|_{L_p(\mathcal{M})}+\|s_r(x)\|_{L_p(\mathcal{M})}.
+% \end{equation}
+% Using duality argument, Randrianantoanina et al. \cite[Corollary 4.11]{RWZ2020} proved that for $E\in \mathrm{Int}(L_p,L_q)$ with $2<p\leq q< \infty$,
+% \begin{align}\label{RWZ}
+% 	\|x\|_{E(\mathcal{M})}&\approx_E \|(d_kx)_{k\geq0}\|_{E(\mathcal{M}, \ell_{\infty}^c)}+\|s_c(x)\|_{E(\mathcal{M})}\\
+% 	&\quad+\|(d_kx)_{k\geq0}\|_{E(\mathcal{M}, \ell_{\infty}^r)}
+% 	+\|s_r(x)\|_{E(\mathcal{M})}\nonumber,
+% \end{align}
+% where $\|\cdot\|_{E(\mathcal{M}, \ell_{\infty}^c)}$ is as in \eqref{lc} below.
+
+% On the other hand, Randrianantoanina and Wu \cite[Theorem 4.1]{RW2017} extended \eqref{JX Ro} into $\Phi$-moment setting, which was  recently improved by Randrianantoanina, Wu and Xu \cite[Theorem 4.11]{RWX2019}. The latter result states that if $\Phi$ is a $2$-convex and $q$-concave ($2<q<\infty$) Orlicz function (see Subsection \ref{subsec2-3} below), then
+% \begin{equation*}
+% 	\tau(\Phi(|x|))\approx_{\Phi} \sum_{k\geq0}\tau(\Phi(|d_kx|))+  \tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big).
+% \end{equation*}
+% Note that $\Phi$-moment version  of \eqref{RWZ} was also proved in \cite{RWZ2020}. However, it remains open whether one can replace  the diagonal term $\sum_{k\geq0}\tau(\Phi(|d_kx|))$ by the  ``$\Phi$-moment" maximal function $\tau(\Phi(\sup_{k\geq0}d_kx))$. Randrianantoanina and Wu put this as an open problem (\cite[Problem 6.5]{RW2017}) as follows. 
+
+% \begin{problem}\label{open phi}
+% 	Assume that $2<p_{\Phi}\leq q_{\Phi}<\infty$ and $x\in L_{\Phi}(\mathcal{M})$. Do we have
+% 	\begin{equation*}
+% 		\tau\Big(\Phi(|x|)\Big)\approx_{\Phi} \tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big)+  \tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big)?
+% 	\end{equation*}
+% \end{problem}
+% \noindent Here, the two quantities $p_{\Phi}$ and $q_{\Phi}$  are known as Matuzewska-Orlicz indices of the Orlicz function $\Phi$; see \eqref{MO} below.  We emphasize that $\sup_{k\geq0}d_kx$ does not make any sense in the noncommutative setting and  $\tau(\Phi(\sup_{k\geq0}d_kx))$ is just a notation; see Definition \ref{def-supphi} below.
+
+% \smallskip
+
+% In this paper, we continue this line of research by  resolving Problem \ref{open phi} and establishing the noncommutative analogue
+% of the Burkholder inequality with maximal  functions  in symmetric spaces. Our first main result, proved in Section \ref{sec3},  reads as follows.
+% This result, which, together with Lemma \ref{Boydtocc}, fully solves Problem \ref{open phi}.
+
+% \begin{theorem}\label{answer open}
+% 	Let $(\mathcal{M},\tau)$ be a noncommutative probability space and let $\Phi$ be a $p$-convex and $q$-concave function with $2<p\leq q<\infty$. Then, for every  $x\in  L_{\Phi}(\mathcal{M})$, we have
+% 	\begin{equation}
+% 		\label{Phi-M}\tau\Big(\Phi(|x|)\Big)\approx_{p,q} \tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big)+  \tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big).
+% 	\end{equation}
+% \end{theorem}
+
+% Recall that the commutative version of \eqref{Phi-M} was established by Burkholder \cite[Theorem 21.1]{Bu1973}.
+% We first point out that Burkholder's approach does not work for Theorem \ref{answer open} at all since his argument is based on stopping times which, up to now, are not well defined in the noncommutative setting. 
+% The proof of Theorem \ref{answer open}, which is very different with interpolation method and the duality argument used separately in \cite{Ju2008} and \cite{RWZ2020}, is based on several new and elaborate estimates associated with the Cuculescu projections.  This method   is motivated by the recent work \cite{JOW2018,JOW2019-good} and also allows us to obtain Theorem \ref{open} below. Noting that $\|(d_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}$ and $\|(d_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty}^c)}$ are usually incomparable, Theorem \ref{open} can be regarded as a complement of \eqref{RWZ}, which also reduces to \eqref{JX ro M} for $E=L_p$ ($2<p<\infty$). 
+
+% \begin{theorem}\label{open}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space.
+% 	If $E\in{\rm Int}(L_p,L_q)$ and $2<p\leq q<\infty$,  then
+% 	$$\|x\|_{E(\mathcal{M})}\approx_E \|(d_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+
+% 	\|s_c(x)\|_{E(\mathcal{M})}+\|s_r(x)\|_{E(\mathcal{M})}.$$
+% \end{theorem}
+
+
+
+
+% Now we turn to discuss the second objective of our paper. In 1989, Johnson and Schechtman \cite[Theorem 1]{Jo1989} extended Rosenthal's inequality \eqref{ro-1} to symmetric quasi-Banach function spaces: if $E$ is a symmetric quasi-Banach function space on $(0,1)$ such that $E$ contains $L_p(0,1)$ for some $0<p<\infty$, then for each independent symmetrically distributed random variables $(f_k)_{k=0}^n\subset E$ we have
+% \begin{equation}\label{JoSc-1}
+% 	\left\|\sum_{k=0}^n f_k\right\|_{E}\approx_E \left\|\bigoplus_{k=0}^n f_k \right\|_{Z_E^2(0,\infty)}.
+% \end{equation}
+% Here, the definition of $Z_E^2(0,\infty)$  is referred to \eqref{ZEp} and
+% $$\bigoplus_{k=0}^n f_k=\sum_{k=0}^n  f_k(\cdot-k)\chi_{(k,k+1)}$$
+% is the disjoint sum of $(f_k)_{k=0}^n.$ With the help of so-called Kruglov operator,  Astashkin and Sukochev \cite{AsSu2005, AsSu2010} generalised the Johnson-Schechtman inequality to the symmetric quasi-Banach function spaces with the Kruglov property (the notion due to \cite{Bra1994}).
+
+
+% The concept of noncommutative independence (see Definition \ref{def-ind} below) was introduced by Junge and Xu \cite{Ju2008}. The main result in \cite[Theorem 2.1]{Ju2008} extended the Rosenthal inequality \eqref{ro-1} into noncommutative setting. In addition, Junge and Xu \cite[Theorem 4.6]{Ju2008} proved the maximal version of \eqref{ro-1} which reads as follows: if $(x_k)_{k\geq0}$ is a sequence of mean zero independent random variables with respect to $\tau$, then
+% \begin{equation}\label{ro-max-1}
+% 	\left\|\sum_{k\geq0} x_k\right\|_{L_p}\approx_p \|(x_k)_{k\geq0}\|_{L_p(\mathcal{M},\ell_{\infty})}
+% 	+\left(\sum_{k\geq0}\|x_k\|_{L_2(\mathcal{ M})}^2\right)^{1/2}, \quad 2<p<\infty.
+% \end{equation}
+% We also point out that the noncommutative Rosenthal inequality for the endpoint case ($\mathrm{BMO}$-type) is established by Randrianantoanina \cite[Theorem 5.3]{Rand2007}.  Dirksen et al. \cite[Theorem 6.3]{DDPS2011} obtained the Rosenthal inequality in symmetric Banach function space $E$ whose lower Boyd index $p_E$ is strictly bigger then $2$.
+% Very recently, Jiao et al. \cite[Theorem 1.2]{JSZ} proved the noncommutative analogue of Johnson-Schechtman inequality \eqref{JoSc-1} (free Johnson-Schechtman inequalities are referred to \cite{JiSu2016} and \cite{SuZa2012}).
+% More precisely, it is stated in \cite{JSZ} that
+
+% \begin{theorem}[{\cite[Theorem 1.2(iii)]{JSZ}}]\label{lem-jsz-1-2}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset E(\mathcal M)$ be mean zero independent random variables (with respect to $\tau$).
+% 	If $E\in{\rm Int}(L_p,L_q),$ $1<p\leq q<\infty,$  then
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal M)}\approx_E\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{Z_E^2(\mathcal{M}\bar{\otimes}\ell_{\infty})}.$$
+% \end{theorem}
+
+
+% The second aim of this paper is to investigate the maximal version of the above noncommutative Johnson-Schechtman inequality stated in Theorem \ref{lem-jsz-1-2}. Our result reads as follows, and its proof is given in Section \ref{sec4}. Particularly, our result indeed extends and improves the result by Junge and Xu shown in \eqref{ro-max-1} since  we can take $E=L_p$ with $2\leq p<\infty$. Note that (partial) sums of mean zero independent random variables form a martingale (see Remark \ref{re1} below). Comparing  with Theorem \ref{open}, we can take $E\in \mathrm{Int}(L_p,L_q)$ with $1<p\leq q<\infty$.
+
+% \begin{theorem}\label{first main theorem}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset  E(\mathcal{M})$ be mean zero independent random variables.
+% 	If $E\in{\rm Int}(L_p,L_q),$ $1<p\leq q<\infty,$  then
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{(L_1+L_2)(\mathcal{M}\bar{\otimes}\ell_{\infty})}.$$
+% \end{theorem}
+
+
+
+% Furthermore, if we consider noncommutative  positive independent random variables, we have the following corollary. This result could be viewed as the maximal version of \cite[Corollary 1.3]{JSZ}.
+
+
+% \begin{corollary}\label{corollary}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space, and let $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset  E(\mathcal{M})$ be positive independent random variables.
+% 	If $E\in{\rm Int}(L_p,L_q),$ $1<p\leq q<\infty,$  then
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes}\ell_{\infty})}.$$
+% \end{corollary}
+
+
+
+% The structure of the paper is as follows. Definitions, notions and notations above are presented in Section \ref{sec-2}. Section \ref{sec3} contains the proof of Theorem \ref{open}. In  Section \ref{sec4}, we present the proofs of the Theorem \ref{first main theorem} and Corollary \ref{corollary}.
+
+% %In Section \ref{sec5},  the corresponding result of Theorem \ref{first main theorem} in free probability setting is given in Theorem \ref{free thm}, which allows $E$ to be taken from $\mathrm{Int}(L_1,L_\infty)$.
+
+% \smallskip
+
+% Throughout this paper, we write $A\lesssim_E B$ if there is a constant $c_E>0$ depending only on $E$ such that $A\leq c_E B.$ We write $A\approx_E B$ if both $A \lesssim_E B $ and $B\lesssim_E A$ hold, possibly with different constants.
+
+% \section{Preliminaries}\label{sec-2}
+% \subsection{Noncommutative symmetric spaces}
+% Let $\mathcal M$ be  a  semifinite von Neumann algebra  equipped with a distinguished   faithful normal semifinite trace $\tau$.  Assume that $\mathcal{M}$ is acting on a Hilbert space $H$. A closed densely defined operator $x$ on $H$ is said to be  affiliated with $\mathcal{M}$ if $x$ commutes with the commutant $\mathcal{M}'$ of $\mathcal{M}$. If $a$ is self-adjoint and if $B\subseteq \mathbb{R}$ is Borel subset, then $\chi_B(a)$ denotes the corresponding spectral projection of $a.$ An operator $x$ affiliated with $\mathcal{M}$ is called $\tau$-measurable if there exists $s>0$ such that
+% $\tau(\chi_{(s,\infty)}(|x|))<\infty$.
+
+% Let $L_0(\mathcal{M})$ denote the topological $*$-algebra of all $\tau$-measurable operators. For $x\in L_0({\M})$, the generalized singular value function $\mu(x)$ is defined by
+% $$\mu(t,x)=\inf\{s>0:\tau\big(\chi_{(s,\infty)}(|x|)\big)\leq t\},\quad t>0.$$
+% The function $t\mapsto \mu(t,x)$ is decreasing and right-continuous; for a more detailed study of the singular value function we refer the reader referred to \cite{Fa1986}.
+
+% If $\mathcal M=L_\infty(0,\alpha)$ ($0<\alpha\leq \infty$) is the abelian von Neumann algebra, then, for measurable function $f$,  $\mu(f)$ is just the decreasing rearrangement of $|f|$ (see \cite[Page 39]{Be1988}).  A Banach (or quasi-Banach) function space $(E,\|\cdot\|_E)$ on the interval $(0,\alpha)$ is called symmetric if, for every $g\in E$ and for every measurable function $f\in L_0(0,\alpha)$ with $\mu(f)\leq \mu(g)$, we have $f\in E$ and $\|f\|_E\leq \|g\|_E$.
+
+% It is important that, for every symmetric Banach function space $E$ on the interval $(0, 1)$,
+% we have (see \cite[Theorem II.4.1]{Krein1982})
+% $$L_{\infty}\subset E \subset L_1.$$
+% In what follows, without loss of generality, we assume that $\|1\|_E=1$  for symmetric Banach function space $E$ on the interval $(0, 1)$. This condition guarantees that
+% \begin{equation}\label{1E1}
+% 	\|f\|_{L_1}\leq \|f\|_{E}\leq \|f\|_{L_{\infty}}, \quad f\in L_{\infty}(0,1).
+% \end{equation}
+
+% Following \cite{Kalton2008}, for a given symmetric Banach (or quasi-Banach) function space $(E,\|\cdot\|_E)$ , we define the corresponding noncommutative space on $(\mathcal {M},\tau)$ by setting
+% $$E(\mathcal{M}):=\{x\in L_0(\mathcal{M} ):\mu(x)\in E\}.$$
+% The associated (quasi-) norm is
+% \begin{equation}\label{def-sp}
+% 	\|x\|_{E(\mathcal M)}=\|\mu(x)\|_E.
+% \end{equation}
+% It is shown in \cite{Kalton2008} (resp. \cite{Su2014}) that if $E(0,\alpha)$ is a symmetric Banach (resp. quasi-Banach) function space, then $E(\mathcal{ M})$ is a Banach space (resp. a quasi-Banach space).
+
+% If Banach spaces $F_1$ and $F_2$ are linear subspaces of a Hausdorff topological vector space, then the intersection $F_1\cap F_2$ becomes a Banach space when equipped with the norm
+% $$\|f\|_{F_1\cap F_2}=\max\{\|f\|_{F_1},\|f\|_{F_2}\}.$$
+% The sum $F_1+ F_2$ becomes a Banach space when equipped with the norm
+% $$\|f\|_{F_1+ F_2}=\inf\{\|f_1\|_{F_1}+\|f_2\|_{F_2}:f=f_1+f_2,f_1\in F_1,f_2\in F_2\}<\infty.$$
+% The above facts can be found in \cite[Lemma 2.3.1]{Ber1976}.
+% % If $E$ is a symmetric quasi-Banach function space, then $F_1\cap F_2$ and $F_1+ F_2$ are symmetric Banach function spaces. 
+% We say that $E$  is an interpolation space between $F_1$ and $F_2$, denoted by $E\in {\rm Int}(F_1,F_2)$, if $E$ is an intermediate space between $F_1$ and $F_2$, i.e.,
+% $$F_1\cap F_2 \subset E \subset F_1+F_2,$$
+% and for every linear operator $T:F_1+ F_2\rightarrow F_1+ F_2$, the boundedness
+% of $T:F_1\rightarrow F_1$ and $T:F_2\rightarrow F_2$ implies the boundedness of $T:E\rightarrow E$.
+
+% We now introduce the space $Z_E^p$ (see \cite[Page 790]{Jo1989}) which will be used below. Given $E$ a  symmetric quasi-Banach function space and $1\leq p\leq \infty$, let $Z_E^p$ be the space of all measurable functions $f\in L_1(0,\infty)+L_\infty(0,\infty)$ equipped with quasi-norm
+% \begin{equation}\label{ZEp}
+% 	\|f\|_{Z_E^p}:=\|\mu(f)\chi_{(0,1)}\|_E+\|f\|_{L_1+L_p}<\infty.
+% \end{equation}
+% Clearly, $Z_E^p$ is a symmetric quasi-Banach function space on $(0,\infty)$. For every semifinite von Neumann algebra $\mathcal M$, $Z_E^p(\mathcal M)$ is defined according to \eqref{def-sp}. Denote $\ell_{\infty}$ the von Neumann algebra of all bounded sequences equipped with the trace $\sum$ defined by
+% $$\sum((\alpha_k)_{k\geq0})=\sum_{k\geq0}\alpha_k,\qquad (\alpha_k)_{k\geq0}\in \ell_{\infty}.$$
+% In what follows, $(e_k)_{k\geq0}$ are the standard unital vectors in $\ell_{\infty}$. We will frequently use the algebra $\mathcal M \bar{\otimes} \ell_{\infty}$ equipped with the trace $\tau\otimes \sum$.
+
+
+
+% For $x,y\in (L_1+L_\infty)(\mathcal M)$, we say that $y$ is Hardy-Littlewood submajorized by $x$ (written $y\prec\prec x$) if
+% $$\int_0^t\mu(s,y)ds\leq \int_0^t\mu(s,x)ds,\qquad \forall t>0.$$
+% The following standard fact can be found e.g. in  \cite[Corollary 5.2]{Zhou2017JFA}.
+
+% \begin{lemma}\label{zhou2017fact} If $y_k\prec\prec x_k$ for each  $k\geq0,$ then
+% 	$$\sum_{k\geq0}y_k\otimes e_k\prec\prec\sum_{k\geq0}x_k\otimes e_k.$$
+% \end{lemma}
+
+% We  recall a basic definition. 
+% We say that a symmetric quasi-Banach function space $E$ is fully symmetric   if  whenever $g\in E$ and $f\prec\prec g$, it follows that $f\in E$ and $\|f\|_E\leq \|g\|_E.$ We will use the following useful result.
+
+% \begin{lemma}[{\cite[Theorem II.3.4]{Krein1982}}]\label{lem-fully}
+% 	A symmetric quasi-Banach  space $E\in {\rm Int}(L_1,L_\infty)$ if and only if it is fully symmetric.
+% \end{lemma}
+
+% Since $\mu(x)\prec\prec \mu(y)$ if and only if $x\prec\prec y$, $E$ is fully symmetric implies $E(\mathcal{ M})$ is fully symmetric.
+
+% \subsection{Noncommutative vector-valued spaces}\label{subsec-2-2}
+% Let $(E,\|\cdot\|_E)$ be a symmetric quasi-Banach function space. For $0<p<\infty$, $E^{(p)}$ is defined by
+% $$E^{(p)}:=\{f:|f|^p\in E\},$$
+% equipped with the quasi-norm
+% $$\|f\|_{E^{(p)}}=\||f|^p\|_{E}^{\frac1p}.$$
+% For every semifinite von Neumann algebra $\mathcal{M}$, $E^{(p)}(\mathcal M)$ is defined according to \eqref{def-sp}.
+
+% Define $E(\mathcal M,\ell_{\infty})$ to be the space of all sequences $x=(x_k)_{k\geq0}$ in $E(\mathcal M)$ for which there exist $a,b\in E^{(2)}(\mathcal M)$ and a bounded sequence $y=(y_k)_{k\geq0}$ such that
+% $$x_k=ay_kb,\qquad k\geq0.$$
+% For $x=(x_k)_{k\geq0}\in E(\mathcal M,\ell_{\infty})$,  define
+% \begin{equation}\label{e-infty}
+% 	\|x\|_{E(\mathcal M,\ell_{\infty})}=\inf\{\|a\|_{E^{(2)}(\mathcal M)}\sup_{k\geq0}\|y_k\|_{\infty}\|b\|_{E^{(2)}(\mathcal M)}\},
+% \end{equation}
+% where the infimum is taken over all possible factorizations of $x$ as above.  In addition, if $x=(x_k)_{k\geq0}\in E(\mathcal M,\ell_{\infty})$ and $x_k=x_k^*$ for each $k\geq0$, then (see \cite[(2.4)]{Bekjan2018} or \cite[Page 519]{Di20151})
+% $$\|x\|_{E(\mathcal M,\ell_{\infty})}\leq \inf\{\|a\|_{E(\mathcal M)}: a\in E(\mathcal{ M}), -a\leq x_k\leq a,\,\forall k\geq0 \}\leq 2\|x\|_{E(\mathcal M,\ell_{\infty})}.$$
+
+% \begin{fact}\label{f-sd}
+% 	For each $x=(x_k)_{k\geq0}$, we have
+% 	$$\|x\|_{E(\mathcal M,\ell_{\infty})}=\|x^*\|_{E(\mathcal M,\ell_{\infty})}.$$
+% \end{fact}
+
+
+% Following \cite{Ju2002}, for $E\in \mathrm{Int}(L_2,L_{\infty})$, $E(\mathcal M,\ell_{\infty}^c)$ is defined to be the space of all sequences $x=(x_k)_{k\geq0}$ in $E(\mathcal M)$ for which
+% \begin{equation}\label{lc}
+% 	\|(x_k)_{k\geq0}\|_{E(\mathcal M,\ell_{\infty}^c)}=\|(|x_k|^2)_{k\geq0}\|_{E^{( 1/2)}(\mathcal M,\ell_{\infty})}^{ 1/2}
+% \end{equation}
+% is finite. For $x=(x_k)_{k\geq0}$ in $E(\mathcal M)$, define
+% $$\|(x_k)_{k\geq0}\|_{E(\mathcal M,\ell_{\infty}^r)}=\|(x_k^*)_{k\geq0}\|_{E(\mathcal M,\ell_{\infty}^c)}.$$
+
+% %The following fact was first stated for $L_p(\mathcal{M},\ell_{\infty})$ ($1\leq p\leq \infty$) in \cite[Proposition 2.1(i)]{JX2007}. The decomposition \eqref{16 p} will be used in the proof of Theorem \ref{open}.
+% %
+% %\begin{fact}\label{fact-1}
+% %Every element in the unit ball of $E(\mathcal M,\ell_{\infty})$ is a linear combination of 16 positive elements in the unit ball of $E(\mathcal M,\ell_{\infty}).$ Coefficients have absolute value $1.$
+% %\end{fact}
+% %\begin{proof} Suppose first $x=x^*.$ Write a factorization of $x$: $x_k=a^*y_kb$
+% %such that
+% %$$\|a\|_{E^{(2)}(\mathcal M)}\leq 1,\quad \|b\|_{E^{(2)}(\mathcal M)}\leq 1 \quad\mbox{and}\quad \sup_{k\geq0}\|y_k\|_\infty\leq 1.$$
+% %For each $k\geq0$, we have
+% %$$4x_k=\sum_{j=0}^3 i^{-j}(a+i^jb)^*y_k(a+i^jb),$$
+% %where $i^2=-1$. Since $x_k$ is self-adjoint for each $k\geq0$, we also have
+% %$$4x_k=\sum_{j=0}^3 i^{j}(a+i^jb)^*y_k^*(a+i^jb)$$
+% %Then, for each $k$,
+% %\begin{align} \label{16 p}
+% %x_k
+% %&=\sum_{j=0}^3\left(\frac{a+i^jb}{2}\right)^*z_{k,j}\left(\frac{a+i^jb}{2}\right)\nonumber\\
+% %&=\sum_{j=0}^3\left(\frac{a+i^jb}{2}\right)^*z_{k,j}^+\left(\frac{a+i^jb}{2}\right)
+% %-\sum_{j=0}^3\left(\frac{a+i^jb}{2}\right)^*z_{k,j}^-\left(\frac{a+i^jb}{2}\right),
+% %\end{align}
+% %where
+% %$$z_{k,j}=\Re(i^{-j}y_k),$$
+% %$z_{k,j}^+$ is the positive part of $z_{k,j}$ and $z_{k,j}^-$ is the negative part of $z_{k,j}.$ By the Jordan decomposition,
+% %every element $x=(x_k)_{k\geq0}$ in the unit ball of $E(\mathcal{M},\ell_{\infty})$ is a linear combination of 16 positive elements   in the unit ball of $E(\mathcal{M},\ell_{\infty})$ (coefficients have absolute value $1$).
+% %\end{proof}
+
+% %\begin{fact}\label{eml1 positive fact} If $x_k\geq0,$ then
+% %$\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}\leq\sum_{k\geq0}\|x_k\|_{E(\mathcal{M})}$ provided that $E$ is a symmetric Banach space.
+% %\end{fact}
+
+
+
+
+
+
+% %\href{run:....../E///maximal-ro-ineq-2-20190124.pdf}{xiaode2}
+% %
+% %
+% %
+% % We define $E(\mathcal M,l_1)$ to be the space of all sequences $x=(x_k)_{k\geq0}$ in  $E(\mathcal M)$ which can be decomposed as
+% % $$x_k=\sum_ju_{j,k}^*v_{j,k},\qquad k\geq0$$
+% % for two families $(u_{j,k})_{j,k\geq1}$ and $(v_{j,k})_{j,k\geq1}$ in $E^{(2)}(\mathcal M)$ satisfying
+% % $$\sum_{j,k}u_{j,k}^*u_{j,k}\in E(\mathcal M),\quad \mbox{and}\quad \sum_{j,k}v_{j,k}^*v_{j,k}\in E(\mathcal M),$$
+% % where the series converge in norm.
+% % For $x\in E(\mathcal M,l_1)$, we define
+% % $$\|x\|_{E(\mathcal M,l_1)}=\inf\Big\{\Big\|\sum_{j,k}u_{j,k}^*u_{j,k}\Big\|_{E(\mathcal M)}^{1/2}\Big\|\sum_{j,k}v_{j,k}^*v_{j,k}\Big\|_{E(\mathcal M)}^{1/2}\Big\}, $$
+% % where the infimum is taken over all possible decomposition of $x$ as above. In particular, if $x=(x_k)_{k\geq0}\in E(\mathcal M,l_1)$ and $x_k\geq0$ for each $k\geq0$, then (see \cite[Page 4099]{Di20152})
+% % $$\|x\|_{E(\mathcal M,l_1)}=\Big\|\sum_{k\geq0}x_k\Big\|_{E(\mathcal M)}.$$
+% % It is shown in \cite[Theorem 5.1]{Di20152} that $E(\mathcal M,l_\infty)$ and $E(\mathcal M,l_1)$ are Banach spaces if $E$ is a symmetric Banach function space.
+
+% \subsection{Noncommutative vector-valued modulars}\label{subsec2-3}
+% Let $\Phi: \mathbb R \to \mathbb R_+$ be an Orlicz function, that is, $\Phi$ is an even convex function such that $\Phi(0)=0$ and $\Phi(\infty)=\infty.$  An Orlicz function is said to satisfy the $\Delta_2$-condition if there exists a constant $c>0$ such that $\Phi(2t)\leq c\Phi(t)$ for all $t>0$.
+% Given $1\leq p\leq q\leq \infty,$ an Orlicz function $\Phi$ is said to be $p$-convex if the function $t\mapsto\Phi(t^{1/p})$, $t>0$, is convex; and $\Phi$ is said to be $q$-concave if the function $t\mapsto\Phi(t^{1/q})$, $t>0$, is concave.
+
+
+% Lemma \ref{idpq} and Lemma \ref{Boydtocc} below may be known in literature. However, we can not find any references for them.
+
+% \begin{lemma}\label{idpq}
+% 	Let $\Phi$ be an Orlicz function such that $\Phi(t)t^{-p}$ is increasing and $\Phi(t)t^{-q}$ is decreasing for $1\leq p\leq q<\infty$. Then $\Phi$ is
+% 	equivalent to a $p$-convex and $q$-concave Orlicz function.
+% \end{lemma}
+% \begin{proof}
+% 	Set
+% 	$$\Psi(t)=\int_0^t\Phi(s)\frac{ds}{s},\quad t>0. $$
+% 	It is not hard to check that $\Psi$ is $p$-convex and $q$-concave. On the other hand, since $\Phi(t)t^{-p}$ is increasing and $\Phi(t)t^{-q}$ is decreasing, it follows that $1/q\Phi'(t)\leq \Phi(t)/t\leq 1/p\Phi'(t)$.
+% 	Then, for any $t>0$, we have
+% 	\begin{align*}
+% 		\Phi(t)=\int_0^t\Phi'(s)ds\leq q\int_0^t\Phi(s)\frac{ds}{s}=q\Psi(t)
+% 	\end{align*}
+% 	and
+% 	$$\Psi(t)\leq \frac{1}{p}\int_0^t\Phi'(s)ds=\frac{1}{p}\Phi(t).$$
+% \end{proof}
+
+% For a given Orlicz function, the Matuzewska-Orlicz indices are given by
+% \begin{equation}\label{MO}
+% 	p_{\Phi}=\lim_{t\to 0^+} \frac{\log M(t,\Phi)}{\log t},\quad q_{\Phi}=\lim_{t\to \infty} \frac{\log M(t,\Phi)}{\log t},
+% \end{equation}
+% where $M(t,\Phi)=\sup_{s>0} \Phi(ts)/\Phi(s)$.
+
+
+
+% It is known that the $\Delta_2$-condition is equivalent to $q_{\Phi}<\infty$, and the $\Delta_2$-condition is also  equivalent to
+% that $\Phi$ is $q$-concave with $q<\infty$.
+
+% If an Orlicz function $\Phi$ is $p$-convex and $q$-concave, then $p\leq p_{\Phi}\leq q_{\Phi}\leq q$; see e.g. Remark 3 in \cite[Page 84]{Ma1989}. Conversely, we have the following result.
+
+% \begin{lemma}\label{Boydtocc}
+% 	Let $\Phi$ be an Orlicz function with $1\leq p_\Phi\leq q_{\Phi}<\infty$. Then $\Phi$ is equivalent to a $p_{\Phi}$-convex and $q$-concave ($q_{\Phi}\leq q<\infty$) Orlicz function.
+% \end{lemma}
+% \begin{proof}
+% 	According to \cite[Page 89]{Ma1989}, there is $c_\Phi>0$ such that
+% 	$$\frac{1}{c_\Phi}\int_0^t s^{-p_\Phi}\Phi(s)\frac{ds}{s}\leq \Phi(t)t^{-p_{\Phi}}\leq c_\Phi \int_0^t s^{-p_\Phi}\Phi(s)\frac{ds}{s},\quad t>0.$$
+% 	Thus $\Phi(t)t^{-p_{\Phi}}\leq c_{\Phi}^2 \Phi(t_1)t_1^{-p_{\Phi}}$ for $t\leq t_1$, which, together with \cite[Lemma 2.2.1]{HH2019}, implies that $\Phi$ is equivalent to an Orlicz function $\Psi$ such that $\Psi(t)t^{-p_{\Phi}}$ is increasing.
+	
+% 	On the other hand, by \cite[Theorem 11.4]{Ma1989} and \cite[Theorem 11.11]{Ma1989}, we see that $q_{\Phi}=q_{\Psi}\leq q$ with
+% 	$$q=\sup_{t>0} \frac{t\Psi'(t)}{\Psi(t)}.$$
+% 	Note that $\Psi$ satisfies the $\Delta_2$-condition since $\Phi$ satisfies the $\Delta_2$-condition. Hence, $q<\infty$ (\cite[Theorem 3.1.1(c)]{Long1993}). In addition, it follows from \cite[Theorem 3.1.1(e)]{Long1993} that $\Psi(t)t^{-q}$ is decreasing.
+	
+% 	The above argument and Lemma \ref{idpq} imply that $\Psi$ is equivalent to a $p_{\Phi}$-convex and $q$-concave Orlicz function. The proof is complete.
+% \end{proof}
+
+
+
+
+
+% The  Orlicz function space $L_\Phi(0,\alpha)$ with $0<\alpha\leq \infty$ is the set of all measurable functions $f$ on  $(0,\alpha)$ such  that
+% $$\|f\|_{L_\Phi}=\inf\left\{\lambda>0:\int_0^\alpha\Phi\left(\frac{|f(t)|}{\lambda}\right)dt\leq 1\right\}<\infty.$$
+% Recall that $L_{\Phi}(0,\alpha)$ is a symmetric Banach function space (see \cite{Be1988}). Then the noncommutative space $L_\Phi(\mathcal M)$ can be defined according to \eqref{def-sp}.
+% If $\Phi$ satisfies $\Delta_2$-condition, then (see \cite[Page 183]{Bek2012})
+% \begin{equation}\label{phi-triangle}
+% 	\tau(\Phi(|x+y|))\lesssim_\Phi \tau(\Phi(|x|))+\tau(\Phi(|y|)),\quad x,y\in  L_{\Phi}(\mathcal M).
+% \end{equation}
+
+% Now we introduce a definition taken from \cite[Definition 3.2]{Bekjan2017}.
+% \begin{definition}\label{def-supphi}
+% 	Let $\Phi$  be an Orlicz function and  $(x_k)_{k\geq0}\subset  L_{\Phi}(\mathcal M)$. Define
+% 	\begin{equation*}
+% 		\tau\left(\Phi\left(\sup_{k\geq 0}x_k\right)\right)=\inf \Big\{\frac{1}{2}\Big(\tau(\Phi(|a|^2))+\tau(\Phi(|b|^2))\Big)\Big\},
+% 	\end{equation*}
+% 	where the infimum is taken over all decomposition $x_k=ay_kb$ for
+% 	$|a|^2,|b|^2\in L_\Phi(\mathcal M)$ and $(y_k)_{k\geq0}\subset L_\infty(\mathcal M)$ with $\sup_{k\geq0}\|y_k\|_\infty\leq 1$.
+% \end{definition}
+% %As stated in , it holds true that
+% %\begin{equation}
+% %\tau\left(\Phi\left(\sup_{k\geq 0}x_k\right)\right)=\inf \Big\{\frac{1}{2}\Big(\tau(\Phi(|a|^2))+\tau(\Phi(|b|^2))\Big)\Big\},
+% %\end{equation}
+% %where the infimum is taken over all decomposition $x_k=ay_kb$ for $(y_k)_{k\geq0}\subset L_{\infty}(\mathcal{M})$, $\sup\|y_k\|_\infty\leq1$, and $|a|^2$,
+% %$|b|^2\in L_{\Phi}(\mathcal{M})$.
+% Similar to Fact \ref{f-sd}, we also have
+% \begin{equation}\label{f-sd-phi}
+% 	\tau\left(\Phi\left(\sup_{k\geq 0}x_k\right)\right)=\tau\left(\Phi\left(\sup_{k\geq 0}x_k^*\right)\right).
+% \end{equation}
+% Moreover, if  $\Phi$ satisfies $\Delta_2$-condition and $x=(x_k)_{k\geq0}$ is a  sequence of self-adjoint operators, then, according to \cite[Proposition 3.1]{Bekjan2017},
+% $$\tau\left(\Phi\left(\sup_{k\geq 0}x_k\right)\right)\approx_\Phi \inf\left\{\tau(\Phi(a)): -a\leq x_k\leq a,\forall k\geq0\right\}.$$
+
+
+
+
+% \subsection{Noncommutative martingales}\label{sec-2-3}
+% In this subsection, we introduce the definition of noncommutative martingales.
+
+% In the sequel, let $(\mathcal M,\tau)$ be a noncommutative probability space ($\tau(1)=1$).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Let $(\mathcal{M}_n)_{n\geq0}$ be an increasing sequence of von Neumann subalgebras of $\mathcal{M}$ such that the union of the $\mathcal{M}_n$'s is $w^*$-dense in $\mathcal{M}$. For every $n\geq 0$, there exists a trace preserving   conditional expectation $\mathcal{E}_{n}$ from  $\mathcal{M}$ onto  $\mathcal{M}_n.$
+% %Remark that if $\mathcal{N}$ is a von Neumann subalgebra  of $\mathcal{M}$, then, there is a normal conditional expectation from $\mathcal{M}$ onto $\mathcal{N}$ if and only if the restriction of the trace of $\mathcal{M}$ to  $\mathcal{N}$ remains semi-finite \cite{TAK}.
+% %For the case where $\mathcal{M}$ is finite, such conditional expectations always exist (see e.g. \cite[Page 185]{Rand2002}).
+% The conditional expectations $(\mathcal{E}_{n})_{n\geq0}$ satisfy
+% \begin{enumerate}[{\rm (a)}]
+% 	\item $\mathcal{E}_{n}(xy)=\mathcal{E}_{n}(x)y$, $\mathcal{E}_n(yx)=y\mathcal{E}_{n}(x)$, $n\geq0$ and $y\in \mathcal{M}_n$;
+% 	\item $\mathcal{E}_n\mathcal{ E}_m=\mathcal{E}_n$ for $m\geq n$;
+% 	\item $\tau(\mathcal{E}_n(x))=\tau(x)$, $n\geq0$.
+% \end{enumerate}
+% Since each $\mathcal{E}_n$ preserves the trace, it extends to a contractive projection from $L_p(\mathcal{M},\tau)$ onto $L_p(\mathcal{M}_n,\tau)$ for all $1\leq p\leq \infty.$
+% Moreover,  $\mathcal{E}_{n}(x) \prec\prec x$ for all $x\in \mathcal M$ (see e.g. \cite[Theorem II.3.2]{Krein1982}).
+
+% A sequence $x=(x_n)_{n\geq0}\subset L_1(\mathcal{M})$ is a martingale if
+% $$\mathcal{E}_{n}(x_{n+1})=x_n,\quad n\geq0.$$
+% In what follows, the sequence of martingale differences  corresponding to the martingale $x=(x_n)_{n\geq0}$ is denoted by $(d_nx)_{n\geq0}$
+% with $d_0x=x_0$ and
+% \begin{equation}\label{m-dif}
+% 	d_nx=x_n-x_{n-1},\quad \forall n\geq1.
+% \end{equation}
+% For an element $y\in L_1(\mathcal{M})$,   it is
+% obvious that the sequence $(\mathcal{E}_n(y))_{n\geq0}$ is a  martingale.
+
+% Throughout the paper, for convenience, $\mathcal{E}_{-1}=\mathcal{ E}_0$. Recall that, for a noncommutative martingale $x=(x_n)_{n\geq0}$, the column and the row conditioned square functions are defined by
+% $$
+% s_c(x)=\Big(\sum_{k\geq0}\mathcal{E}_{k-1}(|d_kx|^2)\Big)^{1/2}, \quad s_r(x)=\Big(\sum_{k\geq0}\mathcal{E}_{k-1}(|d_kx^*|^2)\Big)^{1/2}.$$
+
+
+% \subsection{Noncommutative independence}
+% The elements in $L_0(\mathcal M)$ are called (noncommutative) random variables.  We say $x\in L_1(\mathcal M)$ is mean zero if $\tau(x)=0$.
+% %If $\mathcal N$ is a von Neumann subalgebra of $\mathcal M$, then there exists a normal conditional expectation $\mathcal E_{\mathcal N}$ from $\mathcal M$ onto $\mathcal N$ satisfying
+% %\begin{enumerate}
+% %  \item $\mathcal E_{\mathcal N} (axb)=a\mathcal E_{\mathcal N}(x)b, $ for all $a,b\in \mathcal N$ and $x\in \mathcal M$.
+% %  \item $\tau(\mathcal E_{\mathcal N}(x))=\tau(x)$ for all $x\in \mathcal M$.
+% %\end{enumerate}
+% Now we introduce the definition of noncommutative independence in the sense of Junge and Xu (\cite[Page 233]{Ju2008}).
+% \begin{definition}\label{def-ind}
+% 	Let $(\mathcal M,\tau)$ be a noncommutative probability space. Assume that $\mathcal{N}$ and $(\mathcal{M}_k)_{k\geq0}$ are subalgebras of $\mathcal{M}$ such that $\mathcal{N}\subset \mathcal{M}_k$ for each $k.$ We further assume that there exist trace preserving normal conditional expectations $\mathcal{E}_{\mathcal{N}}:\M\to \mathcal{N}$ and $\mathcal{E}_{\mathcal{M}_{k}}:\M\to \mathcal{M}_{k}$ for all $k\geq0$.
+% 	\begin{enumerate}[\rm (1)]
+% 		\item We say that a sequence $(\mathcal M_k)_{k\geq0}$ of von Neumann subalgebras in $\mathcal M$ are independent  with respect to $\mathcal{E}_{\mathcal{N}}$ (the conditional expectation from $\mathcal{M}$ to $\mathcal{N}$), $\mathcal{E}_{\mathcal{N}}(xy)=\mathcal{E}_{\mathcal{N}}(x)\mathcal{E}_{\mathcal{N}}(y)$ holds for every all $x\in \mathcal M_k$  and for every $y$ in the von Neumann algebra generated by $(\mathcal M_j)_{j\neq k}$.
+% 		\item A sequence $(x_k)_{k\geq0} \subset L_0(\mathcal M)$ is said to be independent with respect to $\mathcal{E}_{\mathcal{N}}$, if the unital von Neumann subalgebras $\mathcal M_k$, $k\geq0$, generated by $x_k$ are independent with respect to $\mathcal{E}_{\mathcal{N}}$.
+% 		\item A sequence $(x_k)_{k\geq0} \subset L_0(\mathcal M)$ is said to be independent, if it is independent  with respect to $\mathcal{E}_{\mathcal{N}}=\tau$ ($\mathcal{N}=\mathbb{C}$).
+% 	\end{enumerate}
+% \end{definition}
+
+
+
+% \begin{remark}\label{re1}
+% 	Let $(\mathcal{M}, \tau)$ be a noncommutative probability space, and let $(x_k)_{k\geq0}$ be a sequence of  independent  random variables  with respect to $\mathcal{E}_{\mathcal{N}}$ such that $\mathcal{E}_{\mathcal{N}}(x_k)=0$ for each $k\geq0$. Denote $\mathcal{M}_k$, $k\geq0$, the von Neumann subalgebras generated by $x_k$, $k\geq0$, and denote $\mathcal{A}_k:=VN(\mathcal{M}_0,\cdots,\mathcal{M}_k)$ the von Neumann subalgebras generated by
+% 	$\mathcal{M}_0,\cdots,\mathcal{M}_k$.
+% 	Then, by \cite[Lemma 1.2 and Remark 1.1]{Ju2008}, we have
+% 	$$\mathcal{E}_{\mathcal{A}_{k-1}}(x_k)=\mathcal{E}_{\mathcal{N}}(x_k)=0,\quad k\geq0$$
+% 	where  $\mathcal{E}_{\mathcal{A}_{k-1}}$ is the conditional expectation from $\mathcal{M}$ to $\mathcal{A}_{k-1}$. This means
+% 	$(x_k)_{k\geq0}$ is a sequence of martingale differences  with respect to the increasing filtration $(\mathcal{A}_k)_{k\geq0}$.
+% \end{remark}
+
+
+
+% Now we collect  some useful results which will be used below.
+
+% \begin{lemma}[{\cite[Theorem 4.1]{Holmstedt}}]\label{lem-Hol}
+% 	If $0<p<q\leq \infty$ and $f\in (L_p+L_q)(0,\infty)$, then
+% 	\begin{equation*}
+% 		\|f\|_{L_p+L_q}\approx \left(\int_0^1\mu(t,f)^pdt\right)^{1/p}+\left(\int_1^{\infty}\mu(t,f)^qdt\right)^{1/q}.
+% 	\end{equation*}
+% \end{lemma}
+
+% \begin{remark}\label{rem cap}
+% 	According to Lemma \ref{lem-Hol}, basic calculations show that
+% 	$$\|f\|_{L_p\cap L_1(0,\infty)} \leq c_p (\|f\|_{(L_p+L_\infty)(0,\infty)}+\|f\|_{L_1(0,\infty)}), \quad 1\leq p<\infty.$$
+% \end{remark}
+% %\begin{proof}We give the detail proof for the sake of convenience. For $p=1$, there is nothing to prove. To finish the proof, it suffices to show that
+% %$$\|f\|_{L_p}\leq c_p (\|f\|_{L_p+L_\infty}+\|f\|_{L_1}),\quad 1<p<\infty.$$
+% %By Young's inequality, we have
+% %\begin{align*}
+% %\|f\|_{L_p}^p&=\int_0^1 \mu_t(f)^pdt +\int_1^\infty \mu_t(f)^pdt
+% %\\&\leq \int_0^1 \mu_t(f)^pdt +\left(\sup_{t\in(1,\infty)}\mu_t(f)\right)^{p-1}\int_1^\infty \mu_t(f)dt
+% %\\&\leq \int_0^1 \mu_t(f)^pdt+\frac {p-1}{p}\left(\sup_{t\in(1,\infty)}\mu_t(f)\right)^{p}+\frac 1p\left(\int_1^\infty \mu_t(f)dt\right)^{p}.
+% %\end{align*}
+% %The desired result follows from the fact that  $\mu(f)$ is decreasing and Lemma \ref{lem-Hol} with $q=\infty$.\end{proof}
+
+% \begin{lemma} [{\cite[Corollary 1.3(ii)]{JSZ}}]
+% 	Let $(x_k)_{k\geq0}\subset E(\mathcal M)$ be   independent random variables.
+% 	If $E\in{\rm Int}(L_1,L_q),$ $1\leq q<\infty,$  then
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal M)}\leq c_E\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{Z_E^1(\mathcal{M}\bar{\otimes} \ell_{\infty})}.$$
+% \end{lemma}
+
+% For $E=L_p$, we have
+% \begin{corollary}\label{jsz lp corollary}
+% 	Let  $1\leq p<\infty,$ and $(x_k)_{k\geq0}\subset L_p(\mathcal M)$ be   independent random variables.  Then
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{L_p(\mathcal M)}\leq c_p\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1\cap L_p(\mathcal{M}\bar{\otimes}\ell_{\infty})}.$$
+% \end{corollary}
+
+
+
+% \begin{theorem}[{\cite[Theorem 1.4]{JSZ}}]\label{lem-jsz-1-4}
+% 	Let $(x_k)_{k\geq0}\subset E(\mathcal M)$ be mean zero independent random variables.
+% 	If $E\in{\rm Int}(L_p,L_q),$ $1<p\leq q<\infty,$  then
+% 	$$\Big\|\sum_{k\geq0}x_k\Big\|_{E(\mathcal M)}\approx_E \Big\|\Big(\sum_{k\geq0}|x_k|^2\Big)^{1/2}\Big\|_{E(\mathcal{M})}.$$
+% \end{theorem}
+
+
+% \section{Proofs of Theorems \ref{answer open} and \ref{open}}\label{sec3}
+
+%  We emphasize that, in this section,  $(\mathcal{M}_n)_{n\geq0}$ is an increasing sequence of von Neumann subalgebras of $\mathcal{M}$ such that the union of the $\mathcal{M}_n$'s is $w^*$-dense in $\mathcal{M}$. The conditional expectation from $\mathcal{M}$ to $\mathcal{M}_n$ will be denoted by $\mathcal{E}_n$.
+
+% Our proof depends on Cuculescu projections (see e.g. \cite[Proposition 1.4]{Rand2006}).
+% Let $y\in L_1(\mathcal{M})$ be a self-adjoint operator. Let $R_{-1}^{\lambda}=1$ for $\lambda\in\mathbb{R}$ and define by induction
+% \begin{equation}\label{cuc p}
+% 	R_n^{\lambda}=R_{n-1}^{\lambda}\chi_{(-\infty,\lambda)}(R_{n-1}^{\lambda}\mathcal{E}_n(y)R_{n-1}^{\lambda}),\quad\quad n\geq0.
+% \end{equation}
+% It is obvious that
+% \begin{equation}\label{basic}
+% 	R_n^{\lambda}\mathcal{E}_n(y)R_n^{\lambda}\leq \lambda R_n^{\lambda}, \quad n\geq0.
+% \end{equation}
+% Set
+% \begin{equation}\label{RQ}
+% 	R^{\lambda}=\bigwedge_{n\geq0}R_n^{\lambda}.
+% \end{equation}
+% Then we have
+% \begin{equation}\label{leq}
+% 	R^{\lambda}yR^{\lambda}\leq \lambda R^{\lambda}.
+% \end{equation}
+% Indeed, by \eqref{basic}, for each $n$, we have $$R^{\lambda}\mathcal{E}_n(y)R^{\lambda}=R^{\lambda}\cdot R_n^{\lambda}\mathcal{E}_n(y)R_n^{\lambda}\cdot R^{\lambda}\leq \lambda R^{\lambda}R_n^{\lambda}R^{\lambda}=\lambda R^{\lambda}$$
+% Since $\mathcal{E}_n(y)$ converges to $y$ in $L_1(\mathcal{M})$, it follows that  $R^{\lambda}\mathcal{E}_n(y)R^{\lambda}$ converges to $R^{\lambda}yR^{\lambda}$ in $L_1(\mathcal{M})$. This implies \eqref{leq}.
+
+
+% Subsections 3.1-3.2 are devoted to several technical results for the proof of Theorems \ref{answer open} and \ref{open}.  In Subsection \ref{sub3-4}, we provide the proofs of Theorems \ref{answer open} and \ref{open}.
+
+% We emphasize that, in what follows, if there is no other statement, the projections $(R_{n}^{\lambda})_{n\geq0}$ are defined as in \eqref{cuc p} for some fixed $y\in L_2(\mathcal{ M})$ and $\lambda\in \mathbb{R}$. For convenience, set
+% $$Q_n^{\lambda}=R_{n-1}^{\lambda}-R_n^{\lambda}, \quad Q^{\lambda}=1-R^{\lambda},\quad n\geq0.$$
+% It is obvious that $Q_n^{\lambda}\in \M_n$ for each $n\geq0$, and
+% \begin{align}\label{Qlambda}
+% 	Q^{\lambda}=\sum_{n\geq0} Q_n^{\lambda}.
+% \end{align}
+
+% %{\color{red} Set $Q_n^{\lambda}=R_{n-1}^{\lambda}-R_n^{\lambda},$ $n\geq0.$ We have
+% %$$Q_n^{\lambda}\mathcal{E}_{n-1}(y)Q_n^{\lambda}\leq \lambda Q_n^{\lambda},\quad Q_n^{\lambda}\mathcal{E}_n(y)Q_n^{\lambda}\geq \lambda Q_n^{\lambda},\quad n\geq1.$$
+% %
+% %Set $Q^{\lambda}=1-R^{\lambda}.$
+% %}
+
+
+% \subsection{Estimates for Cuculescu projections}
+
+% In this subsection, we show two estimates related to Cuculescu projections, i.e., Propositions \ref{jowzz proposition} and \ref{lem-1R}, which will be used in the sequel. 
+
+% \begin{proposition}\label{jowzz proposition} Let $\lambda>0$ and let $y=y^{\ast}\in L_2(\mathcal{M}).$ Suppose $0\leq Y\in L_2(\mathcal{M})$ is such that
+% 	$$-Y\leq d_ny\leq Y,\quad \forall n\geq0.$$
+% 	Then
+% 	$$\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2\leq 2\|Q^{\lambda}Y\|_{L_2(\mathcal{M})}^2+2\|Q^{\lambda}s(y)\|_{L_2(\mathcal{M})}^2,$$
+% 	where  $s(y)=s_c(y)=s_r(y)$.
+% \end{proposition}
+
+
+% To prove the above proposition, we need several lemmas. 
+% \begin{lemma}\label{cuculescu compute 1}
+% 	Let $y=y^*\in L_2(\mathcal{M})$ and let $(q_n)_{n\geq0}\subset\mathcal{M}$ be a sequence of pairwise orthogonal projections. Then
+% 	\begin{equation}\label{e-qy}
+% 		\|qyq\|_{L_2(\mathcal{M})}^2\leq 2\sum_{m\geq n\geq0}\tau(q_myq_ny),
+% 	\end{equation}
+% 	where $q=\sum_{m\geq0}q_m.$
+% \end{lemma}
+% \begin{proof} Obviously, for each $m,n\geq0$,
+% 	$$\tau(q_myq_ny)=\tau(q_nyq_my).$$
+% 	Thus,
+% 	\begin{align*}
+% 		2\sum_{m\geq n\geq0}\tau(q_myq_ny)&=\sum_{m\geq n\geq0}\tau(q_myq_ny)+\sum_{m\geq n\geq0}\tau(q_nyq_my)\\
+% 		&=\sum_{m\geq n\geq0}\tau(q_myq_ny)+\sum_{n\geq m\geq0}\tau(q_myq_ny)\\
+% 		&=\sum_{m,n\geq0}\tau(q_myq_ny)+\sum_{m\geq0}\tau(q_myq_my).
+% 	\end{align*}
+% 	Observe that
+% 	$$\sum_{m,n\geq0}\tau(q_myq_ny)=\tau(qyqy)=\tau(qyq\cdot qyq)=\|qyq\|_{L_2(\mathcal{ M})}^2$$
+% 	and
+% 	$$\tau(q_myq_my)=\tau(q_myq_m\cdot q_myq_m)\geq0.$$
+% 	Then the desired inequality follows.
+% \end{proof}
+
+% \begin{lemma}\label{jowzz lemma}
+% 	Let $\lambda>0$ and let $y=y^{\ast}\in L_2(\mathcal{M}).$  Then
+% 	$$\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2\leq 2\sum_{n\geq0}\|Q_n^{\lambda}d_nyQ_n^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{n\geq0}\|Q_n^{\lambda}(y-\mathcal{E}_n(y))\|_{L_2(\mathcal{M})}^2.$$
+% \end{lemma}
+% \begin{proof} Using Lemma \ref{cuculescu compute 1} for $y-\lambda$,  $(Q_n^{\lambda})_{n\geq0}$ and $Q^{\lambda}$ (see \eqref{Qlambda}),  we obtain
+% 	\begin{align*}
+% 		\|Q^{\lambda}(y-\lambda)Q^{\lambda}\|_{L_2(\mathcal{M})}^2&\leq 2 \sum_{m\geq n\geq0}\tau(Q_m^{\lambda}(y-\lambda)Q_n^{\lambda}(y-\lambda))\\
+% 		&=2\sum_{n\geq0}\tau((R^{\lambda}_{n-1}-R^{\lambda})(y-\lambda)Q^{\lambda}_n(y-\lambda))\\
+% 		&=2\Big(\sum_{n\geq0}\tau(R^{\lambda}_{n-1}(y-\lambda)Q^{\lambda}_n(y-\lambda))\Big)-2\tau(R^{\lambda}(y-\lambda)Q^{\lambda}(y-\lambda)).
+% 	\end{align*}
+% 	On the other hand,
+% 	$$\|Q^{\lambda}(y-\lambda)R^{\lambda}\|_{L_2(\mathcal{M})}^2=\tau(R^{\lambda}(y-\lambda)Q^{\lambda}(y-\lambda)R^{\lambda})=\tau(R^{\lambda}(y-\lambda)Q^{\lambda}(y-\lambda)).$$
+% 	Therefore,
+% 	\begin{align*}
+% 		\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2&=\|Q^{\lambda}(y-\lambda)Q^{\lambda}\|_{L_2(\mathcal{M})}^2+\|Q^{\lambda}(y-\lambda)R^{\lambda}\|_{L_2(\mathcal{M})}^2\\
+% 		&\leq \|Q^{\lambda}(y-\lambda)Q^{\lambda}\|_{L_2(\mathcal{M})}^2+2\|Q^{\lambda}(y-\lambda)R^{\lambda}\|_{L_2(\mathcal{M})}^2\\
+% 		&\leq 2\sum_{n\geq0}\tau(R^{\lambda}_{n-1}(y-\lambda)Q^{\lambda}_n(y-\lambda)).
+% 	\end{align*}
+% 	Noting that $Q_n^{\lambda}\in\mathcal{M}_n$, $R_{n-1}^{\lambda}\in\mathcal{M}_{n-1}$, and that each conditional expectation preserves the trace, we obtain for each $n\geq0$
+% 	\begin{align*}
+% 		\tau&(R_{n-1}^{\lambda}(y-\lambda)Q_n^{\lambda}(y-\lambda))\\
+% 		&=\tau\Big(Q_n^{\lambda}\Big(y-\mathcal{E}_n(y)+\mathcal{E}_n(y)-\lambda\Big)R_{n-1}^{\lambda}\Big(y-\mathcal{E}_n(y)+\mathcal{E}_n(y)-\lambda\Big)\Big)\\
+% 		&=\tau\Big(Q_n^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)R_{n-1}^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)\Big)+
+% 		\tau\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)R_{n-1}^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big).
+% 	\end{align*}
+% 	Since $Q_n^{\lambda}$ commutes with $R_{n-1}^{\lambda}\mathcal{E}_{n}(y)R_{n-1}^{\lambda}$  and since $Q_n^{\lambda}R_n^{\lambda}=0$, it follows that
+% 	$$Q_n^{\lambda}\mathcal{E}_n(y)R_n^{\lambda}\mathcal{E}_n(y)=Q_n^{\lambda}R_{n-1}^{\lambda} \mathcal{E}_n(y) R_{n-1}^{\lambda}R_n^{\lambda}\mathcal{E}_n(y)=R_{n-1}^{\lambda} \mathcal{E}_n(y) R_{n-1}^{\lambda}Q_n^{\lambda}R_n^{\lambda}\mathcal{E}_n(y)=0.$$
+% 	Consequently, for every $n$, we have
+% 	\begin{align*}
+% 		\tau&\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)R_{n-1}^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big)\\
+% 		&=\tau\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big)+\tau\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)R_n^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big)\\
+% 		&=\tau\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big).
+% 	\end{align*}
+% 	Therefore,
+% 	\begin{align}\label{ee}
+% 		\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2
+% 		&\leq 2\sum_{n\geq0}\tau\Big(Q_n^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)R_{n-1}^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)\Big)\\
+% 		&\quad +2\sum_{n\geq0}\tau\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)\Big)\nonumber\\
+% 		&\leq 2\sum_{n\geq0}\|Q_n^{\lambda}(y-\mathcal{E}_n(y))\|_{L_2(\mathcal{M})}^2+2\sum_{n\geq0}\|Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}\|_{L_2(\mathcal{M})}^2. \nonumber
+% 	\end{align}
+% 	%&=2\sum_{n\geq0}\tau\Big(Q_n^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)R_{n-1}^{\lambda}\Big(y-\mathcal{E}_n(y)\Big)Q_n^{\lambda}\Big)+2\sum_{n\geq0}\tau\Big(\Big(Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}\Big)^2\Big)\
+% 	Note that
+% 	$$Q_n^{\lambda}\mathcal{E}_{n-1}(y)Q_n^{\lambda}\leq \lambda Q_n^{\lambda},\quad Q_n^{\lambda}\mathcal{E}_n(y)Q_n^{\lambda}\geq \lambda Q_n^{\lambda},\quad n\geq1.$$
+% 	Therefore,
+% 	$$0\leq Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}\leq Q_n^{\lambda}d_nyQ_n^{\lambda},\quad n\geq1.$$
+% 	Taking into account the notation $d_0y=\mathcal{ E}_0(y)$, it follows that
+% 	$$0\leq Q_0^{\lambda}(\mathcal{E}_0(y)-\lambda)Q_0^{\lambda}\leq Q_0^{\lambda}d_0yQ_0^{\lambda}.$$
+% 	In particular, we have
+% 	$$\|Q_n^{\lambda}(\mathcal{E}_n(y)-\lambda)Q_n^{\lambda}\|_{L_2(\mathcal{M})}\leq \|Q_n^{\lambda}d_nyQ_n^{\lambda}\|_{L_2(\mathcal{M})},\quad n\geq0.$$
+% 	Substituting this estimate to \eqref{ee}, we complete the proof.
+% \end{proof}
+
+% Now we provide the proof of Proposition \ref{jowzz proposition}.
+
+% \begin{proof}[Proof of Proposition \ref{jowzz proposition}]
+% 	It follows Lemma \ref{jowzz lemma} that
+% 	\begin{equation}\label{jowzl eq0}
+% 		\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2\leq 2\sum_{n\geq0}\|Q_n^{\lambda}d_nyQ_n^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{n\geq0}\|Q_n^{\lambda}(y-\mathcal{E}_n(y))\|_{L_2(\mathcal{M})}^2.
+% 	\end{equation}
+	
+% 	We clearly have
+% 	$$-Q_n^{\lambda}YQ_n^{\lambda}\leq Q_n^{\lambda}d_nyQ_n^{\lambda}\leq Q_n^{\lambda}YQ_n^{\lambda}.$$
+% 	Therefore,
+% 	$$\|Q_n^{\lambda}d_nyQ_n^{\lambda}\|_{L_2(\mathcal{M})}\leq \|Q_n^{\lambda}YQ_n^{\lambda}\|_{L_2(\mathcal{M})},\quad n\geq0.$$
+% 	Hence,
+% 	\begin{equation}\label{jowzl eq1}
+% 		\sum_{n\geq0}\|Q_n^{\lambda}d_nyQ_n^{\lambda}\|_{L_2(\mathcal{M})}^2\leq \sum_{n\geq0}\|Q_n^{\lambda}YQ_n^{\lambda}\|_{L_2(\mathcal{M})}^2\leq\|Q^{\lambda}Y\|_{L_2(\mathcal{M})}^2.
+% 	\end{equation}
+	
+	
+	
+	
+	
+% 	Note that
+% 	$$\mathcal{E}_n((y-\mathcal{E}_n(y))^2)=\mathcal{E}_n((\sum_{k<n}d_ky)^2)=\mathcal{E}_n(\sum_{k_1,k_2>n}d_{k_1}yd_{k_2}y)=\sum_{k>n}\mathcal{E}_n(d_ky^2).$$
+% 	Then
+% 	\begin{align*}
+% 		\|Q_n^{\lambda}(y-\mathcal{E}_n(y))\|_{L_2(\mathcal{M})}^2&=\tau(Q_n^{\lambda}\cdot \mathcal{E}_n((y-\mathcal{E}_n(y))^2) \cdot Q_n^{\lambda})\\
+% 		&=\sum_{k>n}\tau(Q_n^{\lambda}\cdot \mathcal{E}_n(d_ky^2) \cdot Q_n^{\lambda})=\sum_{k>n}\tau(Q_n^{\lambda}\cdot \mathcal{E}_{k-1}(d_ky^2) \cdot Q_n^{\lambda})\\
+% 		&=\tau(Q_n^{\lambda}\cdot \sum_{k>n}\mathcal{E}_{k-1}(d_ky^2) \cdot Q_n^{\lambda})\leq \tau(Q_n^{\lambda}\cdot s(y)^2\cdot Q_n^{\lambda}),
+% 	\end{align*}
+% 	which further implies
+% 	\begin{equation}\label{jowzl eq2}
+% 		\sum_{n\geq0}\|Q_n^{\lambda}(y-\mathcal{E}_n(y))\|_{L_2(\mathcal{M})}^2\leq\|Q^{\lambda}s(y)\|_{L_2(\mathcal{M})}^2.
+% 	\end{equation}
+% 	Substituting \eqref{jowzl eq1} and \eqref{jowzl eq2} into \eqref{jowzl eq0}, we complete the proof.
+% \end{proof}
+
+
+
+
+
+% Our second estimate for Cuculescu projections in this subsection is the following proposition.
+% \begin{proposition}\label{lem-1R}
+% 	For every $y=y^*\in L_2(\mathcal{ M})$ and  $\lambda>0,$ we have
+% 	$$\tau(1-R^{2\lambda})\leq 6\lambda^{-2}\tau((1-R^{\lambda})(y-\lambda)^2).$$
+% \end{proposition}
+
+
+% To prove this, we begin with several lemmas.
+% \begin{lemma}\label{pythagoras lemma} Let $y=y^{\ast}\in L_2(\mathcal{M})$ and $\lambda>0$, and let $u=y-\lambda$. For each $n\geq0$, we have
+% 	$$|W_n|^2=|U_n|^2+|V_n|^2,$$
+% 	where
+% 	$$U_n=R_n^{\lambda}\mathcal{E}_n(u)(1-R_n^{\lambda}),\quad V_n=Q_n^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda}),\quad W_n=R_{n-1}^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda}).$$	
+% \end{lemma}
+% \begin{proof} Note that for pairwise orthogonal projections $p,q\in\mathcal{M}$,
+% 	$$|(p+q)x|^2=|px|^2+|qx|^2,\quad x\in L_2(\mathcal{M}).$$
+% 	Then, in particular, we have
+% 	\begin{align*}
+% 		|W_n|^2&=|R_{n-1}^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda})|^2\\
+% 		&=|R_n^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda})|^2+|Q_n^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda})|^2\\
+% 		&=|R_n^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda})|^2+|V_n|^2,
+% 	\end{align*}
+% 	where we used $Q_n^{\lambda}=R_{n-1}^{\lambda}-R_{n}^{\lambda}$.
+	
+% 	Since $R_n^{\lambda}$ commutes with $R_{n-1}^{\lambda}\mathcal{E}_n(u)R_{n-1}^{\lambda}$ for each $n\geq0,$ it follows that
+% 	$$R_n^{\lambda}\mathcal{E}_n(u)Q_n^{\lambda}=R_n^{\lambda}R_{n-1}^{\lambda}\mathcal{E}_n(u)R_{n-1}^{\lambda}(R_{n-1}^{\lambda}-R_n^{\lambda})=0.$$
+% 	Thus,
+% 	$$R_n^{\lambda}\mathcal{E}_n(u)(1-R_{n-1}^{\lambda})=R_n^{\lambda}\mathcal{E}_n(u)(1-R_n^{\lambda})-R_n^{\lambda}\mathcal{E}_n(u)Q_n^{\lambda}=R_n^{\lambda}\mathcal{E}_n(u)(1-R_n^{\lambda})=U_n.$$	
+% 	Combining these equalities, we complete the proof.
+% \end{proof}
+
+% \begin{lemma}\label{lem-s} Let $y=y^{\ast}\in L_2(\mathcal{M})$ and $\lambda>0$, and let $u=y-\lambda$. For every $n\geq0,$ we have
+% 	$$|U_n|^2\leq \mathcal{E}_n\Big(|R^{\lambda}uQ^{\lambda}|^2+\sum_{k>n}|V_k|^2\Big),$$
+% 	where  $(U_n)_{n\geq0}$ and $(V_n)_{n\geq0}$ are as in Lemma \ref{pythagoras lemma}.
+% \end{lemma}
+% \begin{proof} To see the claim, first note that
+% 	$$|U_n|^2\leq |U_n|^2 +\mathcal{E}_n(|R_n^{\lambda}d_{n+1}u(1-R_n^{\lambda})|^2)=\mathcal{E}_n(|R_n^{\lambda}\mathcal{E}_{n+1}(u)(1-R_n^{\lambda})|^2),\quad n\geq 0.$$
+% 	By Lemma \ref{pythagoras lemma}, we have
+% 	$$|R_n^{\lambda}\mathcal{E}_{n+1}(u)(1-R_n^{\lambda})|^2=|W_{n+1}|^2=|U_{n+1}|^2+|V_{n+1}|^2.$$
+% 	Thus,
+% 	\begin{equation}\label{base ind eq}
+% 		|U_n|^2\leq\mathcal{E}_n(|U_{n+1}|^2+|V_{n+1}|^2),\quad n\geq0.
+% 	\end{equation}
+	
+	
+% 	Let $m>n.$ We claim that
+% 	$$|U_n|^2\leq\mathcal{E}_n(|U_m|^2+\sum_{n<k\leq m}|V_k|^2).$$
+% 	We prove this by induction on $m.$ Base of induction (that is, the case $m=n+1$) is established in \eqref{base ind eq}.
+% 	Suppose the claim holds for $m.$ It follows from \eqref{base ind eq} that
+% 	\begin{align*}
+% 		|U_n|^2&\leq\mathcal{E}_n(\mathcal{E}_m(|V_{m+1}|^2+|U_{m+1}|^2)+\sum_{n<k\leq m}|V_k|^2)\\
+% 		&=\mathcal{E}_n(|V_{m+1}|^2+|U_{m+1}|^2+\sum_{n<k\leq m}|V_k|^2)=\mathcal{E}_n(|U_{m+1}|^2+\sum_{n<k\leq m+1}|V_k|^2).
+% 	\end{align*}
+% 	This proves step of induction.
+	
+% 	Passing $m\to\infty,$ and taking into account that
+% 	$$|U_m|^2\to |R^{\lambda}uQ^{\lambda}|^2$$
+% 	in $L_1(\mathcal{M})$ as $m\to\infty,$ we complete the proof.
+% \end{proof}
+
+
+% \begin{lemma}\label{lem-betalambda} Let $y=y^{\ast}\in L_2(\mathcal{M})$ and $\lambda>0$, and let $u=y-\lambda$. For each $n\geq0$, we have
+% 	\begin{equation*}
+% 		\lambda^2\tau(Q_n^{2\lambda})\leq 2\|R^{\lambda}uQ^{\lambda}Q_n^{2\lambda}\|_{L_2(\mathcal{M})}^2+2\|Q_n^{2\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{k>n}\|V_kQ_n^{2\lambda}\|_{L_2(\mathcal{M})}^2,
+% 	\end{equation*}
+% 	where $(V_n)_{n\geq0}$ are as in Lemma \ref{pythagoras lemma}.
+% \end{lemma}
+
+% \begin{proof} Fix $n\geq0$. Recall that 
+% 	$$Q_n^{2\lambda}=R_{n-1}^{2\lambda}-R_{n}^{2\lambda}.$$	Then
+% 	$$Q_n^{2\lambda}=R_{n-1}^{2\lambda}\chi_{[2\lambda,\infty)}(R_{n-1}^{2\lambda}\mathcal{E}_n(y)R_{n-1}^{2\lambda}).$$
+% 	Hence,
+% 	\begin{align*}
+% 		Q_n^{2\lambda}\mathcal{E}_n(u)Q_n^{2\lambda}&=Q_n^{2\lambda}\mathcal{E}_n(y)Q_n^{2\lambda}-\lambda Q_n^{2\lambda}\\
+% 		&=Q_n^{2\lambda}\cdot R_{n-1}^{2\lambda}\mathcal{E}_n(y)R_{n-1}^{2\lambda}\cdot Q_n^{2\lambda}-\lambda Q_n^{2\lambda}\\
+% 		&\geq 2\lambda Q_n^{2\lambda}-\lambda Q_n^{2\lambda}=\lambda Q_n^{2\lambda}.
+% 	\end{align*}
+% 	Consequently,
+% 	$$Q_n^{2\lambda}=\chi_{[\lambda,\infty)}(Q_n^{2\lambda}\mathcal{E}_n(u)Q_n^{2\lambda}).$$
+	
+	
+% 	We write
+% 	$$Q_n^{2\lambda}\mathcal{E}_n(u)Q_n^{2\lambda}=Q_n^{2\lambda}(\mathcal{E}_n(u)-R_n^{\lambda}\mathcal{E}_n(u)R_n^{\lambda})Q_n^{2\lambda}+Q_n^{2\lambda}R_n^{\lambda}\mathcal{E}_n(u)R_n^{\lambda}Q_n^{2\lambda}\stackrel{def}{=}A_n+B_n.$$
+% 	Note that, by \eqref{basic},
+% 	$$B_n=Q_n^{2\lambda}[R_n^{\lambda}\mathcal{E}_n(y)R_n^{\lambda}-\lambda R_n^{\lambda}]Q_n^{2\lambda} \leq 0.$$ 
+% 	Then, by the Chebychev inequality,
+% 	\begin{align}\label{eQ1}
+% 		\tau(Q_n^{2\lambda})=\tau(\chi_{[\lambda,\infty)}(A_n+B_n))\leq\tau(\chi_{[\lambda,\infty)}(A_n))\leq \frac{1}{\lambda^2}\|A_n\|_{L_2(\mathcal{M})}^2.
+% 	\end{align}
+	
+	
+% 	On the other hand,
+% 	$$A_n=D_n+C_n,$$
+% 	where
+% 	$$D_n=Q_n^{2\lambda}(1-R_n^{\lambda})\mathcal{E}_n(u)R_n^{\lambda}Q_n^{2\lambda},\quad C_n=Q_n^{2\lambda}\mathcal{E}_n(u)(1-R_n^{\lambda})Q_n^{2\lambda}.$$
+% 	By Lemma \ref{lem-s}, we have
+% 	\begin{align*}
+% 		\|D_n\|_{L_2(\mathcal{M})}^2&\leq\|Q_n^{2\lambda}(1-R_n^{\lambda})\mathcal{E}_n(u)R_n^{\lambda}\|_{L_2(\mathcal{M})}^2=\|U_nQ_n^{2\lambda}\|_{L_2(\mathcal{M})}^2\\
+% 		&\leq \tau\Big(Q_n^{2\lambda} \cdot \mathcal{E}_n\Big(|R^{\lambda}uQ^{\lambda}|^2+\sum_{k>n}|V_k|^2\Big) \cdot Q_n^{2\lambda}\Big)\\
+% 		&= \tau\Big(Q_n^{2\lambda} \cdot \Big(|R^{\lambda}uQ^{\lambda}|^2+\sum_{k>n}|V_k|^2\Big) \cdot Q_n^{2\lambda}\Big)\\
+% 		&=\|R^{\lambda}uQ^{\lambda}Q_n^{2\lambda}\|_{L_2(\mathcal{M})}^2+\sum_{k>n}\|V_kQ_n^{2\lambda}\|_{L_2(\mathcal{M})}^2.
+% 	\end{align*}
+% 	Note that
+% 	$$C_n=\mathcal{E}_n(Q_n^{2\lambda}y(1-R_n^{\lambda})Q_n^{2\lambda}).$$
+% 	Thus,
+% 	$$\|C_n\|_{L_2(\mathcal{M})}\leq\|Q_n^{2\lambda}u(1-R_n^{\lambda})Q_n^{2\lambda}\|_{L_2(\mathcal{M})}\leq\|Q_n^{2\lambda}u(1-R_n^{\lambda})\|_{L_2(\mathcal{M})}\leq\|Q_n^{2\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}.$$
+% 	Finally,
+% 	\begin{align*}
+% 		\|A_n\|_{L_2(\mathcal{M})}^2&\leq 2\|D_n\|_{L_2(\mathcal{M})}^2+2\|C_n\|_{L_2(\mathcal{M})}^2\\
+% 		&\leq 2\|R^{\lambda}uQ^{\lambda}Q_n^{2\lambda}\|_{L_2(\mathcal{M})}^2+2\|Q_n^{2\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{k>n}\|V_kQ_n^{2\lambda}\|_{L_2(\mathcal{M})}^2.
+% 	\end{align*}
+% 	Combining this and \eqref{eQ1}, we complete the proof.
+% \end{proof}
+
+% We now prove Proposition \ref{lem-1R}.
+% \begin{proof}[Proof of Proposition \ref{lem-1R}]
+% 	Fix $\lambda>0$. Note that, according to \eqref{Qlambda},
+% 	$$1-R^{2\lambda}=Q^{2\lambda}=\sum_{n\geq0}Q_n^{2\lambda}.$$
+% 	Then, it follows from Lemma \ref{lem-betalambda} that
+% 	\begin{align*}
+% 		\lambda^2&\tau(1-R^{2\lambda})\\
+% 		&=\sum_{n\geq0}\lambda^2\tau(Q_n^{2\lambda})\\
+% 		&\leq 2\sum_{n\geq0}\|R^{\lambda}uQ^{\lambda}Q_n^{2\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{n\geq0}\|Q_n^{2\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{k>n\geq0}\|V_kQ_n^{2\lambda}\|_{L_2(\mathcal{M})}^2\\
+% 		&\leq 2\|R^{\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}^2+2\|yQ^{\lambda}\|_{L_2(\mathcal{M})}^2+2\sum_{k>0}\|V_k\|_{L_2(\mathcal{M})}^2,
+% 	\end{align*}
+% 	where $u=y-\lambda$ and $(V_k)_{k\geq0}$ are referred to Lemma \ref{pythagoras lemma}.
+% 	Obviously,
+% 	$$V_k=\mathcal{E}_k(Q_k^{\lambda}u(1-R_{k-1}^{\lambda})).$$
+% 	Thus,
+% 	$$\|V_k\|_{L_2(\mathcal{M})}\leq \|Q_k^{\lambda}u(1-R_{k-1}^{\lambda})\|_{L_2(\mathcal{M})}\leq\|Q_k^{\lambda}uQ^{\lambda}\|_{L_2(\mathcal{M})}$$
+% 	and
+% 	$$\sum_{k>0}\|V_k\|_{L_2(\mathcal{M})}^2\leq \|uQ^{\lambda}\|_{L_2(\mathcal{ M})}^2.$$
+% 	Consequently,
+% 	\begin{equation*}\label{e10}
+% 		\lambda^2\tau(1-R^{2\lambda})\leq 6\|uQ^{\lambda}\|_{L_2(\mathcal{M})}^2.
+% 	\end{equation*}	
+% 	Since $Q^{\lambda}=1-R^{\lambda}$ and $u=y-\lambda$, the desired assertion follows. The proof of the proposition is complete. 
+% \end{proof}
+
+
+% %For $\lambda>0$, consider $u=\lambda^{-1}y-1$. According to the definition of Cuculescu projections,  the projection $Q^1$ (resp. $Q^0$) with respect to $u$ is just the projection $Q^{2\lambda}$ (resp. $Q^{\lambda}$) with respect to $y$. Then, the desired assertion follows by applying \eqref{e10} to the element $u.$
+
+% \subsection{A moment inequality}
+% The main result of this subsection is read as follows. 
+% It is the main ingredient in the proofs of Theorems \ref{answer open} and \ref{open}.
+
+% \begin{theorem}\label{key result}
+% 	Suppose that $\Phi$ is a $p$-convex and $q$-concave Orlicz function with $2<p\leq q<\infty$. Let $y\in L_{\Phi}(\mathcal{M})$ be self-adjoint and $0\leq A \in L_{\Phi}(\mathcal{M})$  satisfy
+% 	\begin{equation}\label{assume1}
+% 		\tau(1-R^{{2\lambda}}) \leq \lambda^{-2}\tau((1-R^{\lambda})A^2), \quad \lambda>0.
+% 	\end{equation}
+% 	Then
+% 	$$\tau(\Phi(|y|))\leq c_{p,q} \tau(\Phi(A)).$$
+% \end{theorem}
+
+
+% Before going further, we need several lemmas.
+% Let $1\leq p\leq q<                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \infty$.  Let $\Phi_{p,q}$ be a $p$-convex and $q$-concave Orlicz function defined by the formula
+% $$\Phi_{p,q}(t)=
+% \begin{cases}
+% 	t^q,& t\in[0,1]\\
+% 	\frac{q}{p}(t^p-1)+1,& t\in (1,\infty)
+% \end{cases}.
+% $$
+
+
+% \begin{lemma}\label{phipq fact} Suppose that $2<p\leq q<\infty,$ and  $z\in L_{\Phi_{p,q}}(\mathcal{M})$. Then
+% 	$$\|\Psi_{p,q}(|z|)\|_{\frac{p}{p-2}}\leq \frac{q}{p}\tau(\Phi_{p,q}(|z|))^{1-\frac{2}{p}},\quad \|\Psi_{p,q}(|z|)\|_{\frac{q}{q-2}}\leq \frac{q}{p}\tau(\Phi_{p,q}(|z|))^{1-\frac{2}{q}},$$
+% 	where $\Psi_{p,q}(t)=t^{-2}\Phi_{p,q}(t),$ $t>0.$
+% \end{lemma}
+% \begin{proof} Clearly,
+% 	$$\Psi_{p,q}(t)\leq\frac{q}{p}\min\{t^{p-2},t^{q-2}\},\quad \min\{t^p,t^q\}\leq\Phi_{p,q}(t),\quad t>0.$$
+% 	By \cite[Lemma 2.5 (iv)]{Fa1986}, we have $\mu(\Psi_{p,q}(z))=\Psi_{p,q}(\mu(z))$.	Therefore,
+% 	\begin{align*}
+% 		\|\Psi_{p,q}(|z|)\|_{\frac{p}{p-2}}&=\|\mu(\Psi_{p,q}(z))\|_{\frac{p}{p-2}}=\|\Psi_{p,q}(\mu(z))\|_{\frac{p}{p-2}}\\
+% 		&\leq\frac{q}{p}\|\min\{\mu(z)^{p-2},\mu(z)^{q-2}\}\|_{\frac{p}{p-2}}=\frac{q}{p}\|\min\{\mu(z)^p,\mu(z)^{\frac{p(q-2)}{p-2}}\}\|_1^{1-\frac2p}.
+% 	\end{align*}
+% 	Since $q\geq p,$	it follows that
+% 	$$\min\{\mu(z)^p,\mu(z)^{\frac{p(q-2)}{p-2}}\}\leq \min\{\mu(z)^p,\mu(z)^{q}\}\leq\Phi_{p,q}(\mu(z)).$$
+% 	Therefore, we have
+% 	$$\|\Psi_{p,q}(|z|)\|_{\frac{p}{p-2}}\leq \frac{q}{p}\|\Phi_{p,q}(\mu(z))\|_1^{1-\frac2p}=\frac{q}{p}\tau(\Phi_{p,q}(|z|))^{1-\frac{2}{p}}.$$
+% 	This proves the first inequality of the lemma. The second one can be proved similarly.
+% \end{proof}
+
+
+
+% %\begin{fact}\label{psi fact}  Let $2<p\leq q<\infty$ and let $\Phi$ be a $p$-convex and $q$-concave Orlicz function. Then for $\beta>1$,
+% %	$$\sum_{k\leq l}\Psi(\beta^{k+1})\leq \frac{\beta^{q-2}}{1-\beta^{2-p}}\Psi(\beta^l),\quad l\in\mathbb{Z},$$
+% %	where $\Psi(t)=t^{-2}\Phi(t),$ $t>0.$
+% %\end{fact}
+% %\begin{proof} Since $\Phi$ is $p$-convex, it follows that the function $t\to t^{-p}\Phi(t)$ is increasing.
+% %	Note that $p>2$. Then
+% %	\begin{align*}
+% %	\sum_{k\leq l} \Psi(\beta^{k+1})&=\sum_{k\leq l} \beta^{-2(k+1)}\beta^{p(k+1)}\beta^{-p(k+1)} \Phi(\beta^{k+1})\\
+% %	&\leq \sum_{k\leq l} \beta^{-2(k+1)}\beta^{p(k+1)}\beta^{-p(l+1)} \Phi(\beta^{l+1})\\
+% %	&=\frac{1}{1-\beta^{2-p}}\beta^{-2(l+1)}\Phi(\beta^{l+1}).
+% %	\end{align*}
+% %	
+% %	Since $\Phi$ is $q$-concave, it follows that the function $t\to t^{-q}\Phi(t)$ is decreasing. Hence,
+% %	\begin{align*}
+% %	\Phi(\beta^{l+1})=\beta^{q(l+1)}\beta^{-q(l+1)}\Phi(\beta^{l+1})\leq \beta^{q(l+1)}\beta^{-ql}\Phi(\beta^{l})=\beta^{q}\Phi(\beta^{l}).
+% %	\end{align*}
+% %	Then
+% %	$$\sum_{k\leq l} \Psi(\beta^{k+1})\leq \frac{1}{1-\beta^{2-p}}\beta^{-2(l+1)}\beta^{q}\Phi(\beta^{l}) = \frac{\beta^{q-2}}{1-\beta^{2-p}}\Psi(\beta^l).$$
+% %\end{proof}
+
+
+% In the sequel, we will need the projections
+% \begin{equation}\label{def-P}
+% 	P_k=\bigwedge_{m\geq k}R^{2^m},\quad k\in\mathbb{Z},
+% \end{equation}
+% where $R^{\lambda}$ is defined as in \eqref{RQ}.
+% Define.
+% \begin{equation}\label{bound-a}
+% 	a=\sum_{k\in\mathbb{Z}}2^{k+1}(P_{k+1}-P_k).
+% \end{equation}
+
+% \begin{lemma}\label{orlicz lemma}  Let $a$ be as in \eqref{bound-a}. Let $2<p\leq q<\infty$, and let $\Phi$ be a $p$-convex and $q$-concave Orlicz function. In the assumptions of Theorem \ref{key result}, we have
+% 	$$\tau(\Phi(a))\leq \frac{2^q}{1-2^{2-p}}\tau(\Psi(a)A^2),$$
+% 	where $\Psi(t)=t^{-2}\Phi(t),$ $t>0.$
+% \end{lemma}
+% \begin{proof} We have
+% 	$$\tau(\Phi(a))=\sum_{k\in\mathbb{Z}}\Phi(2^{k+1})\tau(P_{k+1}-P_k)=\sum_{k\in\mathbb{Z}}\Phi(2^{k+2})\tau(P_{k+2}-P_{k+1}).$$
+% 	Observe that $P_{k+1}=P_{k+2}\wedge R^{2^{k+1}}.$ Hence,
+% 	$$P_{k+2}-P_{k+1}=P_{k+2}-P_{k+2}\wedge R^{2^{k+1}}.$$
+% 	In addition, according to \cite[Page 292, Proposition 1.6]{TAK}, we have the equivalence of projections
+% 	$$e-e\wedge f\sim e\vee f-f.$$
+% 	In particular, the projections $P_{k+2}-P_{k+2}\wedge R^{2^{k+1}}$ and $P_{k+2}\vee R^{2^{k+1}}-R^{2^{k+1}}$ are equivalent. Consequently,
+% 	$$\tau(P_{k+2}-P_{k+1})=\tau(P_{k+2}-P_{k+2}\wedge R^{2^{k+1}})=\tau(P_{k+2}\vee R^{2^{k+1}}-R^{2^{k+1}})\leq \tau(1-R^{2^{k+1}}).$$
+% 	Then, by \eqref{assume1} with $\lambda=2^k,$ we have
+% 	$$\tau(P_{k+2}-P_{k+1})\leq 2^{-2k} \tau((1-R^{2^k})A^2)\leq 2^{-2k} \tau((1-P_k)A^2).$$
+% 	Hence,
+% 	\begin{equation}\label{e-tauPhia}
+% 		\tau(\Phi(a))\leq \tau\Big(\Big(\sum_{k\in\mathbb{Z}}2^{-2k}\Phi(2^{k+2})(1-P_k)\Big)A^2\Big).
+% 	\end{equation}
+% 	An elementary calculation shows that
+% 	\begin{align*}
+% 		\sum_{k\in\mathbb{Z}}2^{-2k}\Phi(2^{k+2})(1-P_k)&=\sum_{k\in\mathbb{Z}}2^{-2k}\Phi(2^{k+2})\sum_{l\geq k}(P_{l+1}-P_l)\\
+% 		&=\sum_{l\in\mathbb{Z}}(P_{l+1}-P_l)\sum_{k\leq l}2^{-2k}\Phi(2^{k+2})\\
+% 		&=4\sum_{l\in\mathbb{Z}}(P_{l+1}-P_l)\sum_{k\leq l}\Psi(2^{k+2}).
+% 	\end{align*}
+% 	Since $\Phi$ is $p$-convex and $q$-concave, it follows that the function $t\mapsto t^{-p}\Phi(t)$ is increasing and $t\mapsto t^{-q}\Phi(t)$ is decreasing. Hence, $l\geq k$, we have
+% 	$$\Psi(2^{k+2})=2^{(k+2)(p-2)}\cdot\frac{\Phi(2^{k+2})}{2^{(k+2)p}}\leq 2^{(k+2)(p-2)}\cdot\frac{\Phi(2^{l+2})}{2^{(l+2)p}},$$
+% 	and
+% 	$$2^{-2(l+2)}\Phi(2^{l+2})=2^{(l+2)(q-2)}\cdot \frac{\Phi(2^{l+2})}{2^{(l+2)q}}\leq 2^{(l+2)(q-2)}\cdot \frac{\Phi(2^{l+1})}{2^{(l+1)q}}=2^{q-2}\Psi(2^{l+1}).$$
+% 	Thus, we have
+% 	\begin{align*}
+% 		4\sum_{k\leq l} \Psi(2^{k+2})&\leq 4\sum_{k\leq l} 2^{(k+2)(p-2)}2^{-p(l+2)} \Phi(2^{l+2})\\
+% 		&=\frac{4}{1-2^{2-p}}2^{-2(l+2)}\Phi(2^{l+2})\leq\frac{2^q}{1-2^{2-p}}\Psi(2^{l+1})
+% 	\end{align*}
+% 	and
+% 	$$\sum_{k\in\mathbb{Z}}2^{-2k}\Phi(2^{k+1})(1-P_k)\leq \frac{2^q}{1-2^{2-p}}\sum_{l\in\mathbb{Z}}(P_{l+1}-P_l)\Psi(2^{l+1})= \frac{2^{q}}{1-2^{2-p}}\Psi(a),$$
+% 	which, together with \eqref{e-tauPhia}, implies the
+% 	desired result.
+% \end{proof}
+
+% \begin{lemma}\label{phipq lemma}
+% 	Let $a$ be as in \eqref{bound-a}, and let $2<p\leq q<\infty$. In the assumptions of Theorem \ref{key result}, we have
+% 	$$\tau(\Phi_{p,q}(a))\leq c_{p,q}\tau(\Phi_{p,q}(A)),$$
+% 	where
+% 	$$c_{p,q}=\Big(\frac{q2^{q+1}}{p(1-2^{2-p})}\Big)^{\frac{q}{2}}.$$
+% \end{lemma}
+% \begin{proof} Set $x_1=A\chi_{(1,\infty)}(A)$ and $x_2=A\chi_{[0,1]}(A).$ Clearly,
+% 	\begin{equation}\label{phipq eq1}
+% 		\|x_1\|_p\leq(\tau(\Phi_{p,q}(A)))^{\frac1p},\quad \|x_2\|_q\leq(\tau(\Phi_{p,q}(A)))^{\frac1q}.
+% 	\end{equation}
+% 	By the H\"older inequality we have
+% 	\begin{align*}
+% 		\tau(\Psi_{p,q}(a)A^2)&=\tau(\Psi_{p,q}(a)x_1^2)+\tau(\Psi_{p,q}(a)x_2^2)\\
+% 		&\leq \|\Psi_{p,q}(a)\|_{\frac{p}{p-2}}\|x_1^2\|_{\frac{p}{2}}+\|\Psi_{p,q}(a)\|_{\frac{q}{q-2}}\|x_2^2\|_{\frac{q}{2}}.
+% 	\end{align*}
+% 	Using Lemma \ref{phipq fact} and \eqref{phipq eq1}, we infer
+% 	\begin{align*}
+% 		\tau(\Psi_{p,q}(a)A^2)&\leq \frac{q}{p}\cdot\Big((\tau(\Phi_{p,q}(a)))^{1-\frac2p}\|x_1\|_p^2+(\tau(\Phi_{p,q}(a)))^{1-\frac2q}\|x_2\|_q^2\Big)\\
+% 		&\leq \frac{q}{p}\cdot\Big((\tau(\Phi_{p,q}(a)))^{1-\frac2p}(\tau(\Phi_{p,q}(A)))^{\frac2p}+(\tau(\Phi_{p,q}(a)))^{1-\frac2q}(\tau(\Phi_{p,q}(A)))^{\frac2q}\Big).
+% 	\end{align*}
+% 	By Lemma \ref{orlicz lemma}, we have
+% 	$$\tau(\Phi_{p,q}(a))\leq \frac{2^q}{1-2^{2-p}}\tau(\Psi_{p,q}(a)A^2).$$
+% 	Combining these inequalities, we arrive at
+% 	$$\tau(\Phi_{p,q}(a))\leq  \frac{q2^q}{p(1-2^{2-p})}\Big(\tau(\Phi_{p,q}(a))^{1-\frac{2}{p}}\tau(\Phi_{p,q}(A))^{\frac2p}+\tau(\Phi_{p,q}(a))^{1-\frac{2}{q}}\tau(\Phi_{p,q}(A))^{\frac2q}\Big).$$
+	
+% 	Denote, for brevity,
+% 	$$\Theta=\frac{\tau(\Phi_{p,q}(A))}{\tau(\Phi_{p,q}(a))},\quad \gamma=\frac{q2^q}{p(1-2^{2-p})}.$$
+% 	The established inequality is written as
+% 	$$1\leq\gamma\cdot(\Theta^{\frac2p}+\Theta^{\frac2q}).$$
+% 	Thus,
+% 	$$\frac1{2\gamma}\leq\max\{\Theta^{\frac2p},\Theta^{\frac2q}\}.$$
+% 	If $0<\Theta<1,$ then
+% 	$$\Theta\geq (2\gamma)^{-\frac{q}{2}}.$$
+% 	If $\Theta\geq 1,$ then
+% 	$$\Theta\geq1\geq (2\gamma)^{-\frac{q}{2}}\mbox{ since }\gamma\geq1.$$
+% 	In either case, the desired inequality follows.
+% \end{proof}
+
+% \begin{lemma}\label{subprojection}
+% 	Let $a$ be as in \eqref{bound-a}. We have
+% 	$$\tau(\chi_{(2^k,\infty)}(y))\leq \tau(\chi_{(2^k,\infty)}(a)), \quad \forall k\in\mathbb{Z}.$$
+% \end{lemma}
+% \begin{proof} Fix $k\in\mathbb Z$ and denote $p_k=\chi_{(2^k,\infty)}(y).$ We claim that $p_k\wedge P_k=0.$
+	
+% 	Assume that $(p_k\wedge P_k)(H)\neq\{0\}$. Hence, there exists $\xi\in (p_k\wedge P_k)(H)$ such that  $\xi\neq0$.
+% 	Since  $R^{2^k}yR^{2^k}\leq 2^k$ (see \eqref{leq}) and since $P_k\leq R^{2^k}$,  it follows that $P_kyP_k\leq 2^k.$ Thus,
+% 	$$\langle y\xi,\xi\rangle=\langle P_kyP_k\xi,\xi\rangle\leq 2^k\|\xi\|^2.$$
+% 	On the other hand, we have
+% 	$$\langle y\xi,\xi\rangle=\langle p_kyp_k\xi,\xi\rangle>2^k\langle \xi,\xi\rangle=2^k\|\xi\|^2.$$
+% 	These inequalities contradict each other. Hence, the assumption is false and the claim follows.
+	
+% 	According to \cite[Page 292, Proposition 1.6]{TAK}, for two projections $e$ and $f$, we have the equivalence
+% 	$$e-e\wedge f\sim e\vee f-f.$$
+% 	In particular, if $e\wedge f=0$, we have
+% 	$$e\sim e\vee f-f\leq 1-f.$$
+% 	Using the claim proved in the preceding paragraph, we see that $p_k$ is equivalent to a sub-projection of $1-P_k.$ Consequently
+% 	$$\tau(\chi_{(2^k,\infty)}(y))=\tau(p_k)\leq \tau(1-P_k)=\tau(\chi_{(2^k,\infty)}(a)).$$
+% \end{proof}
+
+
+% We take the following result from  \cite[p.133]{JSZ}.
+
+% \begin{lemma}\label{jlms lemma}
+% 	Let $1<p\leq q<\infty$. If $\Phi$ is $p$-convex and $q$-concave Orlicz function, then there exist a measure $\nu_{\Phi}$ and positive constants $c^1_{\Phi},$ $c^2_{\Phi}$ such that
+% 	$$\frac12\Phi(s) \leq c^1_{\Phi}s^p+c^2_{\Phi}s^q+\int_0^{\infty}\Phi_{p,q}(st)d\nu_{\Phi}(t)\leq \frac{2q}{p}\Phi(s).$$
+% \end{lemma}
+
+
+% Now we are in a position to prove Theorem \ref{key result}.
+
+% \begin{proof}[Proof of Theorem \ref{key result}] Denote by $y_+$ the positive part of $y$. Evidently,
+% 	\begin{equation}\label{phi equa}
+% 		\Phi(y_+)=\int_0^{\infty}\chi_{(s,\infty)}(y_+)d\Phi(s)=\sum_{k\in\mathbb{Z}} \int_{2^k}^{2^{k+1}}\chi_{(s,\infty)}(y_+)d\Phi(s).
+% 	\end{equation}
+% 	On the other hand, observe that for any $t\in [2^k,2^{k+1})$, we have
+% 	\begin{align*}
+% 		\tau(\chi_{(t,\infty)}(y_+))&\leq \tau(\chi_{(2^k,\infty)}(y_+))=\tau(\chi_{(2^k,\infty)}(y))\leq \tau(\chi_{(2^k,\infty)}(a))\\
+% 		&\leq \tau(\chi_{(\frac{t}{2},\infty)}(a))=\tau(\chi_{(t,\infty)}(2a)).
+% 	\end{align*}
+% 	Thus, from this and  \eqref{phi equa},
+% 	$$\tau(\Phi(y_+))\leq \tau(\Phi(2a))\leq 2^q\tau(\Phi(a)).$$	
+% 	Combining this with Lemma \ref{jlms lemma} and Lemma \ref{phipq lemma}, we arrive at
+% 	$$\tau(\Phi(y_+))\leq 2^q\tau(\Phi(a))\leq 2^qc_{p,q}\tau(\Phi(A)),$$
+% 	where $c_{p,q}$ is the constant in Lemma \ref{phipq lemma}. Applying the latter inequality to $-y,$ we obtain
+% 	$$\tau(\Phi(y_-))\leq 2^{q}c_{p,q}\tau(\Phi(A))$$
+% 	for every $p$-convex and $q$-concave Orlicz function $\Phi.$ Thus,
+% 	$$\tau(\Phi(|y|))\leq 2^{q+1}c_{p,q}\tau(\Phi(A))$$
+% 	for every $p$-convex and $q$-concave Orlicz function $\Phi.$ The proof is complete.
+% \end{proof}
+
+% \subsection{Proofs of Theorems \ref{answer open} and \ref{open}}\label{sub3-4}
+
+% Now we are ready to answer Problem \ref{open phi} and provide the proofs of Theorems \ref{answer open} and \ref{open}  in this subsection.
+
+
+% \begin{proof}[Proof of Theorem \ref{answer open}]
+% 	By \cite[Theorem 4.1]{Bekjan2017},
+% 	$$\tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big)\lesssim_\Phi \tau\Big(\Phi(\sup_{k\geq0}\mathcal{ E}_k(x)) \Big)+\tau\Big(\Phi(\sup_{k\geq0}\mathcal{ E}_{k-1}(x)) \Big)\lesssim_{\Phi} \tau\Big(\Phi(|x|)\Big).$$
+% 	On the other hand, the estimate
+% 	$$\tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big)\lesssim_{\Phi} \tau\Big(\Phi(|x|)\Big)$$
+% 	was given in \cite[Theorem 4.10(ii)]{RWX2019}. Hence, the proof of lower estimate is done.
+	
+% 	Now we show the upper estimate. Set $y=\mathrm{Re}(x)$, where $\mathrm{Re}(x)=\frac{x+x^*}{2}$. Choose $0\leq Y\in L_{\Phi}(\mathcal{M})$ such that
+% 	$$-Y\leq d_ny\leq Y,\quad n\geq0,$$
+% 	and such that
+% 	$$\tau\Big(\Phi(|Y|)\Big)\leq 2\tau\Big(\Phi(\sup_{k\geq0}d_ky) \Big)\overset{\mbox{ \eqref{f-sd-phi}}}{\lesssim_{\Phi}} \tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big).$$
+% 	By Proposition \ref{jowzz proposition}, we have
+% 	$$\|Q^{\lambda}(y-\lambda)\|_{L_2(\mathcal{M})}^2\leq 2\|Q^{\lambda}Y\|_{L_2(\mathcal{M})}^2+2\|Q^{\lambda}s(y)\|_{L_2(\mathcal{M})}^2,\quad \lambda>0.$$
+% 	Combining this with Proposition \ref{lem-1R}, we obtain
+% 	$$\lambda^2\tau(Q^{2\lambda})\leq 12\|Q^{\lambda}Y\|_{L_2(\mathcal{M})}^2+12\|Q^{\lambda}s(y)\|_{L_2(\mathcal{M})}^2,\quad \lambda>0,$$
+% 	which means
+% 	$$\lambda^2\tau(1-R^{2\lambda})\leq 12\tau((1-R^{\lambda})(Y^2+s(y)^2))\leq \tau((1-R^{\lambda})A^2),$$
+% 	where
+% 	$$A=4(Y^2+s(y)^2)^{\frac12}.$$
+% 	Using Theorem \ref{key result}, we arrive at
+% 	\begin{equation}\label{key-phi}
+% 		\tau(\Phi(|y|))\leq c_{p,q}\tau(\Phi(A))
+% 	\end{equation}
+% 	for every $p$-convex and $q$-concave Orlicz function $\Phi.$ Opening the bracket according to the quasi-triangle inequality \eqref{phi-triangle}, we have
+% 	$$\tau(\Phi(|y|))\lesssim_{p,q}\tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big)+  \tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big).$$
+% 	Similarly, one can prove
+% 	$$\tau(\Phi(|z|))\lesssim_{p,q}\tau\Big(\Phi(\sup_{k\geq0}d_kx) \Big)+  \tau\Big(\Phi(s_c(x)) \Big)+ \tau\Big(\Phi(s_r(x)) \Big),$$
+% 	where $z=\mathrm{Im}(x)=(x-x^*)/2i$. Now the desired upper estimate follows from $x=y+iz$ and \eqref{phi-triangle}.
+% \end{proof}
+
+
+% {\color{red}The proof of Theorem \ref{open} follows from Theorem \ref{answer open}. For the sake of completeness, we still provide the details.
+
+% \begin{proof}[Proof of Theorem \ref{open}]  By the triangle inequality in $E(\mathcal{M},\ell_{\infty})$ and the noncommutative Doob inequality in symmetric spaces (\cite[Corollary 5.4]{Di20151}),  we have
+% 	\begin{align*}
+% 		\|(d_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}&\leq \|(\mathcal{E}_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\|(\mathcal{E}_{k-1}x)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}\\
+% 		&=2\|(\mathcal{E}_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}\leq 2 c_E\|x\|_{E(\mathcal{M})}.
+% 	\end{align*}
+% The estimate below can be found in \cite{Di20152, RWX2019}: 
+% 	$$\|s_c(x)\|_{E(\mathcal{M})}+\|s_r(x)\|_{E(\mathcal{M})}\leq c_E \|x\|_{E(\mathcal{ M})}.$$
+% 	Then  the lower estimate follows. 
+
+	
+% 	Now we show the upper estimate. It is enough to prove this inequality for self-adjoint martingales. Let $2<p\leq q<\infty$ and $x=x^*$.  Choose $0\leq Y\in E(\mathcal{M})$ such that
+% 	$$-Y\leq d_nx\leq Y,\quad n\geq0,$$
+% 	and 
+% 	$$\|Y\|_{E(\mathcal{M})}\leq  2\|(d_nx)_{n\geq0}\|_{E(\mathcal{M},\ell_{\infty})}.$$
+% Let $\Phi$ be an Orlicz function that is $p$-convex and $q$-concave. Then, by Theorem \ref{answer open}, 
+% \begin{align*}
+% 	\tau(\Phi(|x|)) &\leq c_{p,q} \max\{\tau(\Phi(Y))+\tau(\Phi(s(x)))\} \\
+% 	&\leq c_{p,q} \tau(\Phi(Y+s(x))),
+% \end{align*}
+% which, together with Theorem 7.1 in \cite{Ka2003}, implies that, for any   $E\in{\rm Int}(L_p,L_q)$,  
+% 	\begin{equation*}
+% 		\|x\|_{E(\mathcal{M})}\leq c_{E}\|Y+s(x)\|_{E(\mathcal{M})}\leq c_{E}\|(d_nx)_{n\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+c_E\|s(x)\|_{E(\mathcal{M})}.
+% 	\end{equation*}
+% This gives the desired upper estimate. 
+% \end{proof}
+% }
+
+% By Remark \ref{re1}, the following result is a corollary of Theorem \ref{open}. This result is a generalization of \cite[Theorem 4.6]{Ju2008}. 
+
+% \begin{corollary}\label{cor1}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset  E(\mathcal{M})$ be  independent random variables with respect to $\mathcal{E}_{\mathcal{N}}$ such that $\mathcal{E}_{\mathcal{N}}(x_k)=0$ for all $k\geq0$. 
+% 	Let $x=\sum_{k\geq0}x_k$. If $E\in{\rm Int}(L_p,L_q)$ with $2<p\leq q<\infty$,  then
+% 	$$\|x\|_{E(\mathcal{M})}\approx_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+
+% 	\|s_c(x)\|_{E(\mathcal{M})}+\|s_r(x)\|_{E(\mathcal{M})},$$
+% 	here 
+% 	$$s_c(x)= \Big(\sum_{k\geq 0} \mathcal{E}_{\mathcal{N}}(|x_k|^2)\Big)^{1/2},\quad s_r(x)= \Big(\sum_{k\geq 0} \mathcal{E}_{\mathcal{N}}(|x_k^*|^2)\Big)^{1/2}.$$
+% \end{corollary}
+
+
+
+% \begin{remark}
+%  Adapting  the duality argument of \cite[Theorem 3.2]{Ju2008}, we believe that one can obtain the dual version of Theorem \ref{open} (also for Corollary \ref{cor1}). That is,  for $E\in \mathrm{Int}(L_p,L_q)$ with $1<p\leq q<2$,  it holds true that
+% 		$$\|x\|_{E(\M)}\approx_E \inf_{x=x^d+x^c+x^r}\{ \|(d_kx^d)_{k\geq0}\|_{E(\M,\ell_1)}+\|s_c(x^c)\|_{E(\mathcal{M})}+\|s_r(x^r)\|_{E(\mathcal{M})}\},$$
+% 		where $E(\M,\ell_1)$, a predual space of $F(\mathcal{M},\ell_{\infty})$ ($F(0,1)=E(0,1)^*$), is referred to \cite[Section 5]{Di20152}. 
+% \end{remark}
+
+
+
+
+% \section{Proof of Theorem \ref{first main theorem}}\label{sec4}
+
+% In this section, we focus on noncommutative independent random variables, and provide proof of Theorem \ref{first main theorem}.  In this section, $(\mathcal{M}_k)_{k\geq0}$ are subalgebras of a noncommutative probability space $(\mathcal{M},\tau)$. To distinguish the conditional expectations in last section,  in this section, the conditional expectation from $\mathcal{M}$ to $\mathcal{M}_k$ is denoted by $\mathcal{E}_{\mathcal{M}_k}$ for each $k\geq0$.
+
+% \subsection{Interpolation theorem for $E(\mathcal{M},\ell_{\infty})$}
+
+
+% In this subsection, we present a interpolation result which will be used in the proof of Theorem \ref{first main theorem}. We begin with the following lemma.
+
+% \begin{lemma}\label{a-lem-1}
+% 	Let $a$ and $y$ be  positive operators.
+% 	If $0\leq a\leq y$ and $0\leq a\leq 1,$ then
+% 	$$a\leq 4\min\{y,1\}.$$
+% \end{lemma}
+% \begin{proof} Let $p=\chi_{(1,\infty)}(y).$ We have
+% 	$$pap\leq p\leq \min\{1,y\},\quad (1-p)a(1-p)\leq(1-p)y(1-p)\leq\min\{1,y\}.$$
+% 	Hence,
+% 	$$pap+(1-p)a(1-p)\leq 2\min\{1,y\}.$$
+	
+% 	Let $u=2p-1.$ Clearly, $u=u^*$ is unitary. Therefore, $uau\geq0.$ In other words, we have
+% 	$$(p-(1-p))a(p-(1-p))\geq0.$$
+% 	Opening the brackets, we arrive at
+% 	$$pap-pa(1-p)-(1-p)ap+(1-p)a(1-p)\geq0.$$
+% 	Therefore,
+% 	$$pap+(1-p)a(1-p)\geq pa(1-p)+(1-p)ap.$$
+% 	Hence,
+% 	\begin{align*}
+% 		a&=(pap+(1-p)a(1-p))+(pa(1-p)+(1-p)ap)\\
+% 		&\leq 2(pap+(1-p)a(1-p))\leq 4\min\{1,y\}.
+% 	\end{align*}
+% \end{proof}
+
+
+
+% \begin{theorem}\label{interpolation theorem} Let $(\mathcal{M}_1,\tau_1)$ and $(\mathcal{M}_2,\tau_2)$ be noncommutative probability spaces. Suppose that $S_k:L_1(\mathcal{M}_1)\to L_1(\mathcal{M}_2),$ $k\geq0,$ be positive contractions both in $L_1$ and in $L_{\infty}.$ If
+% 	$$\|(S_kx)_{k\geq0}\|_{L_1(\mathcal{M}_2,\ell_{\infty})}\leq \|x\|_{L_1(\mathcal {M}_1)},\quad \forall x\in L_1(\mathcal{M}_1),$$
+% 	then, for every $E\in{\rm Int}(L_1,L_{\infty}),$ we have
+% 	$$\|(S_kx)_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq C_E\|x\|_{E(\mathcal {M}_1)},\quad \forall x\in E(\mathcal{M}_1).$$
+% \end{theorem}
+% \begin{proof} Let $x\geq0$ and let $p_i=\chi_{(2^i,2^{i+1}]}(x)$ for each $i\in \mathbb{Z}$. Without loss of generality, we assume that $p_i\neq0$ for each $i\in\mathbb Z.$ By the assumption and the definition of $L_1(\mathcal {M}_2,\ell_{\infty})$, for every $i\in\mathbb {Z}$, we can take $y_i$ such that  $S_k(p_i)\leq y_i$ for all $k\geq0$ and $\|y_i\|_{L_1(\mathcal{M}_2)}\leq\|p_i\|_{L_1(\mathcal{M}_1)}.$ Since $S_k$ is a positive contraction for every $k\geq0$, $S_k(p_i)\leq 1.$ Set $z_i=\min\{y_i,1\}.$ Then $\|z_i\|_{L_1(\mathcal{M}_2)}\leq \|p_i\|_{L_1(\mathcal{M}_1)}.$ Moreover, by Lemma \ref{a-lem-1}, we have that $S_k(p_i)\leq 4z_i$ for all $k\geq0.$
+	
+% 	Set
+% 	$$z=\sum_{i\in\mathbb{Z}}2^{i}z_i$$
+% 	and note that (see e.g.  \cite[Theorem 3.3.3]{LSZ2013book})
+% 	$$\mu(z)\prec\prec\sum_{i\in\mathbb{Z}}2^{i}\mu(z_i).$$
+% 	Furthermore, a combination of inequalities
+% 	$$\|z_i\|_{L_{\infty}(\mathcal{M}_2)}\leq 1,\quad \|z_i\|_{L_1(\mathcal{M}_2)}\leq \tau_1(p_i)$$
+% 	implies that $z_i\prec\prec\chi_{(0,\tau_1(p_i))}.$ Thus,
+% 	\begin{equation}\label{sub}
+% 		\mu(z)\prec\prec\sum_{i\in\mathbb{Z}}2^{i}\chi_{(0,\tau_1(p_i))}.
+% 	\end{equation}
+	
+% 	On the other hand,
+% 	$$\tau_1(p_i)\leq\tau_1(q_i),\quad q_i=\chi_{(2^i,\infty)}(x),\quad i\in\mathbb{Z}.$$
+% 	Therefore,
+% 	\begin{align*}
+% 		\sum_{i\in\mathbb{Z}}2^{i}\chi_{(0,\tau_1(p_i))}&\leq \sum_{i\in\mathbb{Z}}2^{i}\chi_{(0,\tau_1(q_i))}=\sum_{i\in\mathbb{Z}}2^{i}\sum_{j\geq i}\chi_{(\tau_1(q_{j+1}),\tau_1(q_j))}\\
+% 		&=\sum_{j\in\mathbb{Z}}\chi_{(\tau_1(q_{j+1}),\tau_1(q_j))}\sum_{i\leq j}2^{i}=2 \sum_{j\in\mathbb{Z}}\chi_{(\tau_1(q_{j+1}),\tau_1(q_j))}2^{j}\\
+% 		&\leq 2\mu(x),
+% 	\end{align*}
+% 	Therefore, it follows from \eqref{sub} that
+% 	$$\mu(z)\prec\prec 2\mu(x).$$
+% 	Since  $E\in \mathrm{Int}(L_1, L_\infty)$,
+% 	by Lemma \ref{lem-fully}, it follows that
+% 	$$\|z\|_{E(\mathcal{M}_2)} \leq 2C_E\|x\|_{E(\mathcal{M}_1)}.$$	
+	
+% 	Note that
+% 	$$S_k(x)\leq\sum_{i\in\mathbb{Z}}2^{i}S_k(p_i)\leq 4\sum_{i\in\mathbb{Z}}2^{i}z_i=4z.$$
+% 	Hence,
+% 	$$\|(S_kx)_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq 4\|z\|_{E(\mathcal {M}_2)}\leq 8C_E\|x\|_{E(\mathcal {M}_1)}.$$
+% 	This proves the assertion for positive $x.$ The assertion for an arbitrary $x$ follows by invoking Jordan decomposition.
+% \end{proof}
+
+% \begin{corollary}\label{interpolation corollary}
+% 	Let $(\mathcal{M}_1,\tau_1)$ and $(\mathcal{M}_2,\tau_2)$ be semifinite von Neumann algebras with $\tau_2(1)=1$. Let
+% 	$$T_k: L_1(\mathcal{M}_1)\to L_1(\mathcal{M}_2),\quad T_k:L_{\infty}(\mathcal{M}_1)\to L_{\infty}(\mathcal{M}_2),\quad k\geq0,$$
+% 	be positive contractions. Suppose that
+% 	$$\sum_{k\geq0}\|T_kx\|_{L_1(\mathcal{M}_2)}\leq \|x\|_{L_1(\mathcal{M}_1)},\quad \forall x\in L_1(\mathcal{M}_1).$$
+% 	If $E\in{\rm Int}(L_1,L_{\infty}),$ then
+% 	$$\|(T_kx)_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq C_E\|x\|_{Z_E^{\infty}(\mathcal M_1)},\quad \forall x\in E(\mathcal{M}_1).$$
+% \end{corollary}
+% \begin{proof} For positive $x\in L_1(\mathcal{M}_1)$, we have
+% 	$$\|(T_kx)_{k\geq0}\|_{L_1(\mathcal{M}_2,\ell_{\infty})}\leq \Big\|\sum_{k\geq 0}T_kx\Big\|_{L_1(\mathcal{M}_2)}\leq \sum_{k\geq0}\|T_kx\|_{L_1(\mathcal{M}_2)}\leq \|x\|_{L_1(\mathcal{M}_1)}.$$
+% 	Since $\|\cdot\|_{L_1(\mathcal{M}_2,\ell_{\infty})}$ is a norm, for an arbitrary $x,$ we have
+% 	$$\|(T_kx)_{k\geq0}\|_{L_1(\mathcal{M}_2,\ell_{\infty})}\leq 4\|x\|_{L_1(\mathcal{M}_1)}.$$
+% 	These operators satisfy the assumption of Theorem \ref{interpolation theorem}.
+	
+	
+% 	Set $p=\chi_{(\mu(1,x),\infty)}(|x|)$ and note that $\tau_1(p)\leq 1.$ By triangle inequality, we have
+% 	$$\|(T_kx)_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq  \|(T_k(xp))_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}+\|(T_k(x(1-p)))_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}.$$
+% 	By Theorem \ref{interpolation theorem}, we have
+% 	$$\|(T_k(xp))_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq C_E\|xp\|_{E(\mathcal{M}_1)}\leq C_E\|\mu(x)\chi_{(0,1)}\|_E,$$
+% 	where $C_E$ is the constant featuring in Theorem \ref{interpolation theorem}. On the other hand
+% 	\begin{align*}
+% 		\|(T_k(x(1-p)))_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}&\leq \|(T_k(x(1-p)))_{k\geq0}\|_{L_{\infty}(\mathcal{M}_2,\ell_{\infty})}\\
+% 		&=\sup_{k\geq0}\|T_k(x(1-p))\|_{L_{\infty}(\mathcal{M}_2)}\\
+% 		&\leq\|x(1-p)\|_{L_{\infty}(\mathcal{M}_1)}\leq\mu(1,x)\leq\|\mu(x)\chi_{(0,1)}\|_E,
+% 	\end{align*}
+% 	where the first inequality is due to \eqref{1E1}.
+% 	Combining these inequalities, we arrive at
+% 	$$\|(T_kx)_{k\geq0}\|_{E(\mathcal{M}_2,\ell_{\infty})}\leq c_E(C_E+1)\|\mu(x)\chi_{(0,1)}\|_E.$$
+% \end{proof}
+
+% \subsection{Proof of Theorem \ref{first main theorem}}
+% In this subsection, we provide the proof of Theorem \ref{first main theorem}. We need several lemmas.
+
+% \begin{lemma}\label{first rhs lemma}
+% 	Let $1<p<\infty$ and  $(\mathcal{M}_k)_{k\geq0}$ be independent von Neumann subalgebras in $\mathcal M$. Then the mapping
+% 	$$S:y\to \sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(y)\otimes e_k$$
+% 	is bounded from $L_{p}(\mathcal{M})$ to $(L_{p}+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})$.
+% \end{lemma}
+% \begin{proof}
+% 	It suffices to consider the case $y\in L_{p}(\mathcal M)$ is positive.
+% 	Since (see for example \cite[Page 64]{PS2002})
+% 	$$\big((L_{p'}\cap L_1)(\mathcal M\bar{\otimes} \ell_{\infty})\big)^*= (L_{p}+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty}),$$
+% 	we can find $z=\sum_{k\geq0}z_k\otimes e_k\in (L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})$ such that $\|z\|_{(L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty}) }\leq 1$, $z_k\geq0$ for each $k$ and
+% 	$$\|Sy\|_{(L_{p}+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}=(\tau\otimes\sum)(Sy\cdot z)$$
+% 	Then, by the H\"older inequality, we have
+% 	\begin{align*}
+% 		(\tau\otimes\sum)(Sy \cdot z)&=\sum_{k\geq0}\tau(\mathcal{E}_{\mathcal{M}_k}(y)\cdot z_k)=\sum_{k\geq0}\tau(y\cdot \mathcal{E}_{\mathcal{M}_k}(z_k))
+% 		\\&=\tau(y\cdot\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k))
+% 		\leq\|y\|_{L_{p}(\mathcal M)}\left\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\right\|_{L_{p'}(\mathcal M)}.
+% 	\end{align*}
+% 	%For $z\in (L_p\cap L_1)(\mathcal{M}\otimes l_{\infty}),$ we estimate the expression
+% 	%$$(\tau\otimes\sum)(Sy \cdot z).$$
+% 	%If $z=\sum_{k\geq0}z_k\otimes e_k,$ then
+% 	%$$(\tau\otimes\sum)(Sy \cdot z)=\sum_{k\geq0}\tau(\mathcal{E}_{\mathcal{M}_k}(y)\cdot z_k)=$$
+% 	%$$=\sum_{k\geq0}\tau(y\cdot \mathcal{E}_{\mathcal{M}_k}(z_k))=\tau(y\cdot\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)).$$
+% 	%By H\"older inequality, we have
+% 	%$$|(\tau\otimes\sum)(Sy \cdot z)|\leq\|y\|_{p'}\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\|_p.$$
+% 	Applying Corollary \ref{jsz lp corollary}, we obtain
+% 	\begin{align*}
+% 		\left\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\right\|_{L_{p'}(\mathcal M)}&\leq c_p\left\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\otimes e_k\right\|_{(L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{align*}
+% 	By Lemma \ref{zhou2017fact}, we have
+% 	$$\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\otimes e_k\prec\prec \sum_{k\geq0}z_k\otimes e_k=z.$$
+% 	Obviously, the norm in $L_p\cap L_1$ is monotone with respect to the Hardy-Littlewood submajorization. It follows that
+% 	$$\left\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(z_k)\otimes e_k\right\|_{(L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})}
+% 	\leq c_p\|z\|_{(L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})}$$
+% 	We conclude that
+% 	$$\|Sy\|_{(L_{p}+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}\leq c_p\|y\|_{L_{p}(\mathcal M)}.$$
+% 	The assertion follows.
+% \end{proof}
+
+% \begin{lemma}\label{lem-2}
+% 	Let $1<p<\infty$ and  $(\mathcal{M}_k)_{k\geq0}$ be independent von Neumann subalgebras in $\mathcal M$.  Let $p_k\in\mathcal{M}_k$ be projections such that $\sum_{k\geq0}\tau(p_k)\leq 1.$ Consider the operator
+% 	$$T:x\mapsto \sum_{k\geq0} p_k\mathcal E_{\mathcal M_k} (x)p_k.$$
+% 	Then
+% 	$$\|Tx\|_{L_p(\mathcal M)}\leq c_p \|x\|_{L_p(\mathcal M)}, \quad x\in L_p(\mathcal M).$$
+% \end{lemma}
+
+
+
+
+% \begin{proof} Take $0\leq x\in L_p(\mathcal{M}).$  By Corollary \ref{jsz lp corollary}, we have
+% 	$$\|Tx\|_{L_p(\mathcal M)}\leq c_p\Big\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\Big\|_{(L_p\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})}.$$
+% 	By Remark \ref{rem cap}, we have
+% 	\begin{align*}
+% 		&\|Tx\|_{L_p(\mathcal M)}\\
+% 		&\leq c_p\Big(\Big\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\Big\|_{(L_p+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}+\Big\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\Big\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}\Big)\\&\leq c_p\Big(\Big\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(x)\otimes e_k\Big\|_{(L_p+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}+\Big\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\Big\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}\Big).
+% 	\end{align*}
+	
+% 	By Lemma \ref{first rhs lemma}, we have
+% 	$$\Big\|\sum_{k\geq0}\mathcal{E}_{\mathcal{M}_k}(x)\otimes e_k\Big\|_{(L_p+L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}\leq c_{p'}\|x\|_{L_p(\mathcal{M})}.$$
+% 	On the other hand, it follows from the H\"older inequality and the positivity of $x$ that
+% 	\begin{align*}
+% 		\left\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\right\|_{L_1(\mathcal{M} \bar{\otimes} \ell_{\infty})}&=\sum_{k\geq0}\tau(p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k)=\sum_{k\geq0}\tau(xp_k)
+% 		\\&=\tau(x\cdot\sum_{k\geq0}p_k)\leq\|x\|_{L_p(\mathcal M)}\left\|\sum_{k\geq0}p_k\right\|_{L_{p'}(\mathcal M)}.
+% 	\end{align*}
+% 	Applying again Corollary \ref{jsz lp corollary} and taking $\sum_{k\geq0}\tau(p_k)\leq 1$ into account, we arrive at
+% 	$$\left\|\sum_{k\geq0}p_k\right\|_{L_{p'}(\mathcal M)}\leq c_p\left\|\sum_{k\geq0}p_k\otimes e_k\right\|_{(L_{p'}\cap L_1)(\mathcal{M}\bar{\otimes} \ell_{\infty})}\leq c_p.$$
+% 	Thus
+% 	$$\left\|\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}\leq c_p\|x\|_{L_p(\mathcal{M})}.$$
+% 	The desired assertion  follows.
+% \end{proof}
+
+% \begin{lemma}\label{third rhs lemma} Let $(\mathcal{M}_k)_{k\geq0}$ be independent von Neumann subalgebras in $\mathcal M$. Let $p_k\in\mathcal{M}_k$ be projections such that $\sum_{k\geq0}\tau(p_k)\leq 1$, and let
+% 	$$\widehat T:x=(x_k)_{k\geq0}\to \sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x_k)p_k.$$
+% 	If $E\in{\rm Int}(L_p,L_q),$ $1<p\leq q<\infty,$ then
+% 	$$\|\widehat{T}x\|_{E(\mathcal{M})}\leq c_E \|x\|_{E(\mathcal{M},\ell_{\infty})}.$$
+% \end{lemma}
+% \begin{proof} It suffices to establish the assertion for the case when $x$ consists of self-adjoint elements. Choose  $0\leq A\in E(\mathcal{M})$ such that
+% 	$$-A\leq x_k\leq A,\quad k\geq0,\quad \|A\|_{E(\mathcal{M})}\leq 2\|x\|_{E(\mathcal{M},\ell_{\infty})}.$$
+% 	It follows that
+% 	$$-T(A)\leq \widehat{T}x\leq T(A).$$
+% 	Thus,
+% 	$$\|\widehat{T}x\|_{E(\mathcal{M})}\leq 2\|T(A)\|_{E(\mathcal{M})}.$$
+	
+% 	By Lemma \ref{lem-2},
+% 	$$\|T\|_{L_p(\mathcal{M})\to L_p(\mathcal{M})}\leq c_p,\quad \|T\|_{L_q(\mathcal{M})\to L_q(\mathcal{M})}\leq c_q.$$
+% 	Since $E\in \mathrm{Int}(L_p,L_q),$ it follows that $T:E(\mathcal{M})\to E(\mathcal{M})$ and $\|T\|_{E(\mathcal{M})\to E(\mathcal{M})}\leq c_E.$ In particular, we have
+% 	$$\|T(A)\|_{E(\mathcal{M})}\leq c_E \|A\|_{E(\mathcal{M})}\leq  2c_E\|x\|_{E(\mathcal{M},\ell_{\infty})}.$$
+% 	A combination of these inequalities completes the proof.
+% \end{proof}
+
+% Now we are in a position to prove Theorem \ref{first main theorem}. We divided the proof into two parts.
+
+% \begin{proof}[Proof of the upper estimate in Theorem \ref{first main theorem}] For simplicity, we assume  that $\chi_{\{\lambda\}}(x_k)=0$ for every $\lambda\neq0.$ Set
+% 	$$X=\sum_{k\geq0}x_k\otimes e_k$$	
+% 	and introduce the notations
+% 	$$X=\sum_{k\geq0}x_k\otimes e_k,\quad p_k=\chi_{(\mu(1,X),\infty)}(|x_k|),\quad x_{1k}=p_kx_kp_k,\quad x_{2k}=x_k-x_{1k}.$$
+% 	For each $k\geq0$, write
+% 	$$x_k=x_{1k}-\tau(x_{1k})+x_{2k}-\tau(x_{2k}).$$
+% 	By triangle inequality, we have
+% 	\begin{align}\label{e-2}
+% 		\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal M)}\leq \left\|\sum_{k\geq0}x_{1k}-\tau(x_{1k})\right\|_{E(\mathcal{M})}+\left\|\sum_{k\geq0}x_{2k}-\tau(x_{2k})\right\|_{E(\mathcal M)}.
+% 	\end{align}
+	
+% 	Note that $(x_k)_{k\geq1}$ are independent. Then, for the $(p_k)_{k\geq0}$ above, we have
+% 	$$ \sum_{k\geq0}x_{1k}=\widehat{T}((x_k)_{k\geq0}),$$
+% 	where $\widehat{T}$ is as in Lemma \ref{third rhs lemma}.
+% 	Since $\sum_{k\geq0} \tau(p_k)\leq 1$, it follows from Lemma \ref{third rhs lemma} that
+% 	\begin{equation}\label{head upper estimate}
+% 		\left\|\sum_{k\geq0}x_{1k}\right\|_{E(\mathcal{M})}\leq c_E\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}.
+% 	\end{equation}
+% 	Hence, by \eqref{head upper estimate},
+% 	\begin{align}\label{e-3}
+% 		\left\|\sum_{k\geq0}x_{1k}-\tau(x_{1k})\right\|_{E(\mathcal{M})}&\leq \left\|\sum_{k\geq0}x_{1k}\right\|_{E(\mathcal{M})}+\left|\tau\left(\sum_{k\geq0}x_{1k}\right)\right|\nonumber\\
+% 		&\leq \left\|\sum_{k\geq0}x_{1k}\right\|_{E(\mathcal{M})}+\left\|\sum_{k\geq0}x_{1k}\right\|_{L_1(\mathcal {M})}\nonumber\\
+% 		&\leq 2\left\|\sum_{k\geq0}x_{1k}\right\|_{E(\mathcal{M})}\leq c_E\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})},
+% 	\end{align}
+% 	where the second inequality is because of \eqref{1E1}.
+% 	%The second summand is estimated as follows:
+% 	%$$\left|\tau\left(\sum_{k\geq0}x_{1k}\right)\right|\leq\left\|\sum_{k\geq0}x_{1k}\right\|_{L_1(\mathcal {M})}\leq\left\|\sum_{k\geq0}x_{1k}\right\|_{E(\mathcal{M})}\leq c_E\|(x_k)\|_{E(\mathcal{M},\ell_{\infty})}.$$
+% 	%Hence, \eqref{head upper estimate} implies that the first two summands are controlled by $\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}$ up to a constant $c_E$ only depending on $E$.
+	
+	
+	
+% 	Now we turn to estimate the second summand of \eqref{e-2}. Note that $(x_{2k}-\tau(x_{2k}))_{k\geq0}$ is mean zero independent random variables and $\tau(x_{2k})\prec\prec x_{2k}$. Applying Theorem \ref{lem-jsz-1-2} and Lemma \ref{zhou2017fact}, we obtain
+% 	$$\left\|\sum_{k\geq0}x_{2k}-\tau(x_{2k})\right\|_{E(\mathcal M)}\lesssim_E \left\|\sum_{k\geq0}[x_{2k}-\tau(x_{2k})]\otimes e_k\right\|_{Z_E^2(\mathcal{M}\bar{\otimes} \ell_{\infty})}.$$
+% 	Noting that $x_{2k}-\tau(x_{2k})\prec\prec 2x_{2k}$ for each $k$, by Lemma \ref{zhou2017fact}, we have
+% 	\begin{align*}
+% 		\left\|\sum_{k\geq0}[x_{2k}-\tau(x_{2k})]\otimes e_k\right\|_{Z_E^2(\mathcal {M}\otimes \ell_{\infty})}&\lesssim_E \left\|\sum_{k\geq0}[x_{2k}-\tau(x_{2k})]\otimes e_k\right\|_{(L_2\cap L_{\infty})(\mathcal{M}\bar{\otimes}\ell_{\infty})}\\
+% 		&\leq 2\left\|\sum_{k\geq0}x_{2k}\otimes e_k\right\|_{(L_2\cap L_{\infty})(\mathcal{M}\bar{\otimes} \ell_{\infty})}\\
+% 		&=2\|\mu(X)\chi_{(1,\infty)}\|_{L_2\cap L_{\infty}}\lesssim\|X\|_{(L_1+L_2)(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{align*}
+% 	A combination of these inequalities implies
+% 	\begin{equation*}\label{e-4}
+% 		\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\lesssim_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{(L_1+L_2)(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{equation*}
+% \end{proof}
+
+% \begin{proof}[Proof of the lower estimate in Theorem \ref{first main theorem}] Let
+% 	$$T_k: L_1(\mathcal{M})\to L_1(\mathcal{M}),\quad T_k:L_{\infty}(\mathcal{M})\to L_{\infty}(\mathcal{M}),\quad k\geq0,$$
+% 	be positive contractions defined by setting
+% 	$$T_kx=\mathcal{E}_{\mathcal M_k}x,\quad k\geq0.$$
+% 	Obviously, the family $(T_k)_{k\geq0}$ satisfies the conditions of Corollary \ref{interpolation corollary}. Therefore,
+% 	\begin{equation}\label{fmbeq1}
+% 		\|(T_kx)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}\leq c_E\|x\|_{Z_E^{\infty}(\mathcal M)},\quad \forall x\in E(\mathcal{M}).
+% 	\end{equation}
+	
+% 	Applying \eqref{fmbeq1} to $x=\sum_{k\geq0}x_k,$ we obtain
+% 	$$\left\|(x_k)_{k\geq0}\right\|_{E(\mathcal{M},\ell_{\infty})}\lesssim_E\|\sum_{k\geq0}x_k\|_{E(\mathcal {M})}.$$
+% 	On the other hand, it follows from Theorem 1.2 in \cite{JSZ} that
+% 	$$\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{(L_1+L_2)(\mathcal {M}\bar{\otimes} \ell_{\infty})}\lesssim_E \left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{Z_E^2(\mathcal {M}\bar{\otimes} \ell_{\infty})}\lesssim_E\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}.$$
+% 	Combining the last $2$ estimates, we complete the proof.
+% \end{proof}
+
+% We now give the proof of Corollary \ref{corollary}. Actually,  Corollary \ref{corollary} is a consequence of Theorem \ref{first main theorem}.
+
+% \begin{proof}[Proof of Corollary \ref{corollary}]
+% 	For each $k\geq0$,  we write
+% 	$$x_k=x_k-\tau(x_k)+\tau(x_k).$$
+% 	Then, by triangle inequality, we have
+% 	\begin{equation}\label{e-6}
+% 		\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\leq
+% 		\left\|\sum_{k\geq0}x_k-\tau(x_k)\right\|_{E(\mathcal{M})}
+% 		+\tau\left(\sum_{k\geq0}x_k\right).
+% 	\end{equation}
+% 	It is obvious that
+% 	$$\tau(\sum_{k\geq0}x_k)=\|\sum_{k\geq0}x_k\otimes e_k\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}.$$
+% 	Thus, it suffices to estimate the first term in the right hand side of \eqref{e-6}. 
+% 	From  the definition of $\|\cdot\|_{E(\mathcal{M},\ell_{\infty})}$, it follows that
+% 	\begin{align*}
+% 		\left\|(\tau(x_k))_{k\geq0}\right\|_{E(\mathcal{M},\ell_{\infty})}\leq \sup_{k\geq 0} \|x_k\|_{L_1(\M)}\leq  \sum_{k\geq0} \|x_k\|_{L_1(\M)}= \left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}. \end{align*}
+% 	Note that $(x_k-\tau(x_k))_{k\geq0}$ are mean zero and independent. Using Theorem \ref{first main theorem} and the fact that $\tau(x_k)\prec\prec x_k$, we obtain
+% 	\begin{align*}
+% 		&\left\|\sum_{k\geq0}x_k-\tau(x_k)\right\|_{E(\mathcal{M})}\\
+% 		&\lesssim_E\left\|(x_k-\tau(x_k))_{k\geq0}\right\|_{E(\mathcal{M},\ell_{\infty})}
+% 		+\left\|\sum_{k\geq0}(x_k-\tau(x_k))\otimes e_k\right\|_{(L_1+L_2)(\mathcal{M}\bar{\otimes} \ell_{\infty})}\\
+% 		&\leq \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\|(\tau(x_k))_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+2\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{(L_1+L_2)(\mathcal{M}\bar{\otimes} \ell_{\infty})}\\
+% 		&\leq \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+3\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{align*}
+	
+	
+% 	From these estimates, we obtain
+% 	\begin{equation}\label{e-7}
+% 		\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\lesssim_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{equation}
+	
+% 	On the other hand,  for each $k\geq0$, we have $0\leq x_k\leq \sum_{k\geq0}x_k.$ Therefore,
+% 	$$\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}\leq\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}.$$
+% 	Also, by \eqref{1E1}, we have
+% 	$$\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}=\left\|\sum_{k\geq0}x_k\right\|_{L_1(\mathcal{M})}\leq\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}.$$
+% 	Then
+% 	$$\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_1(\mathcal{M}\bar{\otimes} \ell_{\infty})}\leq 2\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})},$$
+% 	which, together with \eqref{e-7}, completes the proof of the corollary.
+% \end{proof}
+
+
+% Next result is of independent interest and is based on Corollary \ref{corollary}. One may compare it with \eqref{ro-max-1}.
+
+
+
+% \begin{corollary}\label{asymmetric theorem}
+% 	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset  E(\mathcal{M})$ be mean zero random variables.
+% 	If $E\in{\rm Int}(L_p,L_q)$, $2<p\leq q<\infty,$ then
+% 	\begin{equation*}\label{asy}
+% 		\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E \|(x_k)_{k\geq0}\|_{E(\mathcal {M},\ell_{\infty}^c)}+\left\|\sum_{k\geq0}x_k \otimes e_k\right\|_{L_2(\mathcal{M}\bar{\otimes} \ell_{\infty})}.
+% 	\end{equation*}
+% \end{corollary}
+
+% \begin{proof} By Theorem \ref{lem-jsz-1-4}, we have
+% 	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E\left\|\left(\sum_{k\geq0}|x_k|^2\right)^{1/2}\right\|_{E(\mathcal{M})}
+% 	=\left\|\sum_{k\geq0}|x_k|^2\right\|_{E^{(1/2)}(\mathcal{M})}^{1/2}.$$
+% 	Since $E\in{\rm Int}(L_p,L_q),$ it follows that
+% 	$E^{(1/2)}\in{\rm Int}(L_{\frac{p}{2}},L_{\frac{q}{2}})$ (see e.g. \cite[Proposition 3.5]{DDPS2011}). Hence, $E^{(1/2)}$ satisfies the assumptions of Corollary \ref{corollary}. Applying Corollary \ref{corollary} for the space $E^{(1/2)}$ and the sequence $(|x_k|^2)_{k\geq0},$ we obtain
+% 	\begin{align*}
+% 		\left\|\sum_{k\geq0}|x_k|^2\right\|_{E^{(1/2)}(\mathcal{M})}^{1/2}&\approx_E\left\|(|x_k|^2)_{k\geq0}\right\|_{E^{(1/2)}(\mathcal{M},\ell_{\infty})}^{\frac12}+
+% 		\left\|\sum_{k\geq0}|x_k|^2\otimes e_k\right\|_{L_1(\mathcal{M})}^{\frac12}\\
+% 		&=\|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty}^c)}+
+% 		\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{L_2(\mathcal{M})}.
+% 	\end{align*}
+% 	The desired assertion follows.
+% \end{proof}
+
+
+
+
+% \noindent{\bf Acknowledgement.}
+% The authors would like to thank the anonymous reviewer who suggested the current proof  of  Theorem \ref{open} which is shorter
+% than its initial version.  
+
+
+
+% %\section{Free independence}\label{sec5}
+% %
+% %
+% %	The noncommutative Rosenthal inequalities and Johnson-Schechtman inequalities are first studied in the free probability theory (\cite{VoDy1992}, \cite{NiSp2006}). We refer the reader to \cite{JuPa2007} (resp. \cite{Vo1998}) for the free Rosenthal inequalities with $1\leq p<\infty$ (resp. $p=\infty$), and to \cite[Theorem 1]{SuZa2012} for free  Johnson-Schechtman inequalities. It is worth mentioning that the free
+% %	Kruglov operator was constructed in \cite[Section 4]{SuZa2012}. Recently, modular version of free  Johnson-Schechtman inequalities was investigated in \cite{JiSu2016}
+% %
+% %
+% %\smallskip
+% %
+% %The freely independent case of Corollary \ref{corollary} was fully established in \cite[Theorem 5.4]{JiSu2016}. However, the free version of Theorem \ref{first main theorem} is still unknown.
+% %The argument in the proof of Theorem \ref{first main theorem} can be used to prove the following result for freely independent random variables.  We do not attend put more information about freeness here. We refer the reader to \cite[Section 2]{SuZa2012} or \cite{JiSu2016} for the definition of free independence.
+% %
+% %\begin{theorem}\label{free thm}
+% %	Let $E=E(0,1)$ be a symmetric Banach function space and $(\mathcal{M},\tau)$ be a noncommutative probability space. Let $(x_k)_{k\geq0}\subset  E(\mathcal{M})$ be mean zero freely independent random variables.
+% %	If $E\in{\rm Int}(L_p,L_q),$ $1\leq p\leq q\leq \infty,$  then
+% %	$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E \|(x_k)_{k\geq0}\|_{E(\mathcal{M},\ell_{\infty})}+\left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{(L_1+L_2)(\mathcal{M}\otimes \ell_{\infty})}.$$
+% %\end{theorem}
+% %
+% %
+% %\begin{lemma}\label{lem-free}
+% %	Let  $(\mathcal{M}_k)_{k\geq0}$ be freely independent von Neumann subalgebras in $\mathcal M$.  Let $p_k\in\mathcal{M}_k$ be projections such that $\sum_{k\geq0}\tau(p_k)\leq 1.$ Consider the operator
+% %	$$T:x\mapsto \sum_{k\geq0} p_k\mathcal E_{\mathcal M_k} (x)p_k.$$
+% %	If $E\in \mathrm{Int}(L_1, L_\infty)$, then
+% %	$$\|Tx\|_{E(\mathcal M)}\leq c_E \|x\|_{E(\mathcal M)}, \quad x\in E(\mathcal M).$$
+% %\end{lemma}
+% %
+% %\begin{proof} Let $0\leq x\in L_1(\mathcal{M}).$ We have
+% %$$\|T(x)\|_{L_1(\mathcal{M})}=\tau(\sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x)p_k)=\tau(\sum_{k\geq0}xp_k).$$
+% %Since $(p_k)_{k\geq 0}$ are freely independent, it follows from \cite[Corollary 33(a)]{SuZa2012} that
+% %$$\Big\|\sum_{k\geq0} p_k\Big\|_{L_{\infty}(\mathcal{M})}\leq 64 \Big\|\sum_{k\geq0} p_k\otimes e_k\Big\|_{(L_1\cap L_{\infty})(\mathcal{M}\otimes \ell_{\infty})}\leq 64.$$
+% %By H\"older inequality, we have
+% %$$\|T(x)\|_{L_1(\mathcal{M})}\leq 64\|x\|_{L_1(\mathcal{M})},\quad 0\leq x\in L_1(\mathcal{M}).$$
+% %By Jordan decomposition, we have
+% %$$\|T(x)\|_{L_1(\mathcal{M})}\leq 256\|x\|_{L_1(\mathcal{M})},\quad x\in L_1(\mathcal{M}).$$
+% %
+% %Let $0\leq x\in L_{\infty}(\mathcal{M}).$ It follows from \cite[Corollary 33(a)]{SuZa2012} that
+% %$$\|T(x)\|_{L_{\infty}(\mathcal{M})}\leq 64\|\sum_{k\geq0} p_k\mathcal E_{\mathcal M_k} (x)p_k\|_{(L_1\cap L_{\infty})(\mathcal{M}\otimes \ell_{\infty})}=$$
+% %$$=64\max\{\|Tx\|_{L_1(\mathcal{M})},\sup_{k\geq0}\|p_k\mathcal E_{\mathcal M_k} (x)p_k\|_{ L_{\infty}(\mathcal{M}\otimes \ell_{\infty})}\}\leq$$
+% %$$\leq 64\max\{64\|x\|_{L_1(\mathcal{M})},\sup_{k\geq0}\|\mathcal E_{\mathcal M_k} (x)\|_{ L_{\infty}(\mathcal{M}\otimes \ell_{\infty})}\}\leq 4096\|x\|_{L_{\infty}(\mathcal{M})}.$$
+% %By Jordan decomposition, we have
+% %$$\|T(x)\|_{L_{\infty}(\mathcal{M})}\leq 16384\|x\|_{L_{\infty}(\mathcal{M})},\quad x\in L_{\infty}(\mathcal{M}).$$
+% %
+% %The assertion follows now by interpolation.
+% %\end{proof}
+% %
+% %
+% %The proof of the following corollary is similar to Lemma \ref{third rhs lemma}.
+% %\begin{corollary}\label{free corollary} Let $(\mathcal{M}_k)_{k\geq0}$ be freely independent von Neumann subalgebras in $\mathcal M$. Let $p_k\in\mathcal{M}_k$ be projections such that $\sum_{k\geq0}\tau(p_k)\leq 1$, and let
+% %	$$\widehat T:x=(x_k)_{k\geq0}\to \sum_{k\geq0}p_k\mathcal{E}_{\mathcal{M}_k}(x_k)p_k.$$
+% %	If $E\in{\rm Int}(L_p,L_q),$ $1\leq p\leq q\leq\infty,$ then
+% %	$$\|\widehat{T}x\|_{E(\mathcal{M})}\leq c_E \|x\|_{E(\mathcal{M},\ell_{\infty})},\quad x=(x_k)_{k\geq0}\in E(\mathcal{M},\ell_{\infty}).$$
+% %\end{corollary}
+% %
+% %\begin{proof}[Proof of Theorem \ref{free thm}]
+% %The proof follows that of Theorem \ref{first main theorem} {\it mutatis mutandi}. We use Corollary \ref{free corollary} and \cite[Theorem 1(b)]{SuZa2012} instead of Lemma \ref{third rhs lemma} and Theorem \ref{lem-jsz-1-2}, respectively.
+% %\end{proof}
+
+% %\subsection{Open problems}As proved by Jiao, Sukochev and Zanin in \cite[Corollary 1.3]{JSZ}, for $E\in \mathrm{Int}(L_1, L_q)$ ($1<q<\infty$), it holds true that
+% %$$\left\|\sum_{k\geq0}x_k\right\|_{E(\mathcal{M})}\approx_E \left\|\sum_{k\geq0}x_k\otimes e_k\right\|_{Z_E^1(\mathcal{M}\otimes \ell_{\infty})}.$$
+% %However, in Corollary \ref{corollary}, we now only can take $E\in \mathrm{Int}(L_p,L_q)$ with $1<p\leq q<\infty$. It is natural to consider whether one can take $E\in \mathrm{Int}(L_1, L_q)$ ($1<q<\infty$) in Corollary \ref{corollary}. To solve this problem, we suggest to prove the following
+% %
+% %\begin{problem}
+% %	Assume that $(x_k)_{k\geq0}$ are noncommutative positive independent random variables with $\sum_{k\geq 0}\tau(p_k)\leq 1$, where $p_k=\mathrm{supp}(x_k)$. Do we have
+% %	$$\sum_{k\geq0}\|x_k\|_{L_1(\mathcal{M})}\leq  C\|(x_k)_{k\geq0}\|_{L_1(\mathcal{M},\ell_{\infty})}?$$
+% %\end{problem}
+% %\noindent In commutative probability, one can easily solve this problem by applying \cite[Lemma 3]{Jo1989}. However, we still do not know the noncommutative analogy of \cite[Lemma 3]{Jo1989}. By the way, free analogy of \cite[Lemma 3]{Jo1989} is still open (see also \cite[Problem 7.1]{JiSu2016}).
+% %
+% %\bigskip
+% %Another natural problem is to extend Theorem \ref{free thm} to $E\in \mathrm{Int}(L_p,L_{\infty})$ with $0<p<1$. To this end, one would better first to prove \cite[Theorem 1(b)]{SuZa2012} for symmetric quasi-Banach spaces $E$.
+
+
+
+% %\bibliographystyle{amsplain}
+% %\bibliography{NCZhou}
+
+
+
+% \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+% \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% % \MRhref is called by the amsart/book/proc definition of \MR.
+% \providecommand{\MRhref}[2]{%
+% 	\href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+% }
+% \providecommand{\href}[2]{#2}
+% \begin{thebibliography}{10}
+	
+% 	\bibitem{AsSu2005}
+% 	S.~Astashkin and F.~Sukochev, \emph{Series of independent random variables in
+% 		rearrangement invariant spaces: an operator approach}, Israel J. Math.
+% 	\textbf{145} (2005), 125--156.  
+	
+% 	\bibitem{AsSu2010}
+% 	S.~Astashkin and F.~Sukochev, \emph{Best constants in {R}osenthal-type inequalities and the
+% 		{K}ruglov operator}, Ann. Probab. \textbf{38} (2010), no.~5, 1986--2008.
+ 
+	
+% 	\bibitem{Bekjan2018}
+% 	T.~Bekjan, \emph{Duality for symmetric {H}ardy spaces of noncommutative
+% 		martingales}, Math. Z. \textbf{289} (2018), no.~3-4, 787--802.  
+	
+% 	\bibitem{Bek2012}
+% 	T.~Bekjan and Z.~Chen, \emph{Interpolation and {$\Phi$}-moment inequalities of
+% 		noncommutative martingales}, Probab. Theory Related Fields \textbf{152}
+% 	(2012), no.~1-2, 179--206.  
+	
+	
+% 	\bibitem{Bekjan2017}
+% 	T.~Bekjan, Z.~Chen, and A.~Osekowski, \emph{Noncommutative maximal inequalities
+% 		associated with convex functions}, Trans. Amer. Math. Soc. \textbf{369}
+% 	(2017), no.~1, 409--427.  
+	
+% 	\bibitem{Be1988}
+% 	C.~Bennett and R.~Sharpley, \emph{Interpolation of operators}, Pure and Applied
+% 	Mathematics, vol. 129, Academic Press, Inc., Boston, MA, 1988.  
+	
+% 	\bibitem{Ber1976}
+% 	J.~Bergh and J.~L{\"o}fstr{\"o}m, \emph{Interpolation spaces. {A}n
+% 		introduction}, Springer-Verlag, Berlin-New York, 1976, Grundlehren der
+% 	Mathematischen Wissenschaften, No. 223.  
+	
+% 	\bibitem{Bra1994}
+% 	M.~Braverman, \emph{Independent random variables and rearrangement invariant
+% 		spaces}, London Mathematical Society Lecture Note Series, vol. 194, Cambridge
+% 	University Press, Cambridge, 1994.  
+	
+% 	\bibitem{Bu1973}
+% 	D.~L. Burkholder, \emph{Distribution function inequalities for martingales},
+% 	Ann. Probability \textbf{1} (1973), 19--42.  
+	
+% %	\bibitem{Ca2020}
+% %	L.~Cadilhac, \emph{Majorization, interpolation and noncommutative khintchine
+% %		inequality}, preprint.
+% 	\bibitem{CR2019}
+% 	 L.~Cadilhac and E.~Ricard, \emph{Sums of free variables in fully symmetric spaces},  Proc. Lond. Math. Soc. (3) \textbf{122} (2021), no. 5, 724--744.
+	
+% 	\bibitem{PS2002}
+% 	B.~de~Pagter, H.~Witvliet, and F.~Sukochev, \emph{Double operator integrals},
+% 	J. Funct. Anal. \textbf{192} (2002), no.~1, 52--111.  
+	
+% %   \bibitem{Di2011Th}
+% %	S.~Dirksen, \emph{Non-commutative and vector-valued {R}osenthal inequalities}, Thesis, Delft University of Technology (2011).
+	
+% 	\bibitem{Di20152}
+% 	S.~Dirksen, \emph{Noncommutative {B}oyd interpolation theorems}, Trans. Amer.
+% 	Math. Soc. \textbf{367} (2015), no.~6, 4079--4110.  
+	
+% 	\bibitem{Di20151}
+% 	S.~Dirksen, \emph{Weak-type interpolation for noncommutative maximal operators},
+% 	J. Operator Theory \textbf{73} (2015), no.~2, 515--532. 
+	
+% 	\bibitem{DDPS2011}
+% 	S.~Dirksen, B.~de~Pagter, D.~Potapov, and F.~Sukochev, \emph{Rosenthal
+% 		inequalities in noncommutative symmetric spaces}, J. Funct. Anal.
+% 	\textbf{261} (2011), no.~10, 2890--2925.  
+	
+% 	\bibitem{Fa1986}
+% 	T.~Fack and H.~Kosaki, \emph{Generalized {$s$}-numbers of {$\tau$}-measurable
+% 		operators}, Pacific J. Math. \textbf{123} (1986), no.~2, 269--300.  
+	
+% \bibitem{HH2019}
+% P.~Harjulehto and P.~H\"{a}st\"{o}, \emph{Orlicz spaces and generalized Orlicz spaces}, Lecture Notes in Mathematics, 2236. Springer, Cham, 2019.
+	
+% 	\bibitem{Holmstedt}
+% 	T.~Holmstedt, \emph{Interpolation of quasi-normed spaces}, Math. Scand.
+% 	\textbf{26} (1970), 177--199.
+	
+% 	\bibitem{Hong-Mei}
+% 	G.~Hong and T.~Mei, \emph{John-{N}irenberg inequality and atomic decomposition
+% 		for noncommutative martingales}, J. Funct. Anal. \textbf{263} (2012), no.~4,
+% 	1064--1097.  
+	
+% 	\bibitem{Ji2012}
+% 	Y.~Jiao, \emph{Martingale inequalities in noncommutative symmetric spaces},
+% 	Arch. Math. (Basel) \textbf{98} (2012), no.~1, 87--97.  
+	
+% 	\bibitem{JOW2018}
+% 	Y.~Jiao, A.~Os\c{e}kowski, and L.~Wu, \emph{Inequalities for noncommutative
+% 		differentially subordinate martingales}, Adv. Math. \textbf{337} (2018),
+% 	216--259.  
+	
+% 	\bibitem{JOW2019aop}
+% 	Y.~Jiao, A.~Os\c{e}kowski, and L.~Wu, \emph{Strong differential subordinates for noncommutative
+% 		submartingales}, Ann. Probab. \textbf{47} (2019), no.~5, 3108--3142.
+ 
+
+	
+% 	\bibitem{JOW2019-good}
+% 	Y.~Jiao, A.~Osekowski, and L.~Wu, \emph{Noncommutative good-$\lambda$
+% 		inequalities}, arXiv:1905.07057v2 (2019).
+	
+% %	\bibitem{JOWZZ2019}
+% %	Y.~Jiao, A.~Osekowski, L.~Wu, D.~Zanin, and D.~Zhou, \emph{Noncommutative
+% %		good-$\lambda$ inequalities and bmo-type conditions}, Preprint (2020).
+	
+% 	\bibitem{JRWZ2019}
+% 	Y.~Jiao, N.~Randrianantoanina, L.~Wu, and D.~Zhou, \emph{Square functions for
+% 		noncommutative differentially subordinate martingales},
+% 	  Comm. Math. Phys. \textbf{374} (2020), no.~2, 975--1019.
+	
+% 	\bibitem{JiSu2016}
+% 	Y.~Jiao, F.~Sukochev, G.~Xie, and D.~Zanin, \emph{{$\Phi$}-moment inequalities
+% 		for independent and freely independent random variables}, J. Funct. Anal.
+% 	\textbf{270} (2016), no.~12, 4558--4596.  
+	
+% 	\bibitem{JSZ}
+% 	Y.~Jiao, F.~Sukochev, and D.~Zanin, \emph{Johnson-{S}chechtman and {K}hinchine
+% 		inequalities in noncommutative probability theory}, J. Lond. Math. Soc. (2)
+% 	\textbf{94} (2016), no.~1, 113--140.  
+	
+% 	\bibitem{Zhou2017JFA}
+% 	Y.~Jiao, F.~Sukochev, D.~Zanin, and D.~Zhou, \emph{Johnson-{S}chechtman
+% 		inequalities for noncommutative martingales}, J. Funct. Anal. \textbf{272}
+% 	(2017), no.~3, 976--1016.  
+	
+% 	\bibitem{Jo1989}
+% 	W.~Johnson and G.~Schechtman, \emph{Sums of independent random variables in
+% 		rearrangement invariant function spaces}, Ann. Probab. \textbf{17} (1989),
+% 	no.~2, 789--808.  
+	
+% 	\bibitem{Ju2002}
+% 	M.~Junge, \emph{Doob's inequality for non-commutative martingales}, J. Reine
+% 	Angew. Math. \textbf{549} (2002), 149--190.  
+	
+% 	\bibitem{JP2014}
+% 	 M.~Junge and M.~Perrin, \emph{{T}heory of {$ H_p$}-spaces for continuous filtrations in
+% 	 	von {N}eumann algebras}, Ast\'{e}risque, \textbf{362} (2014), vi+134.
+% %	\bibitem{JuPa2007}
+% %	M.~Junge, J.~Parcet, and Q.~Xu, \emph{Rosenthal type inequalities for free
+% %		chaos}, Ann. Probab. \textbf{35} (2007), no.~4, 1374--1437.
+	
+% 	\bibitem{Ju2003}
+% 	M.~Junge and Q.~Xu, \emph{Noncommutative {B}urkholder/{R}osenthal
+% 		inequalities}, Ann. Probab. \textbf{31} (2003), no.~2, 948--995.  
+	
+% 	\bibitem{JX2007}
+% 	M.~Junge and Q.~Xu, \emph{Noncommutative maximal ergodic theorems}, J. Amer. Math. Soc. \textbf{20} (2007), no.~2, 385--439.
+	
+% 	\bibitem{Ju2008}
+% 	M.~Junge and Q.~Xu, \emph{Noncommutative {B}urkholder/{R}osenthal inequalities. {II}.
+% 		{A}pplications}, Israel J. Math. \textbf{167} (2008), 227--282.  
+	
+% 	\bibitem{Ka2003}
+% 	N.~Kalton and S.~Montgomery-Smith, \emph{Interpolation of {B}anach spaces},
+% 	Handbook of the geometry of {B}anach spaces, {V}ol.\ 2, North-Holland,
+% 	Amsterdam, 2003, pp.~1131--1175.  
+	
+% 	\bibitem{Kalton2008}
+% 	N.~Kalton and F.~Sukochev, \emph{Symmetric norms and spaces of operators}, J.
+% 	Reine Angew. Math. \textbf{621} (2008), 81--121. 
+	
+% 	\bibitem{Krein1982}
+% 	S.~Krei{n}, Y.~Petunin, and E.~Semenov, \emph{Interpolation of linear
+% 		operators}, Translations of Mathematical Monographs, vol.~54, American
+% 	Mathematical Society, Providence, R.I., 1982, Translated from the Russian by
+% 	J. Sz\H ucs.  
+
+% \bibitem{Long1993}
+% R.~Long, \emph{Martingale spaces and inequalities}, Peking University Press,
+% Beijing; Friedr. Vieweg \& Sohn, Braunschweig, 1993.  
+	
+% 	\bibitem{LSZ2013book}
+% 	S.~Lord, F.~Sukochev, and D.~Zanin, \emph{Singular traces}, De Gruyter Studies
+% 	in Mathematics, vol.~46, De Gruyter, Berlin, 2013, Theory and applications.
+ 
+
+% \bibitem{Ma1989}
+% L.~Maligranda,  \emph{Orlicz spaces and interpolation}, Seminars in Mathematics, 5. Universidade Estadual de Campinas, Departamento de Matematica, Campinas, 1989.
+	
+% %	\bibitem{NiSp2006}
+% %	A.~Nica and R.~Speicher, \emph{Lectures on the combinatorics of free
+% %		probability}, London Mathematical Society Lecture Note Series, vol. 335,
+% %	Cambridge University Press, Cambridge, 2006. \MR{2266879}
+	
+% 	\bibitem{Rand2006}
+% 	J.~Parcet and N.~Randrianantoanina, \emph{Gundy's decomposition for
+% 		non-commutative martingales and applications}, Proc. London Math. Soc. (3)
+% 	\textbf{93} (2006), no.~1, 227--252.  
+	
+% 	\bibitem{Per2009}
+% 	M.~Perrin, \emph{A noncommutative {D}avis' decomposition for martingales}, J.
+% 	Lond. Math. Soc. (2) \textbf{80} (2009), no.~3, 627--648. 
+	
+% 	\bibitem{Pi1997}
+% 	G.~Pisier and Q.~Xu, \emph{Non-commutative martingale inequalities}, Comm.
+% 	Math. Phys. \textbf{189} (1997), no.~3, 667--698.  
+	
+% 	\bibitem{Rand2002}
+% 	N.~Randrianantoanina, \emph{Non-commutative martingale transforms}, J. Funct.
+% 	Anal. \textbf{194} (2002), no.~1, 181--212.  
+	
+% 	\bibitem{Rand2005}
+% 	N.~Randrianantoanina, \emph{A weak type inequality for non-commutative martingales and
+% 		applications}, Proc. London Math. Soc. (3) \textbf{91} (2005), no.~2,
+% 	509--542.  
+	
+% 	\bibitem{Rand2007}
+% 	N.~Randrianantoanina, \emph{Conditioned square functions for noncommutative martingales},
+% 	Ann. Probab. \textbf{35} (2007), no.~3, 1039--1070.  
+	
+% 	\bibitem{RW2015}
+% 	N.~Randrianantoanina and L.~Wu, \emph{Martingale inequalities in noncommutative
+% 		symmetric spaces}, J. Funct. Anal. \textbf{269} (2015), no.~7, 2222--2253.
+ 
+	
+% %	\bibitem{Wu2017}
+% %	\bysame, \emph{Noncommutative {B}urkholder/{R}osenthal inequalities associated
+% %		with convex functions}, Ann. Inst. Henri Poincar\'e Probab. Stat. \textbf{53}
+% %	(2017), no.~4, 1575--1605. \MR{3729629}
+	
+% 	\bibitem{RW2017}
+% 	N.~Randrianantoanina and L.~Wu, \emph{Noncommutative {B}urkholder/{R}osenthal inequalities associated
+% 		with convex functions}, Ann. Inst. Henri Poincar\'{e} Probab. Stat.
+% 	\textbf{53} (2017), no.~4, 1575--1605.  
+	
+% 	\bibitem{RWX2019}
+% 	N.~Randrianantoanina, L.~Wu, and Q.~Xu, \emph{Noncommutative {D}avid type
+% 		decompositions and applications}, J. Lond. Math. Soc. (2) \textbf{99} (2019),
+% 	no.~1, 97--126. 
+
+% \bibitem{RWZ2020}	
+% 	N.~Randrianantoanina, L.~Wu, and D.~Zhou, \emph{Atomic decompositions and asymmetric Doob inequalities in
+% 	noncommutative symmetric spaces},   J. Funct. Anal. \textbf{280} (2021), no. 1,  108794, 64.
+	
+% 	\bibitem{Ros1970}
+% 	H.~Rosenthal, \emph{On the subspaces of {$L^{p}$} {$(p>2)$} spanned by
+% 		sequences of independent random variables}, Israel J. Math. \textbf{8}
+% 	(1970), 273--303.  
+	
+	
+% 	\bibitem{Su2014}
+% 	F.~Sukochev, \emph{Completeness of quasi-normed symmetric operator spaces},
+% 	Indag. Math. (N.S.) \textbf{25} (2014), no.~2, 376--388.
+	
+% 	\bibitem{SuZa2012}
+% 	F.~Sukochev and D.~Zanin, \emph{Johnson-{S}chechtman inequalities in the free
+% 		probability theory}, J. Funct. Anal. \textbf{263} (2012), no.~10, 2921--2948.
+ 
+	
+% 	\bibitem{TAK}
+% 	M.~Takesaki, \emph{Theory of operator algebras. {I}}, Springer-Verlag, New
+% 	York-Heidelberg, 1979. 
+	
+% %	\bibitem{Vo1998}
+% %	D.~Voiculescu, \emph{A strengthened asymptotic freeness result for random
+% %		matrices with applications to free entropy}, Internat. Math. Res. Notices
+% %	(1998), no.~1, 41--63. \MR{1601878}
+% %	
+% %	\bibitem{VoDy1992}
+% %	D.~Voiculescu, K.~Dykema, and A.~Nica, \emph{Free random variables}, CRM
+% %	Monograph Series, vol.~1, American Mathematical Society, Providence, RI,
+% %	1992, A noncommutative probability approach to free products with
+% %	applications to random matrices, operator algebras and harmonic analysis on
+% %	free groups. \MR{1217253}
+	
+% %\bibitem{Xu2007}
+% %Q.~Xu, \emph{Noncommutative ${L}_p$-spaces and martingale inequalities}, Book
+% %manuscript (2007).
+% \end{thebibliography}
+\end{document}
