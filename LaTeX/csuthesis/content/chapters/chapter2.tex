@@ -1,0 +1,318 @@
+%!TEX root = ../../csuthesis_main.tex
+\chapter{Gundy 分解}
+在本章中我们致力于讨论 Gundy 分解定理，我们将讨论其两种情形：一种称之为经典情形，或者说（实复）数值鞅的情形；另一种称之为非交换情形，或者说 VNA 鞅的情形。
+\section{经典 Gundy 分解}
+经典 Gundy 分解定理，可以陈述如下，适当的参考文献是 \cite*{G}。为了自洽性，我们在本文中给出证明。
+\begin{theorem}\label{Gundy;classical}
+    对于每个 $\lambda>0$，任意一个概率空间 $(\Omega,\mathcal{F},\mathbb{P})$ 上的 $L_1(\Omega,\mathbb{P})$ 收敛的鞅 $f=(f_n)_{n\geq0}$ 适合 $\|f\|_{1}\leq 1$ ，存在一个分解 $f = g + b + h$，其中 $g$（好的）、$b$（坏的）和 $h$（无害的）都是相对于相同的 $\sigma$-代数流的 $L_1$ 鞅，满足以下条件：
+    \begin{itemize}
+        \item[(i)] 对于鞅 $g$ 有    \[\|g\|_\infty\leq 2\lambda, \|g\|_{1}\leq 5;\]
+        \item[(ii)] 对于鞅 $h$ 有 \[\sum_{k\geq0}\|dh_k\|\leq 4;\]
+        \item[(iii)] 对于鞅 $b$ 有 \[\|b\|_1\leq 2,\lambda \mathbb{P}\bigl\{\sup_{k\geq0}|db_k|>0\bigr\}\leq 3.\]
+    \end{itemize}
+\end{theorem}
+证明需要 Doob 极大不等式，或者说 Doob 极大函数的弱 $(1,1)$ 有界性：
+\begin{theorem}[Doob 极大不等式]\cite{pisier2016martingales}
+    设有 $L_1$ 中的鞅 $(M_0,M_1,\ldots,M_n)$，并且令 $M_n^\ast:=\sup_{k\leq n}M_k$。则有
+        \[\forall t>0\colon t\mathbb{P}(\{M_n^\ast>t\})\leq\int_{M^\ast_{n}>t}M_nd\mathbb{P}.\]
+\end{theorem}
+    \begin{proof}[定理~\ref{Gundy;classical}~的证明.]
+        考虑停时
+            \[r=\inf\{n\geq0\colon |f_n|>\lambda\},\]
+        这里遵循通常的约定 $\inf\varnothing=\infty$。命 $v_n:=|df_n|\mathbb{1}_{r=n}$。然后，按照同样的约定，命停时
+            \[s=\inf\bigl\{n\geq0\colon \sum_{k=0}^{n} \E_k(v_{k+1})>\lambda\bigr\}.\]
+        最后令
+            \[T:=r\wedge s.\]
+        显然 $T$ 也是停时。我们取 $b:=f-f_T$，或者说 $b_n:=f_n-f_{T\wedge n}$，显然的 $\|b_n\|_1\leq \|f_n\|_1+\|f_{T\wedge n}\|_1\leq 2$。另一方面，注意 $T=\infty$ 蕴含 $db_n=0$，于是
+            \[\{\sup_{k\geq0}|d b_k|>0\}=\bigcup_{k\geq0}\{|db_k|>0\}\supseteq \{T<\infty\}=\{r<\infty\}\cup\{s<\infty\},\]
+        因此
+        \begin{equation}\label{eqn:Gundy1}
+            \mathbb{P}(\{\sup_{k\geq0}|d b_k|>0\})\leq \mathbb{P}(r<\infty)+\mathbb{P}(s<\infty).
+        \end{equation}
+        由 Doob 极大不等式，有
+        \begin{equation}\label{eqn:Gundy2}
+            \mathbb{P}(r<\infty)=\mathbb{P}(\sup_{n}|f_n|>\lambda)< 1/\lambda,
+        \end{equation}
+        并且同时
+            \[            \mathbb{P}(s<\infty)=\mathbb{P}\Bigl(\sum_{k\geq0}\E_k(v_{k+1}>\lambda)\Bigr)
+            \leq \lambda^{-1}\sum_{k\geq0}\E(\E_k(v_{k+1}))
+            =\lambda^{-1}\sum_{k\geq1}\E(v_k).\]
+        但是，这时候
+            \[\E(v_k) = \E(|d f_k|\mathbb{1}_{\{r=k\}}),\]
+        而 $r=k$ 蕴含着 $|f_k|>\lambda\geq |f_{k-1}|$，因此 $|df_k|\leq|f_k|+|f_{k-1}|\leq 2|f_k|$。这蕴含着
+            \[            \E(v_k)\leq 2\E(|f_k|\mathbb{1}_{\{r=k\}})=2\E\bigl(|\E_k(f\mathbb{1}_{\{r=k\}})|\bigr)          \]
+        以及，利用 Jensen 不等式，有 $|\E_k(f\mathbb{1}_{\{r=k\}})|\leq\E_{k}(|f|\mathbb{1}_{\{r=k\}})$，因此
+        \begin{equation}\label{eqn:Gundy3}
+            \E(v_k)\leq 2\E(|f|\mathbb{1}_{\{v=k\}}),\sum \E(v_k)\leq 2\E(|f|)\leq2.
+        \end{equation}
+        这表明
+        \begin{equation}\label{eqn:Gundy4}
+            \mathbb{P}(s<\infty)\leq\lambda^{-1}\sum_{k\geq0}\E(v_k)\leq 2\lambda^{-1}\|f\|_1\leq 2\lambda^{-1}.
+        \end{equation}
+        综合~\eqref{eqn:Gundy1}，~\eqref{eqn:Gundy2}，~\eqref{eqn:Gundy4}，我们得出了 $b$ 的全部估计。
+        \par 我们现在转手考虑分解的另外部分：$f-b=g+h$。我们将通过鞅差序列 $dg_n$ 和 $dh_n$ 来给出 $g$ 和 $h$ 两个鞅。注意 $f-b=f_T$ 保证了一个先决条件
+            \[g_n+h_n=f_{T\wedge n},\]
+        这确保了以下估计
+        \begin{equation}
+            \|g+h\|_1\leq 1.
+        \end{equation}
+        此外
+            \[f_{T\wedge{n}}-f_{T\wedge{n-1}}=df_n\mathbb{1}_{\{n\leq T\}}=df_n\cdot\mathbb{1}_{\{n\leq r\}}\cdot\mathbb{1}_{\{n\leq s\}}=\gamma_n+\delta_n,\]
+        其中我们定义
+            \begin{align*}
+                \gamma_n:=&df_n\cdot\mathbb{1}_{\{n<r\}}\mathbb{1}_{\{n\leq s\}},\\
+                \delta_n:=&df_n\cdot\mathbb{1}_{\{n=r\}}\mathbb{1}_{\{n\leq s\}}.
+            \end{align*}
+        根据 $(f_{T\wedge n})_{n\geq1}$ 是一个鞅，我们有
+            \[\E_{n-1}(\gamma_n+\delta_n)=0,\forall n\geq1,\]
+        因此我们可以定义 $dh_0=\delta_0,dg_0=\gamma_0$ 以及对所有 $n\geq1$ 时
+            \begin{align*}
+                dh_n:=&\delta_n-\E_{n-1}(\delta_n)\\
+                dg_n:=&\gamma_n+\E_{n-1}(\delta_n).
+            \end{align*}
+        \par 现在我们用 Jensen 不等式得到：
+            \[\E\sum_{n\geq0}|dh_n|\leq2\E\sum_{n\geq0}|\delta_n|\leq2\E\sum_{n\geq0}|v_n|,\]
+        因此结合~\eqref{eqn:Gundy3}~可知关于 $h$ 的估计成立。
+        \par 我们现在着手进行关于 $g$ 的估计：利用~\eqref{eqn:Gundy4}~和 (ii) 我们得到
+            \[\|g\|_1\leq 5.\]
+        最后一步，有 $r\geq1$ 时$\sum{\gamma_n}=\sum_{n\leq s}df_n\mathbb{1}_{n<r}=f_{(r-1)\wedge s}$，还有当 $r=0$ 时 $\sum\gamma_n=0$，于是按照 $r$ 的定义方法得出
+            \[\|\sum\gamma_n\|_{\infty}\leq\lambda.\]
+        此外，因为 $\{n\leq s\}\in\mathcal{F}_{n-1}$，有
+            \[\|\sum_{n\geq1}\E_{n-1}(\delta_n)\|=\|\sum_{n\leq s}\E_{n-1}(df_n\mathbb{1}_{\{n=r\}})\|,  \]
+        于是利用 Jensen 不等式得到上式
+            \[\leq\sum_{n\leq s}\E_{n-1}(|df_n|\mathbb{1}_{\{n=r\}})=\sum_{k<s}\E_{k}(|df_{k+1}|\mathbb{1}_{\{r=k+1\}}),\]
+        根据停时 $s$ 的定义，这有上界 $\lambda$。综上我们得出了 $\|\sum_{k<s}\E_k(|df_{k+1}\mathbb{1}_{\{r=k+1\}})\|\leq \lambda$，从而 (i) 只需利用三角不等式就得出。
+    \end{proof}
+
+\begin{remark}
+    从前两个不等式可以发现，对任意 $1< p< \infty$，成立 $\|g\|_p^p\leq  5\cdot(2\lambda)^{p-1} \|f\|_1$。
+    这也就是我们为什么把 $g$ 称为好的。这些性质有益于我们对 $f$ 的弱 $(1,1)$ 范数或者 $p$ 范数估计，而对于坏函数、无害函数部分的估计，也总是可以实现的。
+    由此可见，Gundy 分解定理是 Clader\'on-Zygmund 分解定理的鞅论类似物。至于其区别，可见从函数分解为两个函数变为鞅可以分解为三个鞅；
+    从三个鞅的特性几乎不相干，或者从证明的过程中看，这里分解为两个鞅几乎是做不到的。
+\end{remark}
+
+\begin{remark}
+    此外，这个定理可以将数值鞅或者说经典鞅替换为 Banach 值的鞅，这需要 Bochner 可积空间理论；受限于篇幅，我们不做更多展开，这个话题的适当的参考文献有 \cite*{hytonen2016analysis}。
+\end{remark}
+
+\section{非交换 Gundy 分解}
+\begin{theorem}\label{Gundy:Noncommutative:Main} 如果 $x=(x_n)_{n \ge 1}$ 是一个 $L_1$ 有界的鞅
+且 $\lambda$ 是一个正实数时，那么就存在四个鞅 $\alpha$, $\beta$, $\gamma$、
+和 $\upsilon$ 满足以下属性，对于某个绝对常数 $\mathrm{c}$：
+\begin{itemize}
+\item[(i)] $x=\alpha +\beta + \gamma + \upsilon$;
+\item[(ii)] 鞅 $\alpha$ 满足 $$\|\alpha\|_1 \leq
+\mathrm{c} \|x\|_1, \quad \|\alpha\|_2^2 \leq \mathrm{c}
+\lambda\|x\|_1, \quad \|\alpha\|_\infty \leq \mathrm{c} \lambda;$$
+\item[(iii)] 鞅 $\beta$ 满足 $$\sum_{k=1}^{\infty}
+\|d\beta_k\|_1 \le \mathrm{c} \|x\|_1;$$
+\item[(iv)] $\gamma$ 和 $\upsilon$ 是 $L_1$-鞅且
+$$\max \Big\{ \lambda \tau \Big( \bigvee_{k \ge 1} \mathrm{supp}
+|d\gamma_k| \Big), \, \lambda \tau \Big( \bigvee_{k \ge 1}
+\mathrm{supp} \, |d\upsilon_k^*| \Big) \Big\} \le \mathrm{c}
+\|x\|_1.$$
+\end{itemize}
+\end{theorem}
+\begin{remark}
+    显然的，$\alpha$ 扮演着经典情形的好函数， $\beta$ 扮演着经典情形的无害函数，而 $\gamma,\mu$ 都扮演着经典情形的坏函数。值得注意的是，我们将一个鞅分解为 $4$ 个鞅，不同于经典情形（甚至 Banach 值情形）的 $3$ 个鞅；即坏函数的部分需要更多的一个鞅。参考 \cite{PX1} 中证明的非交换版本 Burkholder-Gundy 不等式。
+    这坏函数中两个鞅的出现，其中本质的原因，可以认为分别是坏函数“行空间、列空间”的部分。
+\end{remark}
+% \section{图片与布局}
+
+% \subsection{插图}
+
+% 图片可以通过\cs{includegraphics}指令插入，我们建议模板使用者将文章所需插入的图片源问卷放置在 images 目录中，
+% 另外，矢量图片应使用PDF格式，位图照片则应使用JPG格式（LaTeX不支持TIFF格式）。具有透明背景的栅格图可以使用PNG格式。
+% 模板已经配置了相对路径，所以在文中插图片时，直接用 images 目录下的相对路径即可，比如 images/csu.png ，
+% 在正文中插入只需要\cs{includegraphics{csu.png}}，不需要再增加前缀。
+
+% 下面是一个简单的插图示例。
+
+% \begin{figure}[hbt]
+%     \centering
+%     \includegraphics[width=0.3\linewidth]{csu_logo_blue.png}
+%     \caption{插图示例}
+%     \label{f.example}
+% \end{figure}
+
+
+% 如果一个图由多个分图（子图）组成，应通过(a),(b),(c)进行标识并附注在分图（子图下方）。
+
+% \subsection{横向布局}
+
+% 模板提供常见的图片布局，比如单图布局\ref{f.example}，另外还有横排布局如下：
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{subfigure}[t]{0.24\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_blue.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.24\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_black.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.24\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_blue.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.24\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_black.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}
+%     \caption{图片横排布局示例}
+%     \label{f.row}
+% \end{figure}
+
+% \subsection{纵向布局}
+
+% 纵向布局如图\ref{f.col}
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{subfigure}[t]{0.15\linewidth}
+%         \captionsetup{justification=centering} %ugly hacks
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_blue.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}\\
+%     \begin{subfigure}[t]{0.15\linewidth}
+%         \captionsetup{justification=centering} %ugly hacks
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_black.png}
+%         \caption{test}
+%         \end{minipage}
+%     \end{subfigure}
+%     \caption{图片纵向布局示例}
+%     \label{f.col}
+% \end{figure}
+
+% \subsection{竖排多图横排布局}
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{subfigure}[t]{0.13\linewidth}
+%         \captionsetup{justification=centering} 
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_blue.png} 
+%         \vspace{-1ex} \vfill
+%         \includegraphics[width=1\linewidth]{csu_logo_black.png}
+%         \caption{aaa}
+%         \end{minipage}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.13\linewidth}
+%         \captionsetup{justification=centering} 
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=1\linewidth]{csu_logo_black.png} 
+%         \vspace{-1ex} \vfill
+%         \includegraphics[width=1\linewidth]{csu_logo_blue.png}
+%         \caption{bbb}
+%         \end{minipage}
+%     \end{subfigure}
+%     \caption{图片竖排多图横排布局}
+%     \label{f.csu_col_row}
+% \end{figure}
+
+% 竖排多图横排布局如图\ref{f.csu_col_row}所示。注意看(a)、(b)编号与图关系
+
+
+% \subsection{横排多图竖排布局}
+
+% 中南大学由原湖南医科大学、长沙铁道学院与中南工业大学于2000年4月合并组建而成。原中南工业大学的前身为创建于1952年的中南矿冶学院，原长沙铁道学院的前身为创建于1953年的中南土木建筑学院，两校的主体学科最早溯源于1903年创办的湖南高等实业学堂的矿科和路科。原湖南医科大学的前身为1914年创建的湘雅医学专门学校，是我国创办最早的西医高等学校之一。中南大学秉承百年办学积淀，顺应中国高等教育体制改革大势，弘扬以“知行合一、经世致用”为核心的大学精神，力行“向善、求真、唯美、有容”的校风，坚持自身办学特色，服务国家和社会重大需求，团结奋进，改革创新，追求卓越，综合实力和整体水平大幅提升。
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering} 
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=0.45\linewidth]{csu_logo_blue.png}
+%         \includegraphics[width=0.45\linewidth]{csu_logo_black.png}
+%         \caption{}
+%         \end{minipage}
+%     \end{subfigure}\\
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering} 
+%         \begin{minipage}[b]{1\linewidth}
+%         \includegraphics[width=0.45\linewidth]{csu_logo_black.png}
+%         \includegraphics[width=0.45\linewidth]{csu_logo_blue.png}
+%         \caption{}
+%         \end{minipage}
+%     \end{subfigure}
+%     \caption{图片横排多图竖排布局}
+%     \label{f.csu_row_col}
+% \end{figure}
+
+% 横排多图竖排布局如图\ref{f.csu_row_col}所示。注意看(a)、(b)编号与图关系。
+
+% \subsection{2x2图片布局}
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%             \centering
+%             \includegraphics[width=0.45\linewidth]{csu_logo_blue.png}
+%             \caption{}
+%         \end{minipage}
+%     \end{subfigure}
+%     \hspace{-5em}
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%             \centering
+%             \includegraphics[width=0.45\linewidth]{csu_logo_black.png}
+%             \caption{}
+%         \end{minipage}
+%     \end{subfigure}\\
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%             \centering
+%             \includegraphics[width=0.45\linewidth]{csu_logo_blue.png}
+%             \caption{}
+%         \end{minipage}
+%     \end{subfigure}
+%     \hspace{-5em}
+%     \begin{subfigure}[t]{0.3\linewidth}
+%         \captionsetup{justification=centering}
+%         \begin{minipage}[b]{1\linewidth}
+%             \centering
+%             \includegraphics[width=0.45\linewidth]{csu_logo_black.png}
+%             \caption{}
+%         \end{minipage}
+%     \end{subfigure}
+%     \caption{图片2x2布局}
+%     \label{f.csu_2x2}
+% \end{figure}
+
+% \newpage
+
+% \section{图表编号}
+
+% 本节主要阐述在图表下侧的编号，以及引用时的编号设置问题。
+% 使用在上一节（上一个section， \verb|\section{插图}| ）中引入的图\ref{f.example}，
+% 以及在本节加入下方新图片对比来说明。
+
+% \begin{figure}[hbt]
+%     \centering
+%     \includegraphics[width=0.3\linewidth]{csu_logo_blue.png}
+%     \caption{图标编号示例}
+%     \label{f.example.2}
+% \end{figure}
+
+% 可以看到在上一节“插图示例”的编号为图\ref{f.example}。
+% 而在本节“图标编号示例”为图\ref{f.example.2}。

@@ -1,0 +1,217 @@
+%!TEX root = ../../csuthesis_main.tex
+\def\M{\mathcal{M}}
+\def\T{\tau}
+\def\E{\mathcal{E}}
+
+\chapter{绪论}
+\section{问题的历史背景}
+经典的鞅论，出现在 18 世纪的法国，那时候鞅论是赌博策略的一部分。而最简单的赌博策略，来自如下的赌博：抛硬币，如果正面朝上，则赌徒赢得赌注相应的奖励；如果反面朝上，则赌徒失去赌注。这个策略不过是：每当赌徒失败，就在下一次加倍上一次的赌注使得，第一次胜利即可赢回所有的损失。假设赌徒的赌资和时间一同趋向无限大，则赌博获利的概率趋向 $1$。
+ 
+\par 概率论中的鞅论，是由 Paul L\'{e}vy 在 1934 年中引入的，尽管当时他并未为此命名。鞅这个命名由 Ville 在 1939 年引入，同样是他将鞅的概念拓宽至连续时间的鞅。鞅论中许多的原始发展由 Joseph Leo Doob 等人所完成，其中一个知名的结果便是 Doob 极大不等式。这些工作的部分动机，就是证明必胜赌博策略的不可能性。
+
+\par 经典鞅论的研究，或多或少的对应着调和分析的研究，主要的结果包括但不限于：Burkholder，Gundy 和 Silverstein 在文章 \cite{burkholder1971maximal} 中完成的 Hardy 空间的极大函数刻画。鞅论版本的 $H_1^\ast=BMO$ 也紧随着 Ferferman 和 Stein 在文章 \cite{fefferman1972h} 中完成的 $H_1^\ast=BMO$。归功于鞅论设定的结构简单，许多想法和方法在这个舞台上更加容易实现。此外，鞅论也有关于调和分析的应用：由 Burkholder 提出的一类重要的 Banach 空间性质（称作 UMD 性质，Unconditionality of Martingale Differences），被证明了等价于 Banach 空间上 Hilbert 变换的有界性\cite[Chapter~6]{pisier2016martingales}。鞅论的重要性，特别地体现在 Banach 值中的鞅论：20 世纪后半，Banach 空间的几何学迅速发展，其中证明可凹性与 Radon-Nikodym 性质等价时，就是通过特殊的鞅的构造\cite{刘培德2017鞅空间理论的新进展}。随着 Pisier 在 1975 年的文章 \cite{pisier1975martingales}，Banach 值的鞅论被认为具有很大发展潜力。有关 Banach 值的鞅论的详细讨论，合适的材料是 \cite{pisier2016martingales}。
+
+\par 非交换鞅论的蓬勃发展始于 1997 年 Pisier 和许全华在文章\cite{PX1} 中的讨论。关于鞅论研究的历史，或者鞅论和调和分析的关联，推荐查阅文献综述\cite{刘培德2017鞅空间理论的新进展}。
+
+\par 鞅论是调和分析中 Fourier 级数理论的概率论类似物：在调和分析中，我们将一个可积函数对应到一个傅里叶系数序列；在鞅论中，我们将一个可积函数对应到一个鞅差序列。在调和分析中，傅里叶基是正交序列；在鞅论中，鞅差序列是正交序列。在调和分析中，我们对傅里叶系数序列用乘一个给定的有界序列做变换，再重新生成一个函数，这便是乘子理论；在鞅论中，我们对一个鞅差序列乘以一个给定的可预测序列，再重新生成一个鞅，这便是鞅变换理论。
+
+\section{问题的研究现状}
+我们按照时间顺序简单介绍非交换鞅领域的部分研究结果。
+\par 最早的关于非交换鞅论的研究，是 Cuculescu 在 1971 年证明的非交换版本 Doob 极大不等式 \cite{C}。Cuculescu 在证明中给出了相应于一个鞅 $x$ 和一个正实数 $\lambda$ 的投影算子，而这个投影算子的构造可以被推广为相应于 $x$ 和 $\lambda$ 的停时。
+\par 在这之后，非交换鞅论许久未有进展，直到 Pisier 和许全华在 1997 年的文章\cite{PX1}，完成了非交换 Burkholder-Gundy 不等式，证明的关键点是迭代方法和对偶性。附录中还给出了非交换版本的 $H_1^\ast=BMO$。
+\par 自文章\cite{PX1} 后，许多的经典鞅论不等式相关结果得到了非交换版本：2002 年，Randrianantoanina 证明了非交换鞅变换的弱 $(1,1)$ 型不等式\cite{MR1929141-2002-Narcisse}。
+这一结果的新证明便是本文讨论的 Gundy 分解定理的一例应用。2005 年\cite{MR2167096-2005-Narcisse}，Randrianantoanina 证明了对于 $L_1\cap L_2$ 中的有界鞅 $x=(x_n)_{n\geq1}$，存在两个鞅差序列 $a,b$ 使得 $dx_n=a_n+b_n,n\geq 1$ 满足
+    \[\left\|\left(\sum_{n=1}^\infty
+    a_n^*a_n\right)^{1/2}\right\|_2+\left\|\left(\sum_{n=1}^\infty
+    b_nb_n^*\right)^{1/2}\right\|_2\le2\|x\|_2,\]
+以及
+    \[\left\|\left(\sum_{n=1}^\infty
+    a_n^*a_n\right)^{1/2}\right\|_{1,\infty}+\left\|\left(\sum_{n=1}^\infty
+    b_nb_n^*\right)^{1/2}\right\|_{1,\infty}\lesssim\|x\|_1.\]
+这是非交换均方函数的估计。
+\par 为了证明鞅不等式，一个重要的技巧是鞅的分解，例如 Gundy 分解定理。所以为了方便证明非交换鞅不等式，自然地希望有非交换 Gundy 分解定理：2006 年，Parcet 在文章 \cite{parcet2006gundy} 中证明了非交换 Gundy 分解定理并给出了一些应用。这也是本文的主要参考文献。
+2007 年\cite{MR2319715-2007-Narcisse-Conditioned-square-functions}，Randrianantoanina 证明了对于 $L_2$ 有界的鞅 $x=(x_n)_{1\leq n\leq N}$，存在三个适应序列 $a,b,c$ 满足：$dx_n=a_n+b_n+c_n$，$\|a\|_{L_2(\M,l^2_C)}+\|b\|_{L_2(\M,l^2_C)}+\|c\|_{L_2(\M,l^2_R)}\leq \|x\|_2$，以及如下弱 $(1,1)$ 型估计
+    \[  \Biggl\|\sum_{n=1}^N a_n\otimes
+    e_{n,n}\Biggr\|_{L^{1,\infty}(\M\overline{\otimes} \mathcal{B}(l^2_N))}
+    +\Biggl\|\Bigl(\sum_{n=1}^N
+    \E_{n-1}(|b_n|^2)\Bigr)^{1/2}\Biggr\|_{1,\infty}\\
+    +\Biggl\|\Bigl(\sum_{n=1}^N
+    \E_{n-1}(|c_n^*|^2)\Bigr)^{1/2}\Biggr\|_{1,\infty}\lesssim\|x\|_1.    \]
+此结果的部分估计也可以使用非交换 Gundy 分解定理完成。
+\par 经典的鞅论的一个重要的主题是：鞅的控制导出的鞅不等式。其中一种简单的经典鞅的控制关系是鞅的微分从属关系： $f,g$ 为两个经典鞅满足 $|df_n|\leq|dg_n|$ 对任意 $n\geq1$ 成立；这可以认为是经典鞅变换的推广。这时候可以实现均方函数的控制：$S(f)\leq S(g)$。自然地，我们希望在非交换中做出类似的结果。2020年，焦勇，Randrianantoanina，吴恋 和 周德俭 在文章\cite{MR4072235-CSU-Square;differentially-subordinate} 中完成了对于非交换弱微分从属鞅的均方函数的弱 $(1,1)$ 估计、小均方函数（也称为条件均方函数）的弱 $(1,1)$ 估计；其中条件均方函数的估计需要分解 $dy$ 为三个适应序列，而均方函数的估计将 $y$ 分解为两个鞅差序列。值得指出的是，在\cite[Theorem~3.1]{MR4072235-CSU-Square;differentially-subordinate}中，给出了相应于弱微分从属鞅的 Gundy 分解；相应于削弱的条件，结论减弱了对分解出的较好部分鞅 $\alpha$ 的有界性：从 $L_1,L_\infty$ 有界性以及 H\"{o}lder 不等式推出的 $L_2$ 有界性，变化为只有 $L_2$ 有界性。随后，在 2022 年，焦勇，Os\k{e}kowski，吴恋 和 左雅慧 在文章\cite{MR4504935-CSU-weakly-dominated-martingales} 中引入了又一种 Gundy 分解。并且依此证明了：对于 $L_2$ 中的自伴有界鞅 $x=(x_n)_{n\geq}$ 以及被 $x$ 弱控制的鞅 $y$ ，则可以将 $y$ 分解为两个鞅，即有两个鞅 $y^c,y^r$ 满足 $y=y^c+y^r$ 并且使得
+    \[\|{S_C(y^c)}\|_{1,\infty}+\|{S_R(y^r)}\|_{1,\infty}\lesssim\|x\|_1.\]
+\chapter{预备的定义和结果}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+\let\cal\mathcal
+\allowdisplaybreaks
+
+\newcommand{\dem}{\noindent {\sl 证明： }}
+\newcommand{\fin}{\hspace*{\fill} $\square$ \vskip0.2cm}
+% \newcommand{\fin}{\pushQED{\qed}\qedhere}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+为了主线的清晰，本文将只考虑标量值的鞅以及非交换鞅；此外的重要主题即是 Banach 值的鞅。 Banach 值的鞅性质与 Banach 空间的几何性质（例如一致光滑性或者一致凸性）密不可分。
+\par 我们在本章中进行预备知识的说明，这些定义和结果对该领域的专家可能是熟知的。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{基础概率方面的预备内容}
+    我们需要一个测度论的经典结果。这里给出一种一石二鸟的证明\cite{einsiedler2017functional}。
+    \begin{theorem}[Radon-Nikodym-Lebesgue]
+        设有 $(\Omega,\mathcal{F})$ 是一个可测空间，$\mu$ 是其上 $\sigma$-有限正测度，$\nu$ 是其上复测度。
+        则存在唯一可积函数 $f\in L_1(\mu)$ 以及测度 $\lambda$ 使得 $\nu= f\mu+\lambda$ 并且 $\lambda\perp\mu$。
+    \end{theorem}
+    这里我们用 $f\mu$ 表示由测度 $\mu$ 和密度 $f$ 定义的测度。
+\begin{proof}
+    首先不妨假设 $\mu$ 是一个有限正测度并且 $\nu$ 也是正测度。对于一般的 $\mu$ 根据 $\sigma$-有限性，将 $\Omega$ 分解为可数个互不相交的 $\mu$-有限的子集，在这每个子集上我们就可以找出想要的函数和测度。当这些结论均得到证明，对于一般的实测度 $\nu$ 我们通过拆分正部负部可以证明同样的结果。最后对于复测度 $\nu$，我们考虑他的实部虚部分别应用对于实测度的结果，即可得到结论。
+    \par 现在，我们定义一个新的测度 $m:=\mu+\nu$ 并且考虑相应的 Hilbert 空间 $L_2(m)$。在其上我们定义如下线性泛函：
+        \[\phi(g):=\int gd\nu.\]
+    这是有界线性泛函，因为
+        \[|\phi(g)|\leq\int |g|dm\leq \|g\|_{L_2(m)}\|1\|_{L_2(m)},\]
+    其中我们利用了 $m=\mu+\nu\geq\nu$ 即 $\mu$ 的正性，以及 Cauchy-Shcwarz 不等式。于是，由 Hilbert 空间上的 Riesz 表示定理\cite[Corollary~3.19]{einsiedler2017functional}，有某个函数 $k\in L_2(m)$ 使得
+        \begin{equation}\label{eqn:Radon-Nikodym}
+            \int gd\nu=\int gkd m,\forall g\in L_2(m).
+        \end{equation}
+    我们断言，$k$ 是关于 $m$ 几乎处处取值于 $[0,1]$ 中的：事实上，任取 $B\in\mathcal{F}$ 我们有 $0\leq\nu(B)\leq m(B)$，所以取 $g=\mathbb{1}_B\in L_2(m)$ 可得
+        \[0\leq\int_{B}kdm\leq m(B).\]
+    取 $B=\{k<0\}$ 和 $B=\{k>1\}$ 可得想要的结果。 
+    \par 由于 $m=\mu+\nu$，我们可以将 \eqref{eqn:Radon-Nikodym} 重新写为
+        \begin{equation}\label{eqn:rewrite}
+            \int g(1-k)d\nu=\int gkd\mu.
+        \end{equation}    
+    这是因为，$k$的选取保证这对于简单函数 $g$ 是合理的，因此由单调收敛定理对于非负可测函数也是成立的。现在定义测度的奇异部分支撑 $\Omega_{s}:=\{k=1\}$ 和测度的绝对连续支撑 $\Omega_{\mu}:=\Omega\setminus\Omega_{s}=\{k<1\}$，并且设 $\nu_s=\left.\nu\right|_{\Omega_s}$。
+    按照定义，有 $\nu_s(\Omega_s)=0$ 而且按照式子 \eqref{eqn:Radon-Nikodym} 取 $g=\mathbb{1}_{\Omega_s}$ 有 $\mu(\Omega_s)=0$。以上说明了 $\nu_s\perp\mu$，即测度相互正交。我们再定义测度 $\nu$ 的绝对连续部分 $\nu_{a}:=\left.\nu\right|_{\Omega_\mu}$，它满足了 $\nu=\nu_s+\nu_a$。最后，命函数
+        \[f:=\frac{k}{1-k}\mathbb{1}_{\Omega_\mu}.\]
+    则对于任意可测函数 $g\geq0$ 我们使用 \eqref{eqn:rewrite} 得到
+        \[\int_{\Omega} gd\nu_a=\int_{\Omega_\mu}\frac{g}{1-k}(1-k)d\nu=\int_{\Omega_\mu}\frac{g}{1-k}kd\mu=\int_{\Omega}fd\mu.\]
+    这表明了 $f=\frac{d\nu_{a}}{d\mu}$ 是 Radon-Nikodym 微商，而且 $\nu_{a}\ll \mu$。根据 $\nu_a(\Omega)$ 有限，$f$ 是 Radon-Nikodym 微商以及 $f\geq0$ 可知 $f\in L_1(\mu)$。
+    \par 对于唯一性，我们假设 $f_1,f_2$ 都是 $\nu_a$ 关于 $\mu$ 的 Radon-Nikodym 微商，则
+        \[\int_B f_1d\mu=\nu_{a}(B)=\int_B f_2d\mu,\]
+    对于所有 $B\in\mathcal{F}$ 成立。考察 $B:=\{f_1>f_2\}$ 和 $B:=\{f_2>f_1\}$ 即可知道 $f_1=f_2,\mu$-几乎处处成立。
+\end{proof}
+
+    定理的其他证明可以参考\cite*{david2018probability,folland1999real}，方法可谓各有千秋。
+    当然，上述定理在鞅论中，重要的是应用于：$\mu$ 是概率测度，而 $\nu=\left.f\mu\right|_{\mathcal{F_n}}$，
+    对任意 $f\in L_1(\mu)$ 以及任意 $n\geq0$。这样就可以对每个 $f\in L_1(\nu)$ 定义出一个鞅，定义见下文。
+    此外，这样就给出条件期望算子 $\E_n:=\E(\ |\mathcal{F}_n)$ 的定义。条件期望算子有着丰富的性质，包括但不限于 线性、有界性及 $L_0(\mathcal{F}_n)$-模性质。
+    这些性质也是我们在后续的非交换框架下关注的。
+    \par 考虑一个测度空间 $(\Omega,\mathcal{F},\mu)$。
+    其上的一列 $\sigma$ 代数流是指一列 $\sigma$ 代数 $(\mathcal{A}_n)_{n\geq0}$ 满足 $\mathcal{A_n}\subseteq \mathcal{A_{n+1}}$。
+    如同我们对测度空间所称 $\sigma$-有限的，我们称这个 $\sigma$ 代数流是 $\sigma$-有限的，如果对每个 $n\geq0$ 都有 $\mu$ 在 $\mathcal{F}_n$ 上有限。
+    
+    \par 现在，我们定义：一个函数序列 $f=(f_n)_{n\geq0}$ 称为适应于代数流 $(\mathcal{A}_n)_{n\geq0}$ 的，如果他满足：
+    $f_n\in L_0(\Omega,\mathcal{F}_n)$ 对于所有的 $n\geq0$ 成立。
+    \par 最后，一个关于 $\sigma$-代数流 $(\mathcal{A}_n)_{n\geq0}$ 的鞅， 是一个适应于代数流 $(\mathcal{A}_n)_{n\geq0}$ 的函数序列 $(f_n)_{n\geq0}$ 使得 $\E_{n-1} f_n=f_{n-1}$。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{非交换鞅方面的预备内容}
+    一个 Banach 代数指的是一个 Banach 空间 $\mathcal{A}$，其上有（收缩的）乘法运算，即一个（收缩的）双线性算子。
+    一个 $C^\ast$-代数是指一个 Banach 代数 $\mathcal{B}$，其上配备有一个对合算子，满足：幂等性，共轭线性性，以及 $C^\ast$-范数限制：$\|xx^\ast\|=\|x\|^2$。
+    按照 GNS 表示，我们总是可以假设 $\mathcal{B}$ 是 $\mathcal{B}(H)$ 的子代数，其中 $H$ 是某个 Hilbert 空间。
+    对于一个 Hilbert 空间 $H$ 上的有界算子空间 $\mathcal{B}(H)$，我们会考虑他的弱算子拓扑（WOT），定义为如下半范数族导出的极限拓扑：$\{p_{\xi,\eta}|\xi\in H,\eta\in H^\ast\}$，其中 $p_{\xi,\eta}(x)=|\langle x\xi,\eta\rangle|$。一个 VNA 指的是一个在 $\mathcal{B}(H)$ 中的 WOT-闭单位子代数。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{content/chapters/translation.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \chapter{一级标题}
+
+% 这是中南大学学位论文\LaTeX{}模板，下面的文字主要作用为对重构后的模板样式设置进行测试。
+% 测试样例基本覆盖模板设定，包括多级标题的基本样式，段落与缩进距离。
+
+% \section{二级标题}
+
+% \subsection{三级标题}
+
+% \subsubsection{四级标题}
+
+% 一级标题根据学校提供的Word模板要求，三号黑体居中，上下各空一行，章节号空一个汉字，
+% 并且每一章节单独起一页，章节号格式应使用阿拉伯数字而非中文汉字。
+
+% 二级标题为小四号黑体，缩进两个汉字。章节号后空一个汉字。
+
+% 三级标题小四号楷体GB2312，字体包含在项目中，同样缩进两个汉字，章节号后空一个汉字。
+
+% 四级标题参照本科学术论文设计样式，分项采取(1)、(2)、(3)的序号。
+
+% 所有标题样式由\cls{undergraduate.cls}模板文件 \cs{ctexset} 进行设置。
+
+% \section{字体}
+
+% 正文字体默认使用小四号宋体，英文为小四号 Times New Romen，各段行首缩进两个汉字
+
+% 中南大学\cite{csu__2020}坐落在中国历史文化名城──湖南省长沙市，占地面积317万平方米，建筑面积217万平方米，跨湘江两岸，依巍巍岳麓，临滔滔湘水，环境幽雅，景色宜人，是求知治学的理想园地。
+
+% 中南大学由原湖南医科大学、长沙铁道学院与中南工业大学于2000年4月合并组建而成。原中南工业大学的前身为创建于1952年的中南矿冶学院，原长沙铁道学院的前身为创建于1953年的中南土木建筑学院，两校的主体学科最早溯源于1903年创办的湖南高等实业学堂的矿科和路科。原湖南医科大学的前身为1914年创建的湘雅医学专门学校，是我国创办最早的西医高等学校之一。中南大学秉承百年办学积淀，顺应中国高等教育体制改革大势，弘扬以“知行合一、经世致用”为核心的大学精神，力行“向善、求真、唯美、有容”的校风，坚持自身办学特色，服务国家和社会重大需求，团结奋进，改革创新，追求卓越，综合实力和整体水平大幅提升。
+
+% 英文字体展示如下：
+
+% TeX (/tɛx, tɛk/, see below), stylized within the system as TEX, is a typesetting system (or a "formatting system") which was designed and mostly written by Donald Knuth\cite{knuth1984texbook} and released in 1978. TeX is a popular means of typesetting complex mathematical formulae; it has been noted as one of the most sophisticated digital typographical systems.
+
+
+% \subsection{调节字号}
+
+% 可以使用 \cs{zihao}命令来调节字号。
+
+% \begin{tabular}{ll}
+%   \verb|\zihao{3} | & \zihao{3}  三号字 English \\
+%   \verb|\zihao{-3}| & \zihao{-3} 小三号 English \\
+%   \verb|\zihao{4} | & \zihao{4}  四号字 English \\
+%   \verb|\zihao{-4}| & \zihao{-4} 小四号 English \\
+%   \verb|\zihao{5} | & \zihao{5}  五号字 English \\
+%   \verb|\zihao{-5}| & \zihao{-5} 小五号 English \\
+% \end{tabular}
+
+% \subsection{调节字体}
+
+% 需要说明的是由于学校写作指导要求的字体部分不可在Linux上使用，即便你的写作过程是在Linux或者macOS上完成的，
+% 我们仍\textbf{强烈建议}您在Windows操作系统上编译最终版论文。
+
+% 中文可选字体以及选用指令如下：
+
+% \begin{tabular}{l l}
+%   \verb|\songti| & {\songti 宋体} \\
+%   \verb|\heiti| & {\heiti 黑体}  \\
+%   \verb|\kaiti| & {\kaiti 楷体}
+% \end{tabular}
+
+% 我们在模板中通过调整\verb|\newCJKfontfamily|的AutoFakeBold参数来简单实现字体加粗，在正文中你可以使用习惯的\verb|\textbf|指令来加粗对应中文。如果你需要调整字体，也可以组合使用字体选择并加粗，比如\verb|\kaiti\bfseries|
+
+% \textbf{宋体加粗测试}，宋体不加粗测试。
+
+% {\kaiti\bfseries 楷体加粗测试。}{\kaiti 楷体不加粗测试。}
+
+% 目前模板并没有按照一些其他模板写法中常见的，重定向加粗和倾斜效果到upright，TODO：后续可能考虑重定义\verb|emph|和\verb|strong|样式。
+
+
+
+
+% \section{模板主要结构}
+
+% 本项目模板的主要结构, 如下表所示:
+% % TODO 进一步完善
+
+% \begin{table}[ht]
+%   \centering
+%   \begin{tabular}{r|l|l}
+%     \hline\hline
+%     \multicolumn{2}{l|}{csuthesis\_main.tex } & 主文档，可以理解为文章入口。                      \\ \hline
+%                                               & info.tex                     & 作者、文章基本信息 \\ \cline{2-3}
+%                                               & abstactzh/en.tex             & 中/英文摘要内容    \\ \cline{2-3}
+%     \raisebox{1em}{content 目录 }             & subchapters 目录             & 章节内容           \\ \hline
+%     \multicolumn{2}{l|}{images 目录}          & 用于存放图片文件                                  \\ \hline
+%     \multicolumn{2}{l|}{csuthesis.cls }       & 模板入口                                          \\ \hline\hline
+%   \end{tabular}
+% \end{table}
+
+% 我们不建议模板使用者更改原有模板的结构，
+% 但如果您确实需要，请务必先充分阅读本模板的使用说明并了解相应的\LaTeX{}模板设计知识。

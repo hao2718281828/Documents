@@ -1,0 +1,187 @@
+%!TEX root = ../../csuthesis_main.tex
+% \chapter{表格插入示例}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{学校文件里对表格的要求不是很高，不过按照学术论文的一般规范，表格为三线表。}
+%   \label{T.example}
+%   \begin{tabular}{llllll}
+%   \hline
+%    & A  & B  & C  & D  & E \\
+%   \hline
+% 1 	& 212 & 414 & 4 		& 23 & fgw	\\
+% 2 	& 212 & 414 & v 		& 23 & fgw	\\
+% 3 	& 212 & 414 & vfwe		& 23 & 嗯	\\
+% 4 	& 212 & 414 & 4fwe		& 23 & 嗯	\\
+% 5 	& af2 & 4vx & 4 		& 23 & fgw	\\
+% 6 	& af2 & 4vx & 4 		& 23 & fgw	\\
+% 7 	& 212 & 414 & 4 		& 23 & fgw	\\
+
+% \hline{}
+% \end{tabular}
+% \end{table}
+
+% \textbf{表格如表\ref{T.example}所示，latex表格技巧很多，这里不再详细介绍。}
+
+% 中南大学由原湖南医科大学、长沙铁道学院与中南工业大学于2000年4月合并组建而成。原中南工业大学的前身为创建于1952年的中南矿冶学院，原长沙铁道学院的前身为创建于1953年的中南土木建筑学院，两校的主体学科最早溯源于1903年创办的湖南高等实业学堂的矿科和路科。原湖南医科大学的前身为1914年创建的湘雅医学专门学校，是我国创办最早的西医高等学校之一。中南大学秉承百年办学积淀，顺应中国高等教育体制改革大势，弘扬以“知行合一、经世致用”为核心的大学精神，力行“向善、求真、唯美、有容”的校风，坚持自身办学特色，服务国家和社会重大需求，团结奋进，改革创新，追求卓越，综合实力和整体水平大幅提升。
+
+
+
+\chapter{Gundy 分解的应用}
+
+\section{经典 Gundy 分解的应用}
+  利用 Gundy 分解，我们可以证明如下关于鞅变换有界性的外插定理\cite{hytonen2016analysis}：
+\begin{theorem}
+假设 $T$ 是一个固定的由可预测序列 $v$ 对应的鞅变换，并且设 $T^\star$ 是对应的极大截断鞅变换。则下面的说法是等价的：
+\begin{itemize}
+  \item[(1)] 对某个 $p\in[1,\infty)$， $T$ 是从 $H_p$ 到 $L_{p,\infty}$ 的有界算子；
+  \item[(2)] 对任意 $p\in(1,\infty)$， $T^\star$ 是从 $L_p$ 到 $L_p$ 的有界算子；
+  \item[(3)] $T^\star$ 是从 $H_1$ 到 $L_1$ 的有界算子；
+  \item[(4)] $T^\star$ 是从 $L_1$ 到 $L_{1,\infty}$ 的有界算子。
+\end{itemize}
+\end{theorem}
+我们给出定理证明的局部：$(4)\implies(1)$ 的过程中，需要如下结果，我们在本文中给出证明：
+\begin{proposition}
+对任意给定 $q\in(1,\infty)$，成立如下估计
+  \[  \|T\|_{L_1\to L_{1,\infty}}\leq36 \|T\|_{L_q\to L_{q,\infty}}.\]
+\end{proposition}
+
+\begin{proof}[证明概要.]
+我们固定 $q\in(1,\infty)$ 和 $\lambda>0$，并且设 $K:=\|T\|_{L_q\to L_{q,\infty}}$。考虑 $f$ 的 Gundy 分解 $f=g+b+h$（我们把 $f$ 对应到鞅 $\bigl(\E_n(f)\bigr)_{n}$ ，这个 Gundy 分解相应的常数选取为 $\alpha\lambda$ 其中 $\alpha$ 待定），则有
+  \[\mu(|Tf|>\lambda)\leq\mu(|Tg|>\lambda/2)+\mu(|Tg|>0)+\mu(|Th|>\lambda/2).\]
+我们分别估计这三项。对于 $g$ 的项我们利用 $L_q\to L_{q,\infty}$ 的有界性来得到如下估计
+\begin{align*}
+  \mu(|Tg|>\lambda/2)  &\leq (2/\lambda)^q\|Tg\|_{q,\infty}^q\\
+  &\leq (2K/\lambda)^q\|g\|_{q}^{q}\\
+  &\leq (2K/\lambda)^q(2\alpha\lambda)^{q-1}4\|f\|_1\\
+  &=2\frac{(4\alpha K)^{q}}{\alpha\lambda}\|f\|_1.
+\end{align*}
+其中我们使用了 $\|g\|_q^q$ 和 $\|f\|_1$ 的控制关系，这是之前证明过的。
+\par 我们省略一点对于关于 $b$ 的项的估计的细节，简言之
+  \[\mu(|Tb|>0)\leq \mu( b^\star>0)\leq \frac{3}{\alpha\lambda}\|f\|_1.\]
+\par 最后关于 $h$ 的项我们同样忽略一些细节，可以证明
+  \begin{align*}
+    \mu(|Th|>\lambda/2)\leq \frac{2}{\lambda}\|Th\|_1\leq\frac{2}{\lambda}\sum_{k}\|v_kdh_k\|_1\\
+    \leq\frac{2}{\lambda}\|v\|_\infty\sum_{k}\|dh_k\|_1\leq\frac{2}{\lambda}\cdot 2K\cdot 4\|f\|_1=\frac{16K}{\lambda}\|f\|_1.
+  \end{align*}
+综上所述，选取 $\alpha=(4K)^{-1}$ 并以此得到结论
+  \[\mu(|Tf|>\lambda)\leq \frac{8K}{\lambda}\|f\|_1+\frac{12K}{\lambda}\|f\|_1+\frac{16K}{\lambda}\|f\|_1=\frac{36K}{\lambda}\|f\|_1,\]
+这便是我们想要证明的。
+\end{proof}
+
+
+\section{非交换 Gundy 分解的应用}
+  我们介绍非交换 Gundy 分解的应用。本节的内容来自\cite*{parcet2006gundy}，我们略过其中的证明。
+
+\subsection{非交换鞅变换的有界性}
+    利用非交换的 Gundy 分解，我们可以证明，非交换的鞅变换在适当的假设下，是一致弱 $(1,1)$ 有界的。
+\begin{theorem}
+  存在一个绝对常数 $\mathrm{c}$ 使得对于任意的在 $L_1(\mathcal{M}, \tau)$ 中有界的鞅
+  $x=(x_k)_{k \ge 1}$ 以及任意 $\M$ 中的序列 $(\xi_{k})_{k \ge 0}$ 满足如下性质：
+  \begin{itemize}
+  \item[(i)] $\xi_0={\bf 1}$;
+  \item[(ii)] $\sup_{k\geq 1}\|\xi_{k}\|_\infty\leq 1$;
+  \item[(iii)] $\xi_{k-1} \in \mathcal{M}_{k-1} \cap \M'_{k}$ 对任意 $k\ge
+  1$;
+  \end{itemize}
+  则对每个 $n \ge 1$， 成立如下估计
+  \begin{equation*}
+  \Big\| \sum^{n}_{k=1} \xi_{k-1} dx_k \Big\|_{1,\infty} \leq
+  {\mathrm{c}} \|x\|_{1}.
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  我们需要证明以下不等式：
+  \begin{equation}\label{transform-Ineq}
+  \lambda \, \tau \Big( \chi_{(\lambda,\infty)} \Big( \Big|
+  \sum_{k=1}^n \xi_{k-1} dx_k \Big| \Big)\Big) \le \mathrm{c}
+  \|x\|_1,
+  \end{equation}
+  对于每个$0 < \lambda < \infty$成立。为此，我们固定$\lambda > 0$，
+  考虑$x$的分解$x = \alpha + \beta + \gamma +\upsilon$，其中$\alpha + \beta + \gamma
+  +\upsilon$是与定理~\ref{Main}相关联的关于$\lambda$的分解。利用算子的基本不等式$|a+b|^2 \le 2 |a|^2 + 2 |b|^2$，我们有
+  \begin{eqnarray*}
+  \Big|\sum_{k=1}^n \xi_{k-1} dx_k \Big|^2 & \le & 4
+  \Big|\sum_{k=1}^n \xi_{k-1} d\alpha_k \Big|^2 + 4
+  \Big|\sum_{k=1}^n \xi_{k-1} d\beta_k \Big|^2 \\ & + & 4 \Big|
+  \sum_{k=1}^n \xi_{k-1} d\gamma_k \Big|^2 + 4 \Big| \sum_{k=1}^n
+  \xi_{k-1} d\upsilon_k \Big|^2.
+  \end{eqnarray*}
+  取迹，根据引理~\ref{Quasi-Triangle}我们得到
+  \begin{eqnarray*}
+  \lefteqn{\lambda \tau \Big( \chi_{(\lambda,\infty)} \Big( \Big|
+  \sum_{k=1}^n \xi_{k-1} dx_k \Big| \Big) \Big)=\lambda  \tau \Big(
+  \chi_{(\lambda^2,\infty)} \Big( \Big| \sum_{k=1}^n \xi_{k-1} dx_k
+  \Big|^2 \Big)\Big)} \\ & \le &  4 \lambda  \tau \Big(
+  \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big| \sum_{k=1}^n \xi_{k-1}
+  d\alpha_k \Big|^2 \Big)\Big) +  4 \lambda  \tau \Big(
+  \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big| \sum_{k=1}^n \xi_{k-1}
+  d\beta_k \Big|^2 \Big)\Big) \\ & + &  4 \lambda  \tau \Big(
+  \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big| \sum_{k=1}^n \xi_{k-1}
+  d\gamma_k \Big|^2 \Big)\Big) +  4 \lambda  \tau \Big(
+  \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big| \sum_{k=1}^n \xi_{k-1}
+  d\upsilon_k \Big|^2 \Big)\Big) \\ & = & I + II + III +IV.
+  \end{eqnarray*}
+  对于第一项$I$，我们使用切比雪夫不等式推出：
+  \begin{equation} \label{I}
+  I \le \frac{64}{\lambda} \Big\| \sum_{k=1}^n \xi_{k-1} d\alpha_k
+  \Big\|_2^2 = \frac{64}{\lambda}  \sum_{k=1}^n \|\xi_{k-1}
+  d\alpha_k \|_2^2 \le \frac{64}{\lambda} \sum_{k=1}^n
+  \|d\alpha_k\|_2^2 \leq \mathrm{c} \|x\|_1.
+  \end{equation}
+  对于第二项$II$，我们采取类似的步骤，
+  \begin{eqnarray} \label{II}
+  II & = & 4 \lambda \, \tau \Big( \chi_{(\lambda/2,\infty)} \Big( 2
+  \Big| \sum_{k=1}^n \xi_{k-1} d\beta_k \Big| \Big)\Big) \\
+  \nonumber & \le & 16 \Big\| \sum_{k=1}^n \xi_{k-1} d\beta_k
+  \Big\|_1 \le 16 \sum_{k=1}^n \left\|d\beta_k\right\|_1 \le
+  \mathrm{c} \|x\|_1.
+  \end{eqnarray}
+  对于$III$，我们注意到$|\sum_{k=1}^n \xi_{k-1}d\gamma_k|^2$被投影支持，即
+  $$\bigvee_{k\geq 1} \mathrm{supp}
+  |d\gamma_k|.$$ 根据这一观察，我们得到
+  \begin{equation} \label{III}
+  III \leq 4\lambda \T\Big(\bigvee_{k\geq 1} \mathrm{supp}
+  |d\gamma_k|\Big) \leq \mathrm{c} \|x\|_1.
+  \end{equation}
+  对于最后一项$IV$，首先我们注意到由于$\xi_{k-1}$
+  与$d\upsilon_k$对易，我们有$$d\upsilon^*_k
+  \xi^*_{k-1}=\xi^*_{k-1}d{\upsilon}_k^*.$$ 因此
+  $$IV = 4 \lambda \tau \Big( \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big|
+  \sum_{k=1}^n d\upsilon^*_k \xi_{k-1}^* \Big|^2 \Big)\Big)= 4
+  \lambda  \tau \Big( \chi_{(\lambda^2/4,\infty)} \Big( 4 \Big|
+  \sum_{k=1}^n \xi_{k-1}^*d\upsilon^*_k  \Big|^2 \Big)\Big). $$
+  使用与$III$相同的论证，我们可以得出
+  \begin{equation} \label{IV}
+    IV \leq \mathrm{c} \|x\|_1.
+  \end{equation}
+  不等式~\eqref{transform-Ineq}~立即从~\eqref{I,II,III,IV}~中得出。证明完毕。    
+\end{proof}
+
+\subsection{非交换均方函数的 Burkholder 不等式}
+\begin{theorem}
+\cite*{parcet2006gundy}
+  存在一个绝对常数 $\mathrm{c}$ 使得对于任意的在 $L_1(\M, \tau)\cap L_2(\M, \tau)$ 中有界的鞅，存在两个鞅 $y,z$ 使得 $x=y+z$ 并且:
+  \begin{equation*}
+    \Big\| \Big(\sum^\infty_{n=1} |dy_n|^2
+    \Big)^{{1}/{2}} \Big\|_{1,\infty} + \Big\| \Big(\sum^\infty_{n=1}
+    |dz_n^*|^2 \Big)^{1/2} \Big\|_{1,\infty} \leq \mathrm{c}
+    \|x\|_1.
+  \end{equation*}
+\end{theorem}
+
+\subsection{非交换 $L_1$ 空间中的 $2$-Co-lacunary 序列}
+2-Co-lacunary，是一种 Banach 空间的几何性质，定义如下：一个 Banach 空间 $X$ 中的序列 $(x_n)_{n\geq0}$ 称为 
+2-Co-lacunary的，如果存在 $\delta>0$ 使得对于任意的复数序列 $(a_n)_{n\geq0}$，成立
+    \[\delta\|a\|_{\ell_2}\leq \|ax\|_{X}.\]
+
+\begin{theorem}
+\cite*{parcet2006gundy}
+设 $(d_k)_{k\geq0}$ 是一个 $L_1(\M,\tau)$ 中的鞅差序列满足
+\begin{itemize}
+  \item[(i)] $\gamma=\inf\{\|d_k\| | k\geq 0\}>0$；
+  \item[(ii)] $\{d_k|k\geq0\}$ 是 $L_1(\M,\tau)$ 中的相对弱紧集合。
+\end{itemize}
+则，序列 $(d_k)_{k\geq0}$ 是一个 $L_1(\M,\tau)$ 中的 2-Co-lacunary 序列。
+\end{theorem}
+% \newpage

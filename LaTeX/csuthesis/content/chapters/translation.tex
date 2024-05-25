@@ -1,0 +1,545 @@
+% \chapter{预备的定义和结果}
+\section{非交换对称空间}
+本节介绍一些预备定义和结果，这些定义和结果对该领域的专家中可能是熟知的，
+并且在本文的其余部分中将会用到。在全文中，$\M$是一个半有限 von Neumann 代数，
+配备正规的忠实的半有限迹$\T$。$\M$的单位元用$\mathbf{1}$表示。
+对于$0 < p \leq \infty$，$L_p(\M,\tau)$是相应的非交换$L_p$空间，参见例如\cite{N,PX2}。
+注意，如果$p=\infty$，$L_\infty(\M,\tau)$就是带有通常算子范数的$\M$；
+还要回忆一下，对于$0< p<\infty$，$L_p(\M,\tau)$上的（拟）范数由以下方式定义：
+\[\|x\|_p = \left(\T(|x|^p)\right)^{1/p}, \quad \text{其中} \quad |x|=(x^*x)^{1/2}.\]
+% \subsection{非交换对称空间}
+
+假设$\M$作用于Hilbert空间$H$上。对于H上的闭稠密定义的算子$x$，
+如果$x$与$\M$的交换子$\M'$中的每个酉算子$u$都可交换，则称$x$与$\M$是"附属"的。
+
+设$a$是$H$上的一个闭稠密自伴算子，其谱分解为$a = \int_{\R} s d e^a_s$，
+其中$s$是谱参数，$e^a_s$是与$a$相关的谱测度。对于任意的Borel子集$B \subseteq \R$，
+我们用$\chi_B(a)$表示相应的谱投影$\int_{\R} \chi_B(s) d e^a_s$。
+如果对于一个$\M$相关的算子$x$，存在$s > 0$使得$$\tau \big( \chi_{(s,\infty)} (|x|) \big) < \infty$$
+则称其为"$\tau$-可测"。
+
+$\tau$-可测算子$x$的"广义奇异值" $\mu(x): \R_+ \to \R_+$定义为
+$$\mu_t(x) = \inf \Big\{ s > 0 \, \big| \ \tau \big( \chi_{(s,\infty)}(|x|) \big) \le t \Big\}.$$
+对函数$\mu(x)$的详细阐述，请参考文献\cite{FK}。对于区间$(0,\tau(\mathbf{1}))$上的一个重排不变
+拟Banach函数空间$E$，我们定义\emph{非交换对称空间}$E(\mathcal{M},\tau)$如下：
+$$E(\mathcal{M},\tau) := \Big\{x \in L_0(\mathcal{M},\tau) \,
+ \big| \ \mu(x) \in E \Big\}, \quad \text{且} \quad \left\| x \right\|_{E(\M,\tau)} := \left\|\mu(x)\right\|_E$$
+其中$L_0(\mathcal{M},\tau)$表示$\tau$-可测算子的$*$-代数。
+已知当$E$是Banach（或拟Banach）函数空间时，$(E(\mathcal{M},\tau), \|\cdot\|_{E(\M,\tau)})$
+是Banach（或拟Banach）空间。关于对这个构造更深入的讨论，我们建议读者参考文献\cite{DDdP,X2}。
+对于$E$是Banach空间的情况，有以下包含关系：
+\[ L_1(\M,\tau) \cap \M \subseteq E(\M,\tau) \subseteq L_1(\M,\tau) + \M \]
+这里的包含映射的范数均为1（上述$L_1(\M,\tau) \cap \M$与$L_1(\M,\tau) + \M$中的范数是交与和的通常范数）。$E(\M,\tau)$的\emph{K\"othe对偶} $E(\M,\tau)^\times$定义为所有满足对于所有$y \in E(\M,\tau)$，都有$xy \in L_1(\M,\tau)$的$x \in L_0({\M},\tau)$的集合。通过定义范数为：
+$$\left\|x\right\|_{E(\M,\tau)^\times} := \sup \Big\{ \T(|xy|) \, \big| \ y \in E(\M,\tau), \, \|y\|_{E(\M,\tau)} \leq 1 \Big\}$$
+K\"othe对偶$E(\M,\tau)^\times$是一个Banach空间。关于交换情况下K\"othe对偶的基本性质，可以在文献\cite{LT}中找到。对于非交换情况，建议读者参考\cite{DDP3}。我们注意到从\cite{DDP3}中得知，如果$E$是一个重排不变函数空间，那么$(E(\M,\tau)^\times, \|\cdot\|_{E(\M,\tau)^\times})$可以与空间$(E^\times(\M,\tau), \|\cdot\|_{E^\times(\M,\tau)})$等同。
+特别地，我们有以下结果：
+\begin{eqnarray*}
+(L_1(\M,\tau) +\M)^\times & = & L_1(\M,\tau) \cap \M, \\
+(L_1(\M,\tau)\cap \M)^\times & = & L_1(\M,\tau) +\M.
+\end{eqnarray*}
+
+非交换空间中的相对弱紧性在本文中起着重要作用。
+下面，我们明确陈述我们在接下来的章节中所需的一个特性。
+首先，我们定义$S_0(\M,\tau) :={\M}_0 \cap (L_1(\M,\tau) +\M)$，其中
+\[ {\M}_0 := \Big\{ x \in L_0({\M},\tau) \, \big| \ \mu_t(x)\to 0 \ \text{as} \ t \to \infty \Big\}. \]
+
+\begin{theorem} \label{weakcom2} {\rm\cite[Theorem~5.4]{DSS}.}
+假设对称空间$E(\M,\tau)$包含在$S_0(\M,\tau)$中，
+并且$K$是$E(\M,\tau)^\times$的有界子集。那么，以下陈述等价：
+\begin{itemize}
+\item[(i)] $\mu(K)$在相对于$\sigma(E^\times, E)$拓扑下是紧的；
+\item[(ii)] $K$在相对于$\sigma(E(\M,\tau)^\times, E(\M,\tau))$拓扑下是紧的。
+\end{itemize}
+\end{theorem}
+
+本文主要关注非交换$L_p$空间和\emph{非交换弱$L_1$空间}。在可测算子的对称空间构造之后，
+非交换弱$L_1$空间$L_{1,\infty}(\mathcal{M}, \T)$被定义为
+满足以下拟范数有界的$x \in L_0(\mathcal{M},\tau)$的集合：
+\[ \left\|x\right\|_{1,\infty} = \sup_{t > 0} t \mu_t(x) = \sup_{\lambda > 0} \lambda \tau \big( \chi_{(\lambda, \infty)} (|x|) \big) < \infty. \]
+类似于交换情况，可以轻松验证如果$x_1, x_2 \in L_{1,\infty}(\M,\tau)$，
+则 $\|x_1 +x_2\|_{1,\infty} \leq 2\|x_1\|_{1,\infty} +2\|x_2\|_{1,\infty}$。
+事实上，在接下来的推导中我们会多次使用以下更一般的拟三角不等式。
+其简短证明可以在 \cite[Lemma~1.2]{R3}中找到。
+
+\begin{lemma} \label{Quasi-Triangle}
+对于$L_{1,\infty}(\mathcal{M},\tau)$中的两个算子$x_1, x_2$和$\lambda > 0$，我们有
+$$\lambda \, \tau \Big( \chi_{(\lambda,\infty)} \big( |x_1+x_2| \big) \Big) \le 2 \lambda \, \tau \Big( \chi_{(\lambda/2, \infty)} \big( |x_1| \big) \Big) + 2 \lambda \, \tau \Big( \chi_{(\lambda/2, \infty)} \big( |x_2| \big) \Big).$$
+\end{lemma}
+
+设 $\mathsf{P} = \{ p_i \}_{i=1}^m$ 是 $\mathcal{M}$ 中一组两两正交的有限投影。我们考虑相对于 $\mathsf{P}$ 的{\it 三角截断}，它是定义在 $L_0(\mathcal{M},\tau)$ 上的映射，具体定义如下：
+\[ \mathcal{T}^{(\mathsf{P})} x = \sum_{i=1}^m \sum_{i\leq j} p_i x p_j. \]
+接下来的引理将在后续中使用。
+
+\begin{lemma} \label{Truncation} {\rm\cite[Proposition~1.4]{R3}} 存在一个绝对常数 $\mathrm{c}>0$，使得对于任意一族有限两两正交投影序列 $(\mathsf{P}_k)_{k\geq 1}$ 和任意序列 $(x_k)_{k\geq 1}$，其中 $x_k \in L_1(\mathcal{M},\tau)$，有
+\[
+ \Big\| \Big( \sum_{k\geq 1} \big| \mathcal{T}^{(\mathsf{P}_k)} x_k \big|^2 \Big)^{1/2} \Big\|_{1,\infty} \le \mathrm{c} \sum_{k\geq 1} \|x_k\|_1.
+\]
+\end{lemma}
+
+\section{非交换鞅}
+考虑$\mathcal{M}$的von Neumann子代数$\mathcal{N}$（即$\mathcal{M}$的一个弱$*$闭$*$-子代数）。
+从$\mathcal{M}$到$\mathcal{N}$的\emph{条件期望}$\E:\mathcal{M}\to\mathcal{N}$是一个正的、收缩的投影算子。
+如果伴随映射$\E^*$满足$\E^*(\mathcal{M}_*)\subset\mathcal{N}_*$，
+则条件期望$\E$被称为\emph{正规的}。在这种情况下，存在一个映射$\E_*:\mathcal{M}_*\rightarrow\mathcal{N}_*$，其伴随映射是$\E$。
+请注意，这样的正规条件期望存在当且仅当将$\tau$限制在von Neumann子代数$\mathcal{N}$上仍然是半有限的（例如，参见\cite[Theorem~3.4]{T}）。
+任何这样的条件期望都是保迹的（即，$\tau\circ\E=\tau$），并且满足双模性质：
+\[\E(axb)=a\E(x)b\quad\forall a,b\in\mathcal{N}\ \forall x\in\mathcal{M}.\]
+
+设$(\mathcal{M}_n)_{n\ge 1}$是$\mathcal{M}$的递增von Neumann子代数序列，使得这些$\mathcal{M}_n$的并在弱$^*$拓扑下在$\mathcal{M}$中稠密。对于每个$n\geq 1$，假设存在一个正规条件期望$\E_n:\mathcal{M}\to\mathcal{M}_n$。
+请注意，对于每个$1\leq p<\infty$和$n\ge 1$，$\E_n$可以扩展为一个正的收缩算子$\E_n:L_p(\mathcal{M},\tau)\to L_p(\mathcal{M}_n,\tau|_{\M_n})$。相对于子代数流$(\mathcal{M}_n)_{n\ge 1}$的\emph{非交换鞅}是一个序列$x=(x_n)_{n\ge 1}$，其中$x_n\in L_1(\mathcal{M},\tau)$，满足以下条件：
+\[
+\E_m(x_n)=x_m\quad\forall 1\leq m\leq n<\infty.
+\]
+如果此外对于某个$1\leq p\leq \infty$，$x\subset L_p(\mathcal{M},\tau)$，则称$x$为一个\emph{$L_p$-鞅}。在这种情况下，我们定义
+\[\left\|x\right\|_p:=\sup_{n\ge 1}\left\|x_n\right\|_p.\]
+如果$\|x\|_p<\infty$，则称$x$为一个\emph{$L_p$-有界鞅}。给定一个鞅$x=(x_n)_{n\ge 1}$，我们约定$x_0=0$。然后，与$x$相关的鞅差序列$dx=(dx_k)_{k\ge 1}$由以下定义：
+$$dx_k=x_k-x_{k-1}.$$
+
+我们现在描述非交换鞅的平方函数。
+参考Pisier和许全华老师的研究\cite{PX1}，我们考虑以下的行和列版本的平方函数。
+给定一个鞅差序列 $dx = (dx_k)_{k \ge 1}$ 和 $n \geq 1$，我们定义 $x$ 的
+\emph{行平方函数}和\emph{列平方函数}如下：
+\[
+\cal{S}_{C,n} (x) := \Big(\sum^n_{k=1}|dx_{k}|^{2} \Big)^{{1}/{2}}
+\quad \text{和} \quad \cal{S}_{R,n}(x) :=
+\Big(\sum^n_{k=1}|dx_{k}^*|^{2} \Big)^{{1}/{2}}.
+\]
+让我们考虑一个在区间 $[0, \T({\bf 1}))$ 上具有重新排列不变性的（拟）Banach函数空间 $E$。
+然后，我们定义空间 $E(\mathcal{M}, \tau; l^2_C)$ 和 $E(\mathcal{M}, \tau; l^2_R)$ 
+为有限序列 $a = (a_k)_{k \ge 1}$ 在 $E(\mathcal{M}, \tau)$ 中的向量空间关于以下范数的完备化：
+\begin{eqnarray*}
+\|a\|_{E(\M,\tau;l^{2}_{C})} & = & \Big\| \Big( \sum_{k \geq 1}
+|a_{k}|^{2} \Big)^{{1}/{2}} \Big\|_{E(\M,\tau)}, \\ \|a\|_{E(\M,
+\tau; l^{2}_{R})} & = & \Big\| \Big( \sum_{k \geq 1}
+|a_{k}^{*}|^{2} \Big)^{{1}/{2}} \Big\|_{E(\M,\tau)}.
+\end{eqnarray*}
+
+如果鞅差序列 $dx$ 属于 $E(\M,\tau;l^{2}_{C})$（或 $E(\M,\tau; l^{2}_{R})$），当且仅当序列 $(\mathcal{S}_{C,n}(x))_{n \ge 1}$
+（或 $(\mathcal{S}_{R,n}(x))_{n \ge 1}$）在 $E(\M,\tau)$ 中有界。在这种情况下，极限
+\[
+\cal{S}_{C}(x) := \Big( \sum^{\infty}_{k=1} |dx_{k}|^{2}
+\Big)^{{1}/{2}} \quad \mbox{和} \quad \mathcal{S}_{R}(x) := \Big(
+\sum^{\infty}_{k=1}|dx_{k}^{*}|^{2} \Big)^{{1}/{2}} \]
+是 $E(\M,\tau)$ 中的元素。这两个版本的平方函数在接下来的部分非常关键。
+
+下面关于正鞅的结果已经广为人知，可以参考\cite{C}，并且可以视作Doob极大函数的经典弱$(1,1)$型有界性
+在非交换下的类比推广。下面给出的自伴鞅的推广在接下来的部分中起着关键作用。
+其证明是Cuculescu的原本论证上进行微小调整，但为了完整性，我们将提供这些细节。
+
+\begin{proposition}\label{Cuculescu}
+如果$x=(x_{n})_{n\ge 1}$是一个自伴的$L_1$-有界鞅，并且$\lambda$是一个正实数，则存在一个在von Neumann代数$\M$中的递减投影序列
+$$q_0^{(\lambda)} \geq q_1^{(\lambda)} \geq q_2^{(\lambda)} \geq \ldots$$
+满足以下性质：
+\begin{itemize}
+\item[(i)] 对于每个$n\ge 1$，$q_{n}^{(\lambda)}\in \M_{n}$；
+\item[(ii)] 对于每个$n\ge 1$，$q_{n}^{(\lambda)}$与$q_{n-1}^{(\lambda)}x_{n}q_{n-1}^{(\lambda)}$交换；
+\item[(iii)] 对于每个$n\ge 1$，$|q_{n}^{(\lambda)}x_{n}q_{n}^{(\lambda)}|\leq \lambda q_{n}^{(\lambda)}$；
+\item[(iv)] 如果我们设$q^{(\lambda)}=\bigwedge_{n=1}^{\infty}q_{n}^{(\lambda)}$，则$$\tau\left({\bf 1}-q^{(\lambda)}\right)\leq \frac{1}{\lambda}\|x\|_1.$$
+\end{itemize}\end{proposition}
+
+\begin{proof}
+让 $q_{0}^{(\lambda)} = {\bf 1}$，并对 $n \geq 1$ 进行如下的归纳定义：
+%\begin{equation*}
+\[
+q_{n}^{(\lambda)} := q_{n-1}^{(\lambda)} \chi_{[-\lambda,\lambda]}
+\Big( q_{n-1}^{(\lambda)} x_{n} q_{n-1}^{(\lambda)} \Big) =
+\chi_{[-\lambda,\lambda]} \Big( q_{n-1}^{(\lambda)} x_{n}
+q_{n-1}^{(\lambda)} \Big) q_{n-1}^{(\lambda)}.\]
+%\end{equation*}
+上述等式成立，因为 $q_{n-1}^{(\lambda)}$ 与 $q_{n-1}^{(\lambda)} x_{n} q_{n-1}^{(\lambda)}$ 交换，这是由于 $q_{n-1}^{(\lambda)}$ 是一个投影。这显然给出了一个递减的投影序列。根据归纳法，条件 (i) 成立。此外，条件 (ii) 直接来自上述定义。对于条件 (iii)，注意对于每个 $n\geq 1$，有：
+\begin{eqnarray*}
+q_{n}^{(\lambda)} x_{n} q_{n}^{(\lambda)} & = & q_{n}^{(\lambda)}
+(q_{n-1}^{(\lambda)} x_{n} q_{n-1}^{(\lambda)}) q_{n}^{(\lambda)}
+\\ & = & q_{n-1}^{(\lambda)} \chi_{[-\lambda,\lambda]}
+(q_{n-1}^{(\lambda)} x_{n} q_{n-1}^{(\lambda)})
+q_{n-1}^{(\lambda)} x_{n} q_{n-1}^{(\lambda)}
+\chi_{[-\lambda,\lambda]} (q_{n-1}^{(\lambda)} x_{n}
+q_{n-1}^{(\lambda)}) q_{n-1}^{(\lambda)}.
+\end{eqnarray*}
+因此，$-\lambda q_{n}^{(\lambda)}\leq q_{n}^{(\lambda)} x_{n}
+q_{n}^{(\lambda)}\leq \lambda q_{n}^{(\lambda)}$，从而满足条件 (iii)。为了证明条件 (iv)，我们使用 Krickeberg 分解的非交换推广版本\cite{C}，依此我们可以将 $x_n= w_n - z_n$ 写成正鞅 $w = (w_n){n \ge 1}$ 和 $z = (z_n){n \ge 1}$ 的形式，其中
+$$\|x\|_1=\tau(w_1 + z_1).$$ 
+对于每个 $n\geq 1$ ，成立
+\begin{eqnarray*}
+\|x\|_1 & = & \tau \big( (w_n + z_n) q_{n}^{(\lambda)} \big) +
+\sum^n_{k=1} \tau \Big( (w_n + z_n) (q_{k-1}^{(\lambda)} -
+q_{k}^{(\lambda)}) \Big)
+\\ & = & \tau \big( q_{n}^{(\lambda)} (w_n + z_n)
+q_n^{(\lambda)} \big) + \sum^n_{k=1} \tau \Big( \E_k (w_n +
+z_n) (q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) \Big).
+\end{eqnarray*}
+由于 $\tau \big( q_{n}^{(\lambda)} (w_n + z_n) q_{n}^{(\lambda)})
+\geq 0$，我们有
+\begin{eqnarray*}
+\|x\|_1 & \geq & \sum^{n}_{k=1} \tau \Big( (q_{k-1}^{(\lambda)} -
+ q_{k}^{(\lambda)}) (w_k + z_k) (q_{k-1}^{(\lambda)} -
+ q_{k}^{(\lambda)}) \Big) \\ & \geq & \tau \Big( \sum^{n}_{k=1}
+ \Big| (q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) (w_k - z_k)
+ (q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) \Big| \Big)
+\\ & = & \tau \Big( \sum^{n}_{k=1} \Big| (q_{k-1}^{(\lambda)} -
+q_{k}^{(\lambda)}) (q_{k-1}^{(\lambda)} x_k q_{k-1}^{(\lambda)})
+(q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) \Big| \Big).
+\end{eqnarray*}
+根据 $q_{k}^{(\lambda)}$ 的定义，容易得到
+\begin{eqnarray*}
+q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)} & = & q_{k-1}^{(\lambda)}
+\Big( \chi_{(-\infty, -\lambda)} (q_{k-1}^{(\lambda)} x_{k}
+q_{k-1}^{(\lambda)}) + \chi_{(\lambda, \infty)}
+(q_{k-1}^{(\lambda)} x_{k} q_{k-1}^{(\lambda)}) \Big) \\ & = &
+\Big( \chi_{(-\infty, -\lambda)} (q_{k-1}^{(\lambda)} x_{k}
+q_{k-1}^{(\lambda)}) + \chi_{(\lambda, \infty)}
+(q_{k-1}^{(\lambda)} x_{k} q_{k-1}^{(\lambda)}) \Big)
+q_{k-1}^{(\lambda)}.
+\end{eqnarray*}
+于是，如果 $q_{k-1}^{(\lambda)}
+x_{k}q_{k-1}^{(\lambda)}=\int_{\mathbb R} t de_t^{(k)}$ 是 $q_{k-1}^{(\lambda)} x_{k}q_{k-1}^{(\lambda)}$ 的谱分解，
+我们得到
+\begin{eqnarray*}
+\lambda (q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) & \le &
+\int_{-\infty}^{- \lambda} |t| \, de_t^{(k)} +
+\int_{\lambda}^{\infty} |t| \, de_t^{(k)} \\ & = & \Big|
+(q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)}) (q_{k-1}^{(\lambda)} x_k
+q_{k-1}^{(\lambda)}) (q_{k-1}^{(\lambda)} - q_{k}^{(\lambda)})
+\Big|.
+\end{eqnarray*}
+现在我们可以得出 $$\tau \Big( {\bf 1}-q_{n}^{(\lambda)}
+\Big) \le \frac{1}{\lambda} \|x\|_1.$$ 取极限 $n \to
+\infty$， 我们得到 (iv)。这完成了证明。 
+\end{proof}
+
+在接下来的内容中，我们将把命题 \ref{Cuculescu} 中的投影序列称为关于（自伴）鞅 $x$ 和（正）参数 $\lambda$ 的 Cuculescu 投影序列。在下一个结果中，我们总结了这个序列的一些基本性质，这些性质非常有用，将在下一节中出现。
+
+\begin{proposition} \label{Randri}
+设 $x = (x_n)_{n \ge 1}$ 是一个自伴 $L_1$-有界鞅，$\lambda$ 是一个正实数。那么对于每个 $n\ge 1$ ，关于 $x$ 和 $\lambda$ 的 Cuculescu 投影序列满足以下估计：
+
+\begin{eqnarray}
+\label{Est1} \sum_{k=1}^{n} \big\| q_{k-1}^{(\lambda)} x_k
+q_{k-1}^{(\lambda)} - q_k^{(\lambda)} x_k q_k^{(\lambda)} \big\|_1
+& \le & \|x\|_1, \\ \label{Est2} \sum_{k=1}^{n} \big\|
+q_{k-1}^{(\lambda)} x_{k-1} q_{k-1}^{(\lambda)} - q_k^{(\lambda)}
+x_{k-1} q_k^{(\lambda)}\big\|_1 & \le & 2 \|x\|_1, \\ \label{Est3}
+\sum_{k=1}^{n} \big\| q_{k-1}^{(\lambda)} dx_k q_{k-1}^{(\lambda)}
+- q_k^{(\lambda)} dx_k q_k^{(\lambda)} \big\|_1 & \le & 3 \|x\|_1.
+\end{eqnarray}
+此外，还有以下恒等式成立：
+\begin{equation} \label{Ident1}
+\sum_{k=1}^{n} q_{k-1}^{(\lambda)} dx_k  q_{k-1}^{(\lambda)}=
+q_n^{(\lambda)}  x_n  q_n^{(\lambda)}+ \sum_{k=1}^{n}
+(q_{k-1}^{(\lambda)}-q_{k}^{(\lambda)})x_k
+(q_{k-1}^{(\lambda)}-q_{k}^{(\lambda)}).
+\end{equation}
+特别地，我们得到
+\begin{equation} \label{Est4}
+\Big\| \sum_{k=1}^{n} q_{k-1}^{(\lambda)} dx_k q_{k-1}^{(\lambda)}
+\Big\|_1 \leq 2 \|x\|_1.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+我们将用 $(q_n)_{n \ge 0}$ 表示 $(q_n^{(\lambda)})_{n \ge
+0}$，用 $q$ 表示 $q^{(\lambda)}$ （参见命题 \ref{Cuculescu}）。
+设 $v_k = q_{k-1} x_k q_{k-1} - q_k x_k q_k$. 由于 $q_k$
+与 $q_{k-1} x_k q_{k-1}$ 交换，我们有 $v_k = (q_{k-1} -
+q_k) x_k (q_{k-1} - q_k)$ 并且因此对于任意给定 $n \ge 1$，
+\begin{eqnarray*}
+\sum_{k=1}^n \|v_k\|_1 & = & \sum_{k=1}^n \big\| (q_{k-1} - q_k)
+x_k (q_{k-1} - q_k) \big\|_1 \\ & = & \sum_{k=1}^n \big\|
+\E_k \big( (q_{k-1} - q_k) x_n (q_{k-1} - q_k) \big)
+\big\|_1
+ \\ & \leq & \sum_{k=1}^n \big\| (q_{k-1} - q_k) x_n (q_{k-1}
+- q_k) \big\|_1 \le \|x_n\|_1.
+\end{eqnarray*}
+因此，不等式~\eqref{Est1} 成立。对于不等式~\eqref{Est2}，令 $$\sigma_k = q_k x_{k-1} q_k - q_{k-1} x_{k-1}
+q_{k-1}.$$ 然后我们有，
+\begin{eqnarray*}
+\sigma_k & = & q_k x_{k-1} (q_k - q_{k-1}) + (q_k -q_{k-1})
+x_{k-1} q_{k-1} \\ & = & q_k q_{k-1} x_{k-1} q_{k-1} (q_k -
+q_{k-1}) + (q_k - q_{k-1}) q_{k-1} x_{k-1} q_{k-1}.
+\end{eqnarray*}
+根据 H\"{o}lder 不等式以及命题~\ref{Cuculescu}，我们得出
+\[\sum_{k=1}^\infty\|\sigma_k\|_1 \le 2 \sum_{k=1}^\infty
+\tau(q_{k-1} - q_k) \big\| q_{k-1} x_{k-1} q_{k-1}\big\|_{\infty}
+\le 2 \lambda \tau (\mathbf{1} - q)\leq 2\|x\|_1,
+ \]
+这证明了~\eqref{Est2}。不等式~\eqref{Est3}
+直接由~\eqref{Est1} 、~\eqref{Est2} 和三角不等式得出。等式~\eqref{Ident1} 由分部求和方法得出。事实上，对于 $n\geq 1$ 我们有
+\begin{eqnarray*}
+\sum_{k=1}^n q_{k-1} dx_k q_{k-1} & = & \sum_{k=1}^n \big( q_{k-1}
+x_k q_{k-1} - q_{k-1} x_{k-1} q_{k-1} \big) \\ & = &
+\sum_{k=1}^{n-1} \big( q_{k-1} x_k q_{k-1} - q_k x_k q_k \big) +
+q_{n-1} x_n q_{n-1} \\ & = & \sum_{k=1}^{n} \big( q_{k-1} x_k
+q_{k-1} - q_k x_k q_k \big) + q_{n} x_n q_{n}
+\end{eqnarray*}
+最后，不等式~\eqref{Est4} 从~\eqref{Est1} 和~\eqref{Ident1} 得出。证明完毕。
+\end{proof}
+
+\section{非交换 Gundy 分解}
+\label{Section2}
+
+在本节中，我们将介绍 Gundy 分解定理在非交换下的推广，这也是本文的主要结果。所有适应
+序列和鞅都被理解为相对于一个固定子代数流 $(\mathcal{M}_n)_{n \ge 1}$。
+为了方便起见，我们假设 $\E_0=\E_1$。
+
+\begin{theorem}\label{Main} 如果 $x=(x_n)_{n \ge 1}$ 是一个 $L_1$ 有界的鞅
+且 $\lambda$ 是一个正实数时，那么就存在四个鞅 $\alpha$, $\beta$, $\gamma$、
+和 $\upsilon$ 满足以下属性，对于某个绝对常数 $\mathrm{c}$：
+\begin{itemize}
+\item[(i)] $x=\alpha +\beta + \gamma + \upsilon$;
+\item[(ii)] 鞅 $\alpha$ 满足 $$\|\alpha\|_1 \leq
+\mathrm{c} \|x\|_1, \quad \|\alpha\|_2^2 \leq \mathrm{c}
+\lambda\|x\|_1, \quad \|\alpha\|_\infty \leq \mathrm{c} \lambda;$$
+\item[(iii)] 鞅 $\beta$ 满足 $$\sum_{k=1}^{\infty}
+\|d\beta_k\|_1 \le \mathrm{c} \|x\|_1;$$
+\item[(iv)] $\gamma$ 和 $\upsilon$ 是 $L_1$-鞅且
+$$\max \Big\{ \lambda \tau \Big( \bigvee_{k \ge 1} \mathrm{supp}
+|d\gamma_k| \Big), \, \lambda \tau \Big( \bigvee_{k \ge 1}
+\mathrm{supp} \, |d\upsilon_k^*| \Big) \Big\} \le \mathrm{c}
+\|x\|_1.$$
+\end{itemize}
+\end{theorem}
+
+\dem 不失一般性，我们可以假设并且假设鞅$x$是正的。记 $(q_n)_{n \ge 0}$ 为与鞅 $x$ 和固定的 $\lambda>0$ 相关的 Cuculescu 投影序列。构造分为两个步骤进行。
+
+% \vskip5pt
+
+\noindent{\bf 第一步。}我们考虑下面的鞅差序列
+%\begin{equation}\label{y}
+$$dy_k := q_k dx_k q_k - \E_{k-1} (q_k dx_k q_k ) \quad \text{对于}
+\quad k \geq 1.$$
+%\end{equation}
+很明显，$(dy_k)_{k \ge 1}$ 是一个鞅差序列，对应的鞅 $y = (y_n)_{n \ge 1}$ 是一个自伴 $L_1$ 鞅。下面的中间引理对我们的构造是至关重要的。
+\begin{lemma}\label{marting-y}
+鞅 $y$ 是 $L_1$ 有界的，满足 $\|y\|_1\leq  9 \|x\|_1$。
+\end{lemma}
+\dem 这个引理的证明主要基于命题~\ref{Randri}。事实上，对于每个$n\geq 1$，
+\begin{eqnarray*}
+\left\|y_n\right\|_1 & = & \Big\| \sum_{k=1}^n q_k dx_k q_k -
+\E_{k-1} (q_k dx_k q_k ) \Big\|_1 \\ & \leq & \Big\|\sum_{k=1}^n
+q_{k-1} dx_k q_{k-1} \Big\|_1 \\ & + & \sum_{k=1}^n \big\| q_{k-1}
+dx_k q_{k-1}-q_k dx_k q_k \big\|_1  \\ & + & \sum_{k=2}^n \big\|
+\E_{k-1} (q_k dx_k q_k) \big\|_1 + \big\| q_1 x_1 q_1 \big\|_1.
+\end{eqnarray*}
+由于对于 $2\leq k\leq n$，$$\E_{k-1} \big( q_k dx_k q_k \big) = \E_{k-1} \big( q_k dx_k q_k - q_{k-1} dx_k q_{k-1} \big),$$
+该断言由估计式~\eqref{Est3}~和~\eqref{Est4}~成立。因此，引理得证。
+
+\noindent{\bf 第二步。}设 $(\pi_n)_{n \ge 0}$ 表示相对于（自伴）鞅 $y$ 和上述固定参数 $\lambda$ 的Cuculescu投影序列。我们如下定义鞅 $\alpha$、$\beta$、$\gamma$和$\upsilon$：
+
+\begin{equation*}\label{decomposition}
+\begin{cases}
+d\alpha_k &:= \pi_{k-1} \big[ q_k dx_k q_k - \E_{k-1} (q_k dx_k
+q_k) \big] \pi_{k-1}, \\ d\beta_k &:= \pi_{k-1} \big[ q_{k-1}dx_k
+q_{k-1}- q_k dx_k q_k + \E_{k-1} (q_k dx_k q_k) \big]\pi_{k-1}, \\
+d\gamma_k &:=dx_k -  dx_k q_{k-1}\pi_{k-1},\\ d\upsilon_k &:=dx_k
+q_{k-1}\pi_{k-1}-\pi_{k-1}q_{k-1}dx_k q_{k-1}\pi_{k-1}.
+\end{cases} \tag{$\mathbf{G}_{\lambda}$}
+\end{equation*}
+显然， $d\alpha$, $d\beta$, $d\gamma$ 和 $d\upsilon$ 是鞅差序列并且 $x=\alpha +\beta +\gamma+\upsilon$。
+
+\begin{lemma}\label{alpha-norm} 鞅 $\alpha$ 满足
+$$\|\alpha\|_1 \leq 18 \|x\|_1, \quad \|\alpha\|_2^2 \leq 72
+\lambda\|x\|_1, \quad \|\alpha\|_\infty \leq 4\lambda.$$
+\end{lemma}
+  
+\begin{proof}
+请注意，对于$k \geq 1$，有$d\alpha_k =
+\pi_{k-1}dy_k\pi_{k-1}$。因此，$L_1$估计直接由~\eqref{Est4}~和引理~\ref{marting-y}~得出。对于$L_\infty$估计，我们回顾一下~\eqref{Ident1}，对于每个$n\geq 1$，
+\[
+\alpha_n= \sum_{k=1}^{n} \pi_{k-1} dy_k  \pi_{k-1} = \pi_n  y_n
+\pi_n + \sum_{k=1}^{n} (\pi_{k-1}-\pi_{k}) y_k
+(\pi_{k-1}-\pi_{k}).
+  \]
+关键观察是$\sup_{k\geq 1} \|dy_k\|_\infty \leq 2
+\lambda$。我们有以下估计：
+\begin{eqnarray*}
+\left\|\alpha_n \right\|_\infty & \leq & \left\|\pi_n  y_n \pi_n
+\right\|_\infty \\ & + & \Big\| \sum_{k=1}^{n} (\pi_{k-1}-\pi_{k})
+dy_{k} (\pi_{k-1}-\pi_{k}) \Big\|_\infty
+\\ & + & \Big\|\sum_{k=1}^{n}
+(\pi_{k-1}-\pi_{k}) y_{k-1} (\pi_{k-1}-\pi_{k}) \Big\|_\infty.
+\end{eqnarray*}
+由$(\pi_n)_{n \ge 0}$的定义可推出，
+$$\left\|\alpha_n \right\|_\infty \leq \lambda + \sup_{k \leq n}
+\left\|dy_{k}\right\|_\infty + \sup_{k\leq n}
+\left\|(\pi_{k-1}-\pi_{k}) y_{k-1}
+(\pi_{k-1}-\pi_{k})\right\|_\infty \leq 4\lambda.$$ 通过应用H\"older不等式，$L_2$估计可以从$L_1$和$L_\infty$估计得出。
+\end{proof}
+
+\begin{lemma}\label{beta-norm}
+鞅 $\beta$ 满足 $$\sum_{k=1}^\infty
+\|d\beta_k\|_1 \leq 7\|x\|_1.$$
+\end{lemma}
+
+\begin{proof}
+根据 $(d\beta_k)_{k \ge 1}$ 的定义，我们有
+\[
+\sum_{k=1}^{\infty} \left\|d\beta_k\right\|_1 \le
+\left\|d\beta_1\right\|_1 + \sum_{k=2}^{\infty} \big\| q_{k-1}
+dx_k q_{k-1} - q_k dx_k q_k \big\|_1 + \sum_{k=2}^{\infty} \big\|
+\E_{k-1} \big( q_k dx_k q_k \big) \big\|_1.
+\]
+因为对每个 $k\geq 2$, $$\E_{k-1} \big( q_k dx_k q_k
+\big) = \E_{k-1} \big( q_k dx_k q_k - q_{k-1} dx_k q_{k-1}
+\big),$$  我们从~\eqref{Est3} 推断
+\[
+\sum_{k=1}^{\infty} \left\|d\beta_k\right\|_1 \le
+\left\|x_1\right\|_1 + 2 \sum_{k=2}^{\infty} \big\| q_{k-1} dx_k
+q_{k-1} - q_k dx_k q_k \big\|_1 \le 7 \|x\|_1.
+\]
+因此我们有如上所述的估计。
+\end{proof}
+
+\begin{lemma}\label{gamma-support}
+对每个 $k\geq 1$，
+\begin{itemize}
+\item[(a)]$\mathrm{supp} |d\gamma_k| \leq {\bf 1}- \pi_{k-1}
+\wedge q_{k-1}$;
+\item[(b)] $\mathrm{supp} |d\upsilon_k^*| \leq {\bf 1}-
+\pi_{k-1} \wedge q_{k-1}$.
+\end{itemize}
+因此，鞅 $\gamma$ 和 $\upsilon$ 满足
+$$\max \Big\{ \lambda \tau \Big( \bigvee_{k \ge 1} \mathrm{supp}
+\, |d\gamma_k| \Big), \, \lambda \tau \Big( \bigvee_{k \ge 1}
+\mathrm{supp} \, |d\upsilon_k^*| \Big) \Big\} \le 10 \, \|x\|_1.$$
+\end{lemma}
+  
+\dem
+通过~\eqref{decomposition}，我们立即得到$d\gamma_k=d\gamma_k({\bf 1}-\pi_{k-1}\wedge q_{k-1})$，并且使用极分解，我们得到$|d\gamma_k|=|d\gamma_k|({\bf
+1}-\pi_{k-1}\wedge q_{k-1})$，这表明$\mathrm{supp} \,
+|d\gamma_k| \leq {\bf 1}- \pi_{k-1} \wedge q_{k-1}$。因此，
+\[
+\bigvee_{k\geq 1} \mathrm{supp} \, |d\gamma_k| \leq {\bf 1}- \pi
+\wedge q.\] 因此，我们推导出
+$$\T \Big( \bigvee_{k\geq 1}
+\mathrm{supp} \, |d\gamma_k| \Big) \leq \T({\bf 1}- \pi) + \T({\bf
+1}-q) \leq \frac{1}{\lambda} \big( \|y\|_1 + \|x\|_1 \big) \leq
+\frac{10}{\lambda} \, \|x\|_1.$$ 同样的论证适用于鞅差序列$(d\upsilon^*_k)_{k \ge 1}$。
+\fin
+现在很明显，通过结合引理~\ref{alpha-norm}、引理~\ref{beta-norm}和引理~\ref{gamma-support}，定理~\ref{Main}的(ii)、(iii)和(iv)项的所有估计都得到了验证。此外，关于$\gamma$和$\upsilon$是$L_1$鞅的事实直接从~\eqref{decomposition}~得到。
+\fin
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+\emph{需要注意的是，与可交换情况形成鲜明对比的是，
+在定理~\ref{Main}中所陈述的分解中，考虑第四个鞅$\upsilon$是必要的。
+事实上，假设在定理~\ref{Main}中的分解可以仅使用三个鞅完成。
+也就是说，对于每个有界$L_1$鞅$x$和$\lambda>0$，
+存在一个分解$x=\alpha +\beta +\gamma$，满足定理~\ref{Main}的(ii)、(iii)和(iv)项。
+那么，可以对经典情况中在\cite{G}中使用的论证进行直接调整，
+从而证明存在一个绝对常数$\mathrm{c}$使得 $$\max \Big\{
+\|\mathcal{S}_R(x)\|_{1,\infty}, \,
+\|\mathcal{S}_C(x)\|_{1,\infty} \Big\} \leq \mathrm{c} \,
+\|x\|_1.$$ 特别地，实插值方法的标准应用表明存在一个只依赖于$p$的
+常数$\mathrm{c}_p$，使得如果$x$是$L_p$有界的鞅，$1 < p < 2$，
+则我们有 $$\max \Big\{ \|\mathcal{S}_R(x)\|_{p},
+\, \|\mathcal{S}_C(x)\|_{p} \Big\} \leq \mathrm{c}_p \, \|x\|_p.$$ 这与\cite{PX1}中证明的
+非交换Burkholder-Gundy不等式的非交换类比直接冲突。
+因此，一般情况下，在定理~\ref{Main}中不能将分解为三个鞅。
+这一观察结果证实了我们的分解与非交换鞅的Hardy空间的行/列结构之间的关系。
+此外，对上述简略论证的详细检查表明，实际上，鞅$\gamma$和$\upsilon$可以被看作是
+\cite{G}中其可交换对应物的“ 列部分" 和“ 行部分"。}
+\end{remark}
+
+\begin{remark}
+\emph{在上述构造~\eqref{decomposition}~中，我们有
+$\alpha_1=0$，$\beta_1= x_1$，$\gamma_1=0$和$\upsilon_1=0$。
+任何其他选择这些第一项的方式都不会对定理~\ref{Main}中所述的性质产生任何影响。
+我们的选择在一定程度上受到下面的第二个应用的启发，
+其中我们需要$\gamma_1 = \upsilon_1 = 0$。}
+\end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+在下面的表述中，我们观察到，如果希望在定理~\ref{Main}的分解中使用三个鞅，
+那么我们必须考虑一个较弱的支撑投影的概念。
+
+\begin{definition}
+对于一个不一定自伴的算子$x \in \M$，我们定义$x$的\emph{双边零化投影}为满足$qxq = 0$的最大投影$q$。在这种情况下，我们设定$\mbox{supp}^* x := {\bf 1} - q$。
+\end{definition}
+
+显然，如果$\mathcal{M}$是可交换的，那么$\mbox{supp} \, x = \mbox{supp}^* x$。
+一般情况下，$\mbox{supp}^*$比通常的支撑更小，即对于任意的自伴算子$x \in \M$，
+我们有$\mbox{supp}^* x \le \mbox{supp} \, x$，
+对于非自伴算子$x \in \M$，$\mbox{supp}^* x$是$x$的右支撑和左支撑的子投影。
+利用这种支撑投影的概念，我们可以陈述如下结论：
+
+\begin{corollary}
+如果$x=(x_n)_{n \ge 1}$是一个$L_1$有界的非交换鞅，$\lambda$是一个正实数，
+那么存在三个鞅$a$、$b$和$c$，满足以下性质，其中$\mathrm{c}$是一个绝对常数：
+\begin{itemize}
+\item[(i)] $x=a+b+c;$
+\item[(ii)] 鞅$a$满足 $$\|a\|_1 \leq \mathrm{c}
+\|x\|_1, \quad \|a\|_2^2 \leq \mathrm{c} \lambda \|x\|_1, \quad
+\|a\|_\infty \leq \mathrm{c} \lambda;$$
+\item[(iii)] 鞅$b$满足 $$\sum_{k=1}^{\infty}
+\|db_k\|_1 \le \mathrm{c} \|x\|_1;$$
+\item[(iv)] 鞅$c$满足
+$$\lambda \tau \Big( \bigvee_{k \ge 1} \mathrm{supp}^* dc_k \Big)
+\le \mathrm{c} \|x\|_1.$$
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+根据~\eqref{decomposition}，我们只需设定$a:=\alpha$，$b:=\beta$和
+$c:=\gamma +\upsilon$。然后，(ii)和(iii)直接由定理~\ref{Main}得出。
+对于(iv)，我们注意到从~\eqref{decomposition}中，对于每个$k\geq 1$，
+$dc_k=dx_k -\pi_{k-1}q_{k-1}dx_kq_{k-1}\pi_{k-1}$。因此，
+我们推导出对于$k\geq 1$，$(\pi_{k-1} \wedge q_{k-1})dc_k(\pi_{k-1} \wedge q_{k-1})=0$，
+因此，$\mathrm{supp}^* dc_k \leq {\bf 1}-(\pi_{k-1} \wedge q_{k-1})$。
+特别地，我们得到 $$\T \Big( \bigvee_{k \ge 1} \mathrm{supp}^* dc_k \Big) \leq \T({\bf 1}-\pi) +\T({\bf 1}-q).$$ 
+在这一点上，(iv)类似于引理~\ref{gamma-support}中的证明。证明完成。
+\end{proof}
+值得注意的是，Gundy在\cite{G}中的原始证明使用了两个停时。
+这基本上解释了为什么我们在~\eqref{decomposition}的构造中需要两个步骤。
+在\cite{B}中，Burkholder提供了Gundy分解的一个较弱版本，其中只需要第一个鞅的$L_2$估计。
+他的方法只使用了一个停时。在下一个结果中，我们提供了Burkholder方法的非交换模拟。
+这提供了一个更简单的分解，对于某些应用更有用。
+
+\begin{corollary} \label{Gundy}
+设 $x=(x_n)_{n \ge 1}$ 是一个 $L_1$-有界正鞅并且
+$\lambda$ 是一个正实数。我们考虑 $x$ 分解为四个鞅的和 $x= \alpha' +
+\beta' + \gamma' + \upsilon'$ 其中各自的鞅差如下述
+\begin{equation*}\label{Decomposition2}
+\begin{cases}
+ d\alpha'_k &:= q_k^{(\lambda)} dx_k q_k^{(\lambda)} -
+\E_{k-1} \big( q_k^{(\lambda)} dx_k q_k^{(\lambda)} \big), \\
+d\beta'_k &:= q_{k-1}^{(\lambda)} dx_k q_{k-1}^{(\lambda)} -
+q_k^{(\lambda)} dx_k q_k^{(\lambda)} + \E_{k-1} \big(
+q_k^{(\lambda)} dx_k q_k^{(\lambda)} \big), \\ d\gamma'_k &:= dx_k
+- dx_k q_{k-1}^{(\lambda)},\\ d\upsilon'_k &:= dx_k
+q_{k-1}^{(\lambda)} - q_{k-1}^{(\lambda)} dx_k
+q_{k-1}^{(\lambda)}.
+\end{cases} \tag{$\mathbf{G}'_{\lambda}$}
+\end{equation*}
+那么，有如下性质：
+\begin{itemize}
+\item[(i)] 鞅 $\alpha'$ 满足 $$\|\alpha'\|_1 \le
+\mathrm{c} \|x\|_1, \quad \|\alpha'\|_2^2 \leq \mathrm{c}
+\lambda\|x\|_1;$$
+\item[(ii)] 鞅 $\beta', \gamma'$ 和 $\upsilon'$
+与定理~\ref{Main} 中的 $\beta, \gamma$ 和 $\upsilon$ 有同样估计。
+\end{itemize}
+\end{corollary}
+
+\dem 关于 $\beta', \gamma'$ 和 $\upsilon'$ 的估计可以逐字句在定理~\ref{Main}的证明中验证。 对于 $\alpha'$ 的
+$L_1$-估计， 我们利用引理~\ref{marting-y}. 为了估计  $\alpha'$ 的 $L_2$-范数，我们注意由正交性
+对于 $n\geq 1$，
+\begin{equation*}
+\left\|\alpha'_n\right\|_2^2
+=\sum_{k=1}^n\left\|d\alpha'_k\right\|_2^2 \leq 4\sum_{k=1}^n
+\left\|q_kdx_kq_k\right\|_2^2.
+\end{equation*}
+另一方面，因为对于每个 $k\geq 1$，
+$q_kdx_kq_k=q_k(q_kx_kq_k -q_{k-1}x_{k-1}q_{k-1})q_k$，我们得出
+\begin{equation*}
+\left\|\alpha'_n\right\|_2^2 \leq 4 \sum_{k=1}^n \left\|q_k x_kq_k
+-q_{k-1}x_{k-1}q_{k-1}\right\|_2^2.
+\end{equation*}
+最后，由 \cite[Lemma~3.4]{R}，这蕴含了
+$\left\|\alpha'_n \right\|_2^2 \leq 24\lambda\left\|x\right\|_1.$
+\fin
+
+\begin{remark}
+推论~\ref{Gundy}显然地推广到非正的鞅。
+\end{remark}
+
+% \newpage
