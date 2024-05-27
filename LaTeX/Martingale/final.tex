@@ -1,8 +1,15 @@
 \section{HT implies UMD }\label{sec-HT to UMD}
 
 \subsection{Notation}
-$\Gamma:=$, $sign(n)\forall n\in\Gamma$, $supp(n):=\{k\geq0| n_k\ne0\}$,
-$\gamma_n\colon G\to \mathbb{T}, z\mapsto \prod z_k^{n_k}$. Product of two sequences/functions is defined in the sense of pointwise product. 
+\begin{itemize}
+    \item $\Gamma:=\bigoplus_{k\geq0}\mathbb{Z}$, $G:=\prod_{k\geq0}\mathbb{T}$, if there is no specific clarification;
+    \item $\Gamma$ is equiped with the anti-lexicographical order, that is, $\forall n,m\in\Gamma$, we define $n\geq m$ if $\exists N\in \mathbb{N}$ such that $n_j\geq m_j$ holds for all $j\geq N$. We define $n>m$ if and only if $n\geq m$ and $n\ne m$.
+    \item $\operatorname{sign}\colon\Gamma\to\{-1,0,1\},n\mapsto\operatorname{sign}$ is defined as the rule on $\mathbb{Z}$.
+    \item  $supp(n):=\{k\geq0| n_k\ne0\}$,
+    \item $\gamma_n\colon G\to \mathbb{T}, z\mapsto \prod z_k^{n_k}$,
+    \item Product of two sequences/functions is defined in the sense of pointwise product. 
+\end{itemize}
+
 
 \subsection{Main part}
 \begin{definition}[Haar measure, Dual group]
@@ -11,22 +18,22 @@ A
 Here is a technical lemma will be used latter.
 \begin{lemma}
     For any finite subset $A\subseteq \Gamma$, there is an $m\in\Gamma$ such that
-        \[\forall n \in A\setminus\{0\}\quad sign(\langle n,m\rangle)=sign(n).\]
+        \[\forall n \in A\setminus\{0\}\quad \operatorname{sign}(\langle n,m\rangle)=\operatorname{sign}(n).\]
     More generally, for any sequence of signs $(\varepsilon_k)_{k\geq0}$ there is $m\in\Gamma$ such that
-        \[\forall n \in A\setminus\{0\}\quad sign(\langle \varepsilon n,m\rangle)=sign(\varepsilon n).\]
+        \[\forall n \in A\setminus\{0\}\quad \operatorname{sign}(\langle \varepsilon n,m\rangle)=\operatorname{sign}(\varepsilon n).\]
 \end{lemma}
 \begin{proof}
     The second assertion follows from the first one applied to $A^{\prime}:=\{(\varepsilon n)| n\in A\}$, which is finite since for each $n\in A$, ${\varepsilon n| \varepsilon\text{ is an arbitrary sign}}$ contains 
     at most $2^{\sharp supp(n)}$ distinct sequences, which ensures that $\sharp A^{\prime}\leq 2^{\max_{n\in A}\sharp supp(n)}\sharp A$ is finite. Now it suffices to prove the first one.
     \par Let $W_K:=\{n\in\Gamma|n_K\ne0,n_j=0\forall j>K\}$ be the set of ‘words’ of length exactly $K + 1$. The idea is simply that for any $n \in W_K$ we have
-        \[  \lim_{m_K\to\infty} sign(\langle n,m\rangle)=sign(n_K)\cdot\infty=sign(n)\cdot\infty.\]
+        \[  \lim_{m_K\to\infty} \operatorname{sign}(\langle n,m\rangle)=\operatorname{sign}(n_K)\cdot\infty=\operatorname{sign}(n)\cdot\infty.\]
     By induction on K we will prove that for any $A\subseteq \cup_{j=0}^{K}W_j$ there is $m\in \cup_{j=0}^{K}W_j$ such that
     \begin{equation}\label{eqn:sign property}
-        \forall n\in A\quad sign(\langle n,m\rangle)=sign(n).
+        \forall n\in A\quad \operatorname{sign}(\langle n,m\rangle)=\operatorname{sign}(n).
     \end{equation}
     The case $K = 0$ is trivial: take $m=(1,0,0,\ldots)\in W_0$. Assume that we have proved this for any $A\subseteq \cup_{j=0}^{K-1}W_j$ and let 
-    us prove it for $A\subseteq \cup_{j=0}^{K}W_j$. By the induction hypothesis there is $(m_0,\ldots,m_{K-1},0,\ldots)$ such that $sign(\langle n,m\rangle)=sign(n)$ 
-    for any $n\in A\cap( \cup_{j=0}^{K-1}W_j )$. Consider now any $n \in A \cap W_K$ so that $n_K\ne0$. Then choosing $m_K>0$ large enough ensures that $sign(\langle n,m\rangle)=sign(n)$, 
+    us prove it for $A\subseteq \cup_{j=0}^{K}W_j$. By the induction hypothesis there is $(m_0,\ldots,m_{K-1},0,\ldots)$ such that $\operatorname{sign}(\langle n,m\rangle)=\operatorname{sign}(n)$ 
+    for any $n\in A\cap( \cup_{j=0}^{K-1}W_j )$. Consider now any $n \in A \cap W_K$ so that $n_K\ne0$. Then choosing $m_K>0$ large enough ensures that $\operatorname{sign}(\langle n,m\rangle)=\operatorname{sign}(n)$, 
     (which is possible as the limit mentioned above) and since $A$ is finite, we can achieve this for any $n\in A\cap W_K$. Then $m=(m_0,\ldots,m_{K-1},m_{K},0,\ldots)$ satisfies~\eqref{eqn:sign property}, completing the induction argument.
 \end{proof}
 
