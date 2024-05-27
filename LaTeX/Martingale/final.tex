@@ -1,1 +1,192 @@
-\section{HT implies UMD }\label{sec-Hao}
+\section{HT implies UMD }\label{sec-HT to UMD}
+
+\subsection{Notation}
+$\Gamma:=$, $sign(n)\forall n\in\Gamma$, $supp(n):=\{k\geq0| n_k\ne0\}$,
+$\gamma_n\colon G\to \mathbb{T}, z\mapsto \prod z_k^{n_k}$. Product of two sequences/functions is defined in the sense of pointwise product. 
+
+\subsection{Main part}
+\begin{definition}[Haar measure, Dual group]
+A
+\end{definition}
+Here is a technical lemma will be used latter.
+\begin{lemma}
+    For any finite subset $A\subseteq \Gamma$, there is an $m\in\Gamma$ such that
+        \[\forall n \in A\setminus\{0\}\quad sign(\langle n,m\rangle)=sign(n).\]
+    More generally, for any sequence of signs $(\varepsilon_k)_{k\geq0}$ there is $m\in\Gamma$ such that
+        \[\forall n \in A\setminus\{0\}\quad sign(\langle \varepsilon n,m\rangle)=sign(\varepsilon n).\]
+\end{lemma}
+\begin{proof}
+    The second assertion follows from the first one applied to $A^{\prime}:=\{(\varepsilon n)| n\in A\}$, which is finite since for each $n\in A$, ${\varepsilon n| \varepsilon\text{ is an arbitrary sign}}$ contains 
+    at most $2^{\sharp supp(n)}$ distinct sequences, which ensures that $\sharp A^{\prime}\leq 2^{\max_{n\in A}\sharp supp(n)}\sharp A$ is finite. Now it suffices to prove the first one.
+    \par Let $W_K:=\{n\in\Gamma|n_K\ne0,n_j=0\forall j>K\}$ be the set of ‘words’ of length exactly $K + 1$. The idea is simply that for any $n \in W_K$ we have
+        \[  \lim_{m_K\to\infty} sign(\langle n,m\rangle)=sign(n_K)\cdot\infty=sign(n)\cdot\infty.\]
+    By induction on K we will prove that for any $A\subseteq \cup_{j=0}^{K}W_j$ there is $m\in \cup_{j=0}^{K}W_j$ such that
+    \begin{equation}\label{eqn:sign property}
+        \forall n\in A\quad sign(\langle n,m\rangle)=sign(n).
+    \end{equation}
+    The case $K = 0$ is trivial: take $m=(1,0,0,\ldots)\in W_0$. Assume that we have proved this for any $A\subseteq \cup_{j=0}^{K-1}W_j$ and let 
+    us prove it for $A\subseteq \cup_{j=0}^{K}W_j$. By the induction hypothesis there is $(m_0,\ldots,m_{K-1},0,\ldots)$ such that $sign(\langle n,m\rangle)=sign(n)$ 
+    for any $n\in A\cap( \cup_{j=0}^{K-1}W_j )$. Consider now any $n \in A \cap W_K$ so that $n_K\ne0$. Then choosing $m_K>0$ large enough ensures that $sign(\langle n,m\rangle)=sign(n)$, 
+    (which is possible as the limit mentioned above) and since $A$ is finite, we can achieve this for any $n\in A\cap W_K$. Then $m=(m_0,\ldots,m_{K-1},m_{K},0,\ldots)$ satisfies~\eqref{eqn:sign property}, completing the induction argument.
+\end{proof}
+
+\begin{remark}
+    Filter limit?
+\end{remark}
+
+\begin{definition}[Multiplier]
+    Given a bounded function $\varphi\colon \Gamma\to\mathbb{C}$ on a discrete group $\Gamma$(we refer to $\varphi$ as
+    a ‘multiplier’), we will always denote by $M_\varphi\colon L_2(\widehat{\Gamma})\to L_2(\widehat{\Gamma})$ the corresponding 
+    multiplier operator on $L_2(\widehat{\Gamma})$ defined by $M_\varphi(\gamma_n)=\varphi(n)\gamma_n$ for any $\gamma_n\in\Gamma$. 
+\end{definition}
+
+\begin{lemma}[Transference argument]\label{lem: trans}
+    Let $B$ be a Banach space. Let $1\leq p<\infty$. Let $\varphi\colon \mathbb{Z}\to\mathbb{C}$ be a multiplier. For
+    any $m\in \Gamma$ we define the multiplier $\varphi_m\colon\Gamma\to\mathbb{C}$ by
+        \[\forall n\in\Gamma\quad \varphi_m(n)=\varphi(\langle n,m\rangle). \]
+    We have then:
+        \[  \|M_\varphi\|_{\mathcal{B}(L_p(G;B))}\leq\|M_\varphi\|_{\mathcal{B}(L_p(\mathbb{T};B))}.\]
+\end{lemma}
+\begin{proof}
+By homogeneity we may assume $\|M_\varphi\|_{\mathcal{B}(L_p(\mathbb{T};B))}\leq1$. By Fubini we also have $\|M_\varphi\|_{\mathcal{B}(L_p(\mathbb{T});L_p(G;B))}\leq1$:
+
+Fix $m \in \Gamma$. For any $z = (z_k) \in \Gamma$ and any $w \in \mathbb{T}$ we denote
+    \[
+        w_{\bullet}z = (w^{m_k} z_k)_{k \geq 0}.
+    \]
+To any $f \in L_p(G; B)$ we associate $\widetilde{f} \in L_p(\mathbb{T}, L_p(G; B))$ defined by
+    \[
+        \widetilde{f}(w)(z) := f(w_{\bullet}z).
+    \]
+This is an isometric embedding from $L_p(G;B)$ to $L_p(\mathbb{T};L_p(G;B))$:
+    \begin{align*}
+        \int_{\mathbb{T}}\|\widetilde{f}(w,\ )\|_{L_p(G;B)}^{p} dw
+        &=\int_{\mathbb{T}}\int_{G} \|f(w_{\bullet}z)\|_B^p dz dw\\
+        &=\int_{\mathbb{T}}\int_{G} \|f(w_{\bullet}z)\|_B^p dz dw\\
+        &=\int_{\mathbb{T}}\int_{G} \|f(z)\|_B^p dz dw\\
+        &=\int_{G}\int_{\mathbb{T}} \|f(z)\|_B^p dz dw\\
+        &=\int_{G} \|f\|_B^p d\mu_G,
+    \end{align*}
+i.e. $\|\widetilde{f}\|_{L_p(\mathbb{T};L_p(G;B))}=\|f\|_{L_p(G;B)}$. 
+
+Above all: the following diagram commutes and two arrows $\hookrightarrow$ are isometric embeddings $f\mapsto\widetilde{f}$.
+    \[\begin{tikzcd}
+        L_p(G;B) \arrow[d, "\varphi_m"'] \arrow[r, hook] & L_p(\mathbb{T};L_p(G;B)) \arrow[d] \\
+        L_p(G;B) \arrow[r, hook]                         & L_p(\mathbb{T};L_p(G;B))          
+        \end{tikzcd}\]
+    \end{proof}
+By Fubini, we have $L_p(G\times\mathbb{T};B)=L_p(\mathbb{T};L_p(G;B))$. The former space works better with weak $L_1$ norm than the latter space.
+    \begin{remark}
+        An analogous result holds for multipliers of weak-type $(1,1)$. We have:
+        \[  \|M_\varphi\|_{\mathcal{B}(L_1(G;B),L_{1,\infty}(G;B))}\leq\|M_\varphi\|_{\mathcal{B}(L_1(\mathbb{T};B),L_{1,\infty}(\mathbb{T};B))}.\]
+    \end{remark}
+    Indeed, we can use the elementary fact.
+    \begin{lemma}
+        For any function $f$ on a product of measure spaces such as $G\times\mathbb{T}$ we have
+        \[  \|f\|_{L_{1,\infty}(G\times\mathbb{T})}\leq\int_{G}\|f(z,\cdot)\|_{L_{1,\infty}(\mathbb{T})}d\mu(z).     \]
+    \end{lemma}
+    \begin{proof}
+        For the product measure and any $\lambda>0$, we have
+        \begin{align*}
+            \lambda(\mu_{G}\times\mu_{\mathbb{T}})(\{|f|>\lambda\})
+              &=\int_{G\times\mathbb{T}}\lambda\mathbf{1}_{\{|f|>\lambda\}}d(\mu_G\times\mu_{\mathbb{T}})
+            \\&=\int_{G}d\mu_G(z)\int_{\mathbb{T}}\lambda\mathbf{1}_{\{|f(z,-)|>\lambda\}}(w)d\mu_{\mathbb{T}}(w)
+            \\&= \int_{G}\lambda\mu_{\mathbb{T}}({\{|f(z,-)|>\lambda\}})d\mu_G(z)
+            \\&\leq \int_{G}\|f(z,\cdot)\|_{L_{1,\infty}(\mathbb{T})}d\mu(z).\qedhere
+        \end{align*}
+    \end{proof}
+    \begin{lemma}
+        We have an isometric embedding $L_{1,\infty}(G;B)\hookrightarrow L_{1,\infty}(G\times\mathbb{T};B)$
+    \end{lemma}
+    \begin{proof}
+        For any $\lambda>0$, we have:
+            \begin{align*}
+                \lambda(\mu_{G}\times\mu_{\mathbb{T}})(\{\|\widetilde{f}\|_B>\lambda\})
+                  &=\int_{G\times\mathbb{T}}\lambda\mathbf{1}_{\{\|\widetilde{f}\|_B>\lambda\}}d(\mu_G\times\mu_{\mathbb{T}})
+                \\&=\int_{\mathbb{T}}\int_{G}\lambda\mathbf{1}_{\{z\in G\colon\|f(w_{\bullet}z)\|_B>\lambda\}}(z)d\mu_G(z)d\mu_{\mathbb{T}}(w)
+                \\&=\int_{\mathbb{T}}\int_{G}\lambda\mathbf{1}_{\{z\in G\colon \|f(z)\|_B>\lambda\}}(\overline{w}_{\bullet}z)d\mu_{G}(z)d\mu_{\mathbb{T}}(w)
+                \\&=\int_{\mathbb{T}}\int_{G}\lambda\mathbf{1}_{\{z\in G\colon \|f(z)\|_B>\lambda\}}(z)d\mu_{G}(z)d\mu_{\mathbb{T}}(w)
+                \\&=\int_{G}\int_{\mathbb{T}}\lambda\mathbf{1}_{\{z\in G\colon \|f(z)\|_B>\lambda\}}(z)d\mu_{\mathbb{T}}(w)d\mu_G(z)
+                \\&=\int_{G}\lambda\mathbf{1}_{\{z\in G\colon \|f(z)\|_B>\lambda\}}(z)d\mu_G(z)
+                \\&=\lambda\mu_{G}(\{z\in G\colon \|f(z)\|_B>\lambda\}),
+            \end{align*}
+        which ensures what we want.
+    \end{proof}
+    The following diagram commutes. 
+    \[\begin{tikzcd}
+        L_1(G;B) \arrow[d, "\varphi_m"'] \arrow[r, hook] & L_1(G\times\mathbb{T};B) \arrow[d]  \\
+        {L_{1,\infty}(G;B)} \arrow[r, hook]              & {L_{1,\infty}(G\times\mathbb{T};B)}
+    \end{tikzcd}\]
+
+    Two arrows $\hookrightarrow$ are isometric embeddings. Therefore, we know $\|\varphi_m\| \leq \|\varphi \| $.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We can now state Bourgain’s transference theorem:
+\begin{theorem}\label{thm: Bourgain trans}
+    Let $1 < p < \infty$. Let $B$ be any Banach space such that the Hilbert transform $H^{\mathbb{T}}$ is 
+    bounded on $L_p(\mathbb{T};B)$. Recall $C_p^{HT}(B)=\|H^{\mathbb{T}}\|_{\mathcal{B}(L_p(G;B))}$. Then for any choice of signs 
+    $\varepsilon_k=\pm1$ and for any finite martingale $f=\int fd\mu+\sum_{k\geq0}df_k$ in $L_p(G;B)$ we have
+        \[  \|\sum_{k\geq0}\varepsilon_k H_k df_k\|_{L_p(G;B)}\leq C_p^{HT}(B)\|f\|_{L_p(G;B)}. \]
+\end{theorem}
+
+\begin{corollary}
+    In the situation of Theorem~\ref{thm: Bourgain trans}, let $A\subseteq\mathbb{N}$ be a subset such
+    that for each $n$ in $A$, the variable
+\end{corollary}
+
+\begin{corollary}
+    For any Banach space $B$ and any $1 < p < \infty$ we have
+        \[  C_p(B) \leq C_p^{HT}(B)^2.  \]
+    In particular, HT implies UMD.
+\end{corollary}
+
+The following seems to be still open.
+\begin{problem}
+    Is there an absolute constant $K$ such that $C_p(B) \leq K C_p^{HT} (B)$ for
+any $1 < p < \infty$ and any $B$?
+\end{problem}
+
+\appendix
+
+Here we discuss about infinite tensor products of Hilbert spaces.
+
+\section{For the infinite tensor product}
+We start from tensor product of finite numbers of Hilbert spaces. In particular, we consider two Hilbert spaces.
+
+\begin{definition}[Tensor product of two Hilbert spaces]
+    
+\end{definition}
+
+\begin{definition}[Directed set, Direct system, Direct limit]
+    Let $(I,\leq)$ be a partially ordered set. It is said to be a direct set if $\forall i,j\in I\exists k\in I$ such that $i\leq j, j\leq k$. A direct system in $\{A_i,(\phi_{i j})_{j\in I}\}_{i\in I}$ such that 
+    \begin{itemize}
+        \item for $i\in I$, $\phi_{ii}=1_{A_i}$;
+        \item for $i\leq j\leq k$, $\phi_{j k}\circ\phi_{i j}=\phi_{i k}$.
+    \end{itemize}
+    A direct limit of a direct system is an object denoted by $\lim\limits_{\longrightarrow} A$ together with morphisms $\{\phi_i\to\lim\limits_{\longrightarrow} A\}_{i\in I}$, satisfying
+    \begin{itemize}
+        \item for all $\forall i\leq j\colon\phi_{j}\circ\phi_{i j}=\phi_i$;
+        \item the universal property: for any object $C$ and any morphisms $\{\psi_i\colon A_i\to C\}_{i\in I}$ such that $\psi_j\circ\phi_{i j}=\psi_i$ for all $i\leq j$, there exists a unique morphism $\psi\colon \lim\limits_{\longrightarrow} A\to C$ such that $\psi_i=\psi\circ\phi_i$ for all $i\in I$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Every direct system of vector spaces and linear maps possesses a limit. 
+    See \cite[\href{https://stacks.math.columbia.edu/tag/07N7}{Section 07N7}]{stacks-project}. The limit is unique up to a unique isometry that factors thorough $\{\phi_i\}_{i\in I}$.
+\end{remark}
+
+\begin{definition}[Infinite tensor product of pointed Hilbert spaces]
+    For a family of "pointed" Hilbert spaces $\{(H_i,\xi_i)\}_{i\in I}$, in other words, $(H_i,\xi_i)$ is a pair of a Hilbert space $H_i$ together with a unit vector $\xi_i\in H_i$, the tensor product of $\{(H_i,\xi_i)\}_{i\in I}$ is defined by the direct limit of the directed system $\{H_F:=\otimes_{i\in F}H_i\}_{F\in\mathcal{F}(I)}$, where $\mathcal{F}:=\{F\in\mathcal{P}(I)|\sharp F<\infty\}$.
+\end{definition}
+
+Above all, we have:
+    For $L_2(\mathbb{T})$, we have
+        \[  L_2(G)=\bigoplus_{k\geq0}L_2(\mathbb{T}).   \]
+
+To see this, take $I=\mathbb{N}$ and $H_i=L_2(\mathbb{T})$ for all $i\in\mathbb{N}$, $\xi_i=1\in H_i$. Then $L_2(G)$ satisfies the universal property (we will prove a simpler version of this: $L_2(\mathbb{T}^2)=L_2(\mathbb{T})\bigotimes L_2(\mathbb{T})$).
+
+\begin{proof}
+    Consider the fourier basis of $L_2(\mathbb{T})$, that is $\{e_k\}_{k\in\mathbb{Z}}$. 
+    Now it follows from the fact that $\{e_k\otimes e_l\}_{k,l\in\mathbb{Z}}$ is an orthonormal family in $L_2(\mathbb{T}^2)$.
+\end{proof}
+
