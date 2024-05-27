@@ -1,6 +1,6 @@
 \documentclass[12pt]{amsart}
 
-
+\usepackage{tikz-cd}
 \usepackage{geometry}
  \geometry{left=3.0cm, right=3.0cm, top=3.0cm, bottom=3.0cm}
 % a4paper,scale=0.68
@@ -11,6 +11,8 @@
 \usepackage{amssymb}
 %\usepackage{showkeys}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
 
 %\usepackage[colorlinks, linkcolor=blue, citecolor=blue]{hyperref}
 
@@ -65,7 +67,8 @@ Our results extend Burkholder's result into noncommutative setting and solve the
 
 \input{final.tex}
 
-\section{Introduction}
+\printbibliography
+% \section{Introduction}
 
 % In the last two decades, the noncommutative martingale theory has gotten a rapid development. Actually, since the  establishment of the noncommutative Burkholder-Gundy inequality  by Pisier and Xu \cite{Pi1997}, lots of classical  martingale inequalities have been extended to the noncommutative setting. For instance, Junge \cite{Ju2002} proved the noncommutative Doob maximal inequality. Shortly after, Randrianantoanina \cite{Rand2002} showed the weak type $(1,1)$ inequality for martingale transform.
 % Parcet and Randrianantoanina  \cite{Rand2006} established the Gundy decomposition for noncommutative martingales. Several authors extended martingale inequalities into symmetric spaces and $\Phi$-moment setting, see for example \cite{Bek2012}, \cite{Bekjan2017}, \cite{Di20152}, \cite{Di20151}, \cite{DDPS2011}, \cite{Ji2012}, \cite{Zhou2017JFA} and so on.
